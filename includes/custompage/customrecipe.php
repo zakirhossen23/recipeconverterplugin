@@ -1,8 +1,8 @@
 <?php 
 get_header();?>
 <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="0" style="
- width: 92%;
- margin-left: 2%;
+ width: 94%;
+ margin-left: 22px;
  border-collapse:collapse;
  border: 0;
  margin-bottom: 27px;
@@ -49,8 +49,8 @@ Description automatically generated" v:shapes="Picture_x0020_10"><!--[endif]--><
  </tr>
 </tbody></table>
 <table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" width="0" style="
- width: 92%;
- margin-left: 2%;
+ width: 94%;
+ margin-left: 22px;
  border-collapse:collapse;
  border:none;
  margin-top: 23px;
