@@ -29,7 +29,7 @@ get_header();
 
 
                     <input lang="EN-CA"
-                        style="font-size:22.0pt;margin-left: 18%;text-align: center;height: 20%;border: 0;width: 81%;"
+                        style="font-size:22.0pt;margin-left: 10%;text-align: center;height: 20%;border: 0;width: 81%;"
                         value="ITALIAN WEDDING SOUP" autocomplete="off" />
 
                 </p>
@@ -67,8 +67,9 @@ get_header();
   
   height:28.35pt">
                 <p class="MsoHeader" align="right" style="text-align:right"><i><span lang="EN-CA"
-                            style="font-size:12.0pt;color:#4472C4;">Effort</span></i><span lang="EN-CA"
-                        style="font-size:12.0pt">: Medium<o:p></o:p></span></p>
+                            style="font-size:12.0pt;color:#4472C4;">Effort: </span></i><input lang="EN-CA"
+                        style="font-size:12.0pt;border: 0;width: 60%;height: 20%;display: inline-block;"
+                        value="Medium" /></p>
             </td>
         </tr>
     </tbody>
