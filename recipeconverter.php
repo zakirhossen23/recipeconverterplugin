@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Recipe Converter
  * Version: 1.0.0
@@ -13,17 +14,17 @@
  * @since 1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+    exit;
 }
 
 
-add_filter( 'template_include', 'recipe_converter_page_template', 99 );
-function recipe_converter_page_template( $template ) {
-    if ( is_page( 'recipe-converter' )  ) {
-        $new_template = locate_template( array( 'portfolio-page-template.php' ) );
-		 return plugin_dir_path(__FILE__)."includes/custompage/customrecipe.php";
-  
+add_filter('template_include', 'recipe_converter_page_template', 99);
+function recipe_converter_page_template($template)
+{
+    if (is_page('recipe-converter')) {
+        $new_template = locate_template(array('portfolio-page-template.php'));
+        return plugin_dir_path(__FILE__) . "includes/custompage/customrecipe.php";
     }
     return $template;
 }
