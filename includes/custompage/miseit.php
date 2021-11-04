@@ -32,7 +32,7 @@
     height: 0px;
 ">
                     <th style="width:0" class="hidden">
-                        <div class="numbers"></div>
+                        <div></div>
                     </th>
                     <th class="hidden"><input type="nothing"></th>
                     <th style="width: 45px;" class="hidden">
@@ -97,14 +97,15 @@ function addItmes() {
 
 
 function onAdd() {
+    var allserial = document.getElementsByClassName("numbers");
     var table = document.getElementById("Item-table");
     var row = table.insertRow(-1);
     var cell0 = row.insertCell(-1);
     var cell1 = row.insertCell(-1);
     var cell2 = row.insertCell(-1);
     var cell3 = row.insertCell(-1);
-
-    cell0.innerHTML = '<div class="numbers">' + row_id + '</div>';
+    var serial = Number(allserial.length) + Number(1)
+    cell0.innerHTML = '<div class="numbers">' + serial + '</div>';
     cell1.innerHTML = '<input readonly="readonly" id="item' + row_id + '" name="item" value="' + document
         .getElementById(
             "itemname").value + '" style="pointer-events:none;" type="text" />'
@@ -126,7 +127,16 @@ function onDelete(btn) {
     var table = $("#Item-table")[0];
 
     table.deleteRow(row[0].rowIndex);
-}
+    var allnumberrow = document.getElementsByClassName("numbers");
+    var ir = 0;
+    for (let i = 0; i < allnumberrow.length; i++) {
+
+        allnumberrow[i].innerHTML = ir + 1;
+
+        ir++;
+
+    };
+};
 </script>
 <style>
 .btn-add {
@@ -247,7 +257,7 @@ input[type="text"] {
 }
 
 .editbtn:active {
-    background: #897636;
+    background: #2c3240;
     color: #adadad;
 }
 
@@ -261,7 +271,7 @@ input[type="text"] {
 }
 
 .deletebtn:active {
-    background: #4E5975;
+    background: #2c3240;
     color: #ffffffb8;
 }
 
