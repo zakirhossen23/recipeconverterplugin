@@ -4,7 +4,7 @@
 
 <body>
     <div id="all">
-        <h1>Please enter your Shop It! List</h1>
+        <h1>Please enter your Shop It! List:</h1>
         <div style="display: flex;">
             <input id="ingredientname" style=" padding:0px 0px 0px 4px; " placeholder="Ingredient">
             <input id="overbuy" type="radio" placeholder="Overbuy"

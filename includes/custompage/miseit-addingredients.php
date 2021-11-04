@@ -4,9 +4,9 @@
 
 <body>
     <div id="all">
-        <h1>Please enter your Mise It! List</h1>
+        <h1>Please enter your Mise It! List:</h1>
         <div style="display: flex;">
-            <input id="ingredientname" style=" padding:0px 0px 0px 4px; " placeholder="Qty and Ingredient">
+            <input id="ingredientname" style=" padding:0px 0px 0px 4px;  width:161px;" placeholder="Qty and Ingredient">
             <input id="Preparation" style=" padding:0px 0px 0px 4px; " placeholder="Preparation Instructions">
             <select id="itemname" placeholder="Please select Item" style="padding:0px 0px 0px 4px; width: 139px;">
 
@@ -46,17 +46,18 @@
     makegroup();
 
     function Makeit() {
-        var allitem = document.getElementsByClassName("ingredient");
+        var allitem = document.getElementsByClassName("ingredient")
         var allperep = document.getElementsByClassName("perep");
-        var savingshopit = [];
+        var savingmiseit = [];
         for (let i = 0; i < allperep.length; i++) {
-            var text = "shopit:" + allitem[i].name + ":" + allitem[i].value + ":" + allperep[i].value;
-            savingshopit.push(text)
 
+            var text = "miseit:" + allitem[i].name + ":" + allitem[i].value + ":" + allperep[i].value;
+            savingmiseit.push(text)
         }
-        localStorage.setItem("makeit", savingshopit);
-        document.getElementById("all").innerHTML =
-            ' <iframe name = "makeit" id="miseit"  src = "makeit" />'
+        localStorage.setItem("miseit", savingmiseit);
+
+        // document.getElementById("all").innerHTML =
+        //     ' <iframe name = "miseit" id="miseit"  src = "miseit" />'
     }
 
     function onEdit(btn) {
@@ -148,7 +149,7 @@
             '" name="' + rowname + '" value="' +
             ingredientvalue + '" /></td>' +
 
-            '<td><input readonly="readonly" class="ingredient" id="perep' + row_id + //inputbox
+            '<td><input readonly="readonly" class="perep" id="perep' + row_id + //inputbox
             '" name="' + rowname + '" value="' +
             pereperationvalue + '" /></td>' +
 
@@ -216,6 +217,12 @@ input {
 }
 
 .ingredient {
+    border: none;
+    outline: none;
+    pointer-events: none;
+}
+
+.perep {
     border: none;
     outline: none;
     pointer-events: none;

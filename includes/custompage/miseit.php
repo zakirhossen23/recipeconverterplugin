@@ -91,7 +91,7 @@ function addItmes() {
     allitem.forEach(v => savingitem.push(v.value));
     localStorage.setItem("items", savingitem);
     document.getElementById("all").innerHTML =
-        ' <iframe name = "addingredient" src = "add-ingredient" />'
+        ' <iframe name = "miseit-addingredient" src = "miseit-add-ingredient" />'
 
 }
 
