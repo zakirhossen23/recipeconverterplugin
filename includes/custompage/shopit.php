@@ -1,6 +1,7 @@
 <div id="all" class="all">
     <div class="no-margin">
         <h1 class="headername top-margin">SHOP IT!</h1>
+        <h1 class="no-margin">Please select or enter your First Aisle in the proper order:</h1>
         <div class="no-margin">
             <div style="display: flex;">
                 <strong style="
@@ -20,7 +21,7 @@
         </table>
 
         <button class="Ingredientsbtn" onclick="Ingredients()">
-            Add Ingredients
+            Add Shop It! List
         </button>
     </div>
 </div>
@@ -136,8 +137,8 @@ iframe {
 
 th,
 td {
-    border: 1px solid black;
-    height: 39px;
+    border: 0.5px solid black;
+    height: 41px;
 
 }
 

@@ -31,5 +31,8 @@ function recipe_converter_page_template($template)
     if (is_page('shopit')) {
         return plugin_dir_path(__FILE__) . "includes/custompage/shopit.php";
     }
+    if (is_page('miseit')) {
+        return plugin_dir_path(__FILE__) . "includes/custompage/miseit.php";
+    }
     return $template;
 }

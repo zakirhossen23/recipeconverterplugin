@@ -27,9 +27,7 @@
 
         </div>
 
-        <button class="Misebtn"
-            style="width: 146px;font-size: 85%;padding: 8px;  float: right;   margin: 13px 0px 2px 3px;"
-            onclick="Miseit()">
+        <button class="miseitbtn" onclick="Miseit()">
             Let's Mise It!
         </button>
     </div>
@@ -172,8 +170,8 @@
 
 th,
 td {
-    border: 1px solid black;
-    height: 39px;
+    border: 0.5px solid black;
+    height: 41px;
 
 }
 
@@ -261,5 +259,14 @@ iframe {
     height: 100%;
 
     border: none;
+}
+
+.miseitbtn {
+    width: 146px;
+    font-size: 85%;
+    padding: 8px;
+    float: right;
+    margin: 13px 0px 2px 3px;
+    background-color: #debf54;
 }
 </style>
