@@ -23,8 +23,13 @@ add_filter('template_include', 'recipe_converter_page_template', 99);
 function recipe_converter_page_template($template)
 {
     if (is_page('recipe-converter')) {
-        $new_template = locate_template(array('portfolio-page-template.php'));
         return plugin_dir_path(__FILE__) . "includes/custompage/customrecipe.php";
+    }
+    if (is_page('add-ingredient')) {
+        return plugin_dir_path(__FILE__) . "includes/custompage/addingredients.php";
+    }
+    if (is_page('shopit')) {
+        return plugin_dir_path(__FILE__) . "includes/custompage/shopit.php";
     }
     return $template;
 }
