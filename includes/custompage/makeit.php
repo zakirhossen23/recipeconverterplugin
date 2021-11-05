@@ -21,7 +21,7 @@ function addItmes() {
 
     localStorage.setItem("tools", allitem);
     document.getElementById("all").innerHTML =
-        ' <iframe name = "makeit-addingredient" src = "makeit-add-ingredient" />'
+        ' <iframe name = "makeit-steps" src = "makeit-steps" />'
 
 }
 </script>

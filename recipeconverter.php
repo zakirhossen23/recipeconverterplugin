@@ -18,7 +18,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-
 add_filter('template_include', 'recipe_converter_page_template', 99);
 function recipe_converter_page_template($template)
 {
@@ -39,6 +38,10 @@ function recipe_converter_page_template($template)
     }
     if (is_page('miseit-add-ingredient')) {
         return plugin_dir_path(__FILE__) . "includes/custompage/miseit-addingredients.php";
+    }
+    if (is_page('makeit-steps')) {
+
+        return plugin_dir_path(__FILE__) . "includes/custompage/makeit-steps.php";
     }
 
     return $template;
