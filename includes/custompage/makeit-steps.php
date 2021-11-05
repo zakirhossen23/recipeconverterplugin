@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div class="row">
-                    <select class="js-select2with" multiple="multiple">
+                    <select class="js-select2with" id="withselect" multiple="multiple">
                         <option value="O1" data-badge="">Option1</option>
                         <option value="O2" data-badge="">Option2</option>
                         <option value="O3" data-badge="">Option3</option>
@@ -81,16 +81,18 @@
     <script>
     var row_id = 1;
 
-    var itemfield = document.getElementById("itemname");
+    var itemfield = document.getElementById("withselect");
     var allitemcode = [];
     var codeitem = [];
     var item = localStorage.getItem("items");
     allitemcode = item.split(",");
+    var item_id = 1;
     allitemcode.forEach(element => {
-        codeitem.push("<option>" + element + "</option>");
+        codeitem.push("<option>" + item_id + "</option>");
+        item_id++;
     });
     itemfield.innerHTML = codeitem;
-    var item_id = 1;
+    item_id = 1;
     makegroup();
 
     function Makeit() {
@@ -113,7 +115,7 @@
         if (btn.value == "Edit") {
 
 
-            btn.style.background = " #4E5975";
+            btn.style.background = " #88a28e";
             document.getElementById('ingredient' + id).removeAttribute("Readonly");
             document.getElementById('ingredient' + id).style.border = "solid 1px";
             document.getElementById('ingredient' + id).style.fontSize = "larger";
@@ -239,7 +241,7 @@
 <style>
 .btn-add {
     border: solid black 1px;
-    background: #4E5975;
+    background: #88a28e;
     font-size: 29px;
     width: 57px;
     cursor: pointer;
@@ -260,7 +262,7 @@
     margin: 10px 1px 12px 0px;
     cursor: pointer;
     color: white;
-    background: #4E5975;
+    background: #88a28e;
 }
 
 th,
@@ -303,7 +305,7 @@ input {
     width: 100%;
     height: 100%;
     cursor: pointer;
-    background: #4E5975;
+    background: #88a28e;
     border: none;
     color: white;
 }
@@ -316,7 +318,7 @@ input {
 .deletebtn {
     width: 100%;
     height: 100%;
-    background: #4E5975;
+    background: #88a28e;
     border: none;
     color: white;
     cursor: pointer;
