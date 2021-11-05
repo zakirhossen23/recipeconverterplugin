@@ -56,8 +56,8 @@
         }
         localStorage.setItem("miseit", savingmiseit);
 
-        // document.getElementById("all").innerHTML =
-        //     ' <iframe name = "miseit" id="miseit"  src = "miseit" />'
+        document.getElementById("all").innerHTML =
+            ' <iframe name = "makeit" id="makeit"  src = "makeit" />'
     }
 
     function onEdit(btn) {

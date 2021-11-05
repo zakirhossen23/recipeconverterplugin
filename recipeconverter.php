@@ -34,8 +34,12 @@ function recipe_converter_page_template($template)
     if (is_page('miseit')) {
         return plugin_dir_path(__FILE__) . "includes/custompage/miseit.php";
     }
+    if (is_page('makeit')) {
+        return plugin_dir_path(__FILE__) . "includes/custompage/makeit.php";
+    }
     if (is_page('miseit-add-ingredient')) {
         return plugin_dir_path(__FILE__) . "includes/custompage/miseit-addingredients.php";
     }
+
     return $template;
 }
