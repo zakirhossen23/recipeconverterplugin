@@ -61,7 +61,7 @@
     }
 
     function onEdit(btn) {
-        var id = btn.id;
+        var id = btn.name;
         if (btn.value == "Edit") {
 
 
@@ -82,12 +82,12 @@
             document.getElementById('perep' + id).style.width = "95%";
             document.getElementById('perep' + id).style.pointerEvents = "all";
 
-            document.getElementById(id).value = "Save";
+            document.getElementsByName(id)[0].value = "Save";
 
             return true;
         }
         if (btn.value == "Save") {
-            document.getElementById(id).value = "Edit";
+            document.getElementsByName(id)[0].value = "Edit";
             document.getElementById('ingredient' + id).setAttribute("Readonly", "readonly");
             document.getElementById('ingredient' + id).style.border = "none";
             document.getElementById('ingredient' + id).style.fontSize = "revert";
@@ -129,18 +129,23 @@
                 '</td>' + '<td colspan="4" style="text-align:center;">' + '<div class="numbers">' + item_id +
                 '</div>' +
                 '</td>' + ' </tr>';
-            row.id = element;
+            row.id = item_id - 1;
             item_id++;
         })
+        var row = table.insertRow(-1);
+        row.id = allitemcode.length;
     }
 
     function insertAfter(referenceNode, newNode) {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 
+    function insertBefore(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(referenceNode, newNode);
+    }
 
     function onAdd() {
-        var rowname = document.getElementById("itemname").value;
+        var rowname = document.getElementById("itemname").selectedIndex;
         var ingredientvalue = document.getElementById("ingredientname").value
         var pereperationvalue = document.getElementById("Preparation").value
 
@@ -155,11 +160,11 @@
 
 
 
-            '<td><input type="button" class="editbtn" id="' + row_id + //edit button
+            '<td><input type="button" class="editbtn" name="' + row_id + //edit button
             '" value="Edit" onclick="return onEdit(this)"></td>' +
-            '<td><input type="button" class="deletebtn" id="' + row_id + //delete button
+            '<td><input type="button" class="deletebtn" name="' + row_id + //delete button
             '" value="Delete" onclick="return onDelete(this)"></td>';
-        insertAfter(document.getElementById(rowname), el);
+        document.getElementById(rowname + 1).before(el);
         document.getElementById("ingredientname").value = "";
         document.getElementById("Preparation").value = "";
 

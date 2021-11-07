@@ -44,7 +44,7 @@
         codeaisle.push("<option>" + element + "</option>");
     });
     aislefield.innerHTML = codeaisle;
-    var aisle_id = 1;
+    var aisle_id = 0;
     makegroup();
 
     function Miseit() {
@@ -62,7 +62,7 @@
     }
 
     function onEdit(btn) {
-        var id = btn.id;
+        var id = btn.name;
         if (btn.value == "Edit") {
 
             document.getElementById('ingredient' + id).removeAttribute("Readonly");
@@ -75,7 +75,7 @@
             document.getElementById('ingredient' + id).style.pointerEvents = "all";
             document.getElementById('overbuyrow' + id).style.pointerEvents = "all";
             document.getElementById('overbuyrow' + id).style.margin = "0px -3px 0px 7px";
-            document.getElementById(id).value = "Save";
+            btn.value = "Save";
 
             return true;
         }
@@ -84,7 +84,7 @@
             document.getElementById('ingredient' + id).setAttribute("Readonly", "readonly");
             document.getElementById('ingredient' + id).style.border = "none";
             document.getElementById('ingredient' + id).style.fontSize = "revert";
-            document.getElementById(id).value = "Edit";
+            btn.value = "Edit";
             document.getElementById('ingredient' + id).style.margin = "0px 0px 0px 0px";
             document.getElementById('ingredient' + id).style.height = "93%";
             document.getElementById('ingredient' + id).style.width = "97%";
@@ -109,13 +109,16 @@
 
     function makegroup() {
         var table = document.getElementById("Item-table");
+        aisle_id = 1;
         allaislecode.forEach(element => {
             var row = table.insertRow(-1);
             row.innerHTML = '<tr id = "2"><td colspan="4" class="aislegroup">' + element +
                 '</td></tr>';
-            row.id = element;
+            row.id = aisle_id - 1;
             aisle_id++;
         })
+        var row = table.insertRow(-1);
+        row.id = allaislecode.length;
     }
 
     function insertAfter(referenceNode, newNode) {
@@ -124,7 +127,7 @@
 
 
     function onAdd() {
-        var rowname = document.getElementById("aislename").value;
+        var rowname = document.getElementById("aislename").selectedIndex;
         var ingredientvalue = document.getElementById("ingredientname").value
         var overbuyvalue = document.getElementById("overbuy").checked;
         var el = document.createElement("tr");
@@ -134,11 +137,12 @@
             "<input class='overbuybtn' name='" +
             row_id + "'id='overbuyrow" + row_id + "' type = 'radio' /> " + //overbuy
             "</td>" +
-            '<td><input type="button" class="editbtn" id="' + row_id + //edit button
+            '<td><input type="button" class="editbtn" name="' + row_id + //edit button
             '" value="Edit" onclick="return onEdit(this)"></td>' +
-            '<td><input type="button" class="deletebtn" id="' + row_id + //delete button
+            '<td><input type="button" class="deletebtn" name="' + row_id + //delete button
             '" value="Delete" onclick="return onDelete(this)"></td>';
-        insertAfter(document.getElementById(rowname), el);
+        document.getElementById(rowname + 1).before(el);
+
         document.getElementById("ingredientname").value = "";
 
         if (overbuyvalue == true) {
