@@ -23,6 +23,7 @@
         <div style="display: flex;">
 
             <div class="container" style="display: flex;">
+                <!--  DO -->
                 <div class="row">
                     <select class="js-select2" multiple="multiple">
                         <option value="O1" data-badge="">Mix</option>
@@ -44,6 +45,7 @@
                         <option value="O7" data-badge="">Fry</option>
                     </select>
                 </div>
+                <!--  With -->
                 <div class="row">
                     <select class="js-select2with" id="withselect" multiple="multiple">
                         <option value="O1" data-badge="">Option1</option>
@@ -545,6 +547,10 @@ body {
 
 .select-icon .select2-search--dropdown {
     display: none;
+}
+
+input.select2-search__field {
+    width: 100px !important;
 }
 
 .select2-container--default .select2-search--inline .select2-search__field {
