@@ -61,8 +61,6 @@
 
             <button class="btn-add" onclick="onAdd()">+ </button>
         </div>
-
-
         <div>
 
             <table id="Item-table">
@@ -106,8 +104,7 @@
         }
         localStorage.setItem("miseit", savingmiseit);
 
-        document.getElementById("all").innerHTML =
-            ' <iframe name = "makeit" id="makeit"  src = "makeit" />'
+        document.getElementById("all").innerHTML = '<iframe name = "makeit" id="makeit"  src = "makeit" />'
     }
 
     function onEdit(btn) {
@@ -173,48 +170,76 @@
 
     function makegroup() {
         var table = document.getElementById("Item-table");
-        allitemcode.forEach(element => {
-            var row = table.insertRow(-1);
-            row.innerHTML = '<tr><td colspan="3" class="itemgroup">' + element +
-                '</td>' + '<td colspan="4" style="text-align:center;">' + '<div class="numbers">' + item_id +
-                '</div>' +
-                '</td>' + ' </tr>';
-            row.id = element;
-            item_id++;
-        })
+        var row = table.insertRow(-1);
+        row.innerHTML = '<tr><td colspan="0" class="itemgroup do">DO</td>' +
+            '<td colspan="1" class="itemgroup with">WITH</td>' +
+            '<td colspan="2" class="itemgroup how">HOW</td>' +
+            '<td colspan="3" class="itemgroup important">IMPORTANT</td>' +
+            '<td colspan="4" class="edit">Eidt</td>' +
+            '<td colspan="5" class="delete">Delete</td>' +
+            ' </tr>';
+
+        item_id++;
+
     }
 
     function insertAfter(referenceNode, newNode) {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 
+    row_id = 1;
 
     function onAdd() {
-        var rowname = document.getElementById("itemname").value;
-        var ingredientvalue = document.getElementById("ingredientname").value
-        var pereperationvalue = document.getElementById("Preparation").value
+        var table = document.getElementById("Item-table");
+        var row = table.insertRow(-1);
 
-        var el = document.createElement("tr");
-        el.innerHTML = '<td><input readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
-            '" name="' + rowname + '" value="' +
-            ingredientvalue + '" /></td>' +
+        var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[0]
+        var choosen = element.getElementsByClassName("select2-selection__choice")
 
-            '<td><input readonly="readonly" class="perep" id="perep' + row_id + //inputbox
-            '" name="' + rowname + '" value="' +
-            pereperationvalue + '" /></td>' +
+        var dobox = [];
+        for (let i = 0; i < choosen.length; i++) {
+
+            dobox.push(choosen[i].innerText.replace("×", ""));
+        }
+
+        var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[1]
+        var choosen = element.getElementsByClassName("select2-selection__choice")
+        var withbox = [];
+
+        for (let i = 0; i < choosen.length; i++) {
+            if (isNaN(choosen[i].innerText.replace("×", "")) == false) {
+                withbox.push('<input class="numbers" value="' + choosen[i].innerText.replace("×", "") + '"/>');
+            } else {
+                withbox.push('<span>' + choosen[i].innerText.replace("×", "") + '</span>')
+            }
+
+        }
 
 
+        var dohtml =
+            '<td colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
+            '"style="pointer-events:none;" type="text" name="do">' + dobox
+            .join("/") +
+            '</span></td>';
 
-            '<td><input type="button" class="editbtn" id="' + row_id + //edit button
-            '" value="Edit" onclick="return onEdit(this)"></td>' +
-            '<td><input type="button" class="deletebtn" id="' + row_id + //delete button
-            '" value="Delete" onclick="return onDelete(this)"></td>';
-        insertAfter(document.getElementById(rowname), el);
-        document.getElementById("ingredientname").value = "";
-        document.getElementById("Preparation").value = "";
 
+        var withthml = '<td class="withcell" colspan=1>' + withbox.join(" + ") + '</td>';
+        var howbox = document.getElementById("how").value;
+        var howhtml = '<td colspan=2><span readonly="readonly" class="howcell" id="how' + row_id +
+            '" name="how" style="pointer-events:none;" type="text">' + howbox + '</span></td>';
+
+        var importantbox = document.getElementById("Important").value;
+        var importhtml =
+            '<td colspan=3 class="importantcell"><span readonly="readonly" class="importantcell" id="important' +
+            row_id +
+            '" name="important" style="pointer-events:none;" type="text">' + importantbox + '</span></td>';
+        row.innerHTML = '<tr>' + dohtml + withthml + howhtml + importhtml +
+            '<td colspan=4><input id="' + row_id + //Edit Button
+            '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' + //Edit Button
+            '<td colspan=5><input id="' + row_id + //Save Button
+            '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>' + //Save Button
+            '</tr>'
         row_id++;
-
     }
     </script>
     <script>
@@ -229,7 +254,7 @@
     $(".js-select2with").select2({
         closeOnSelect: true,
         placeholder: "With",
-        // allowHtml: true,
+        allowHtml: true,
         allowClear: false,
         tags: true
 
@@ -274,7 +299,7 @@ td {
 
 table {
     border-collapse: collapse;
-    width: 500px;
+    width: 946px;
 }
 
 input {
@@ -282,7 +307,8 @@ input {
 }
 
 .edit {
-    width: 20%;
+    width: 37px;
+    text-align: center;
 }
 
 .ingredient {
@@ -298,7 +324,8 @@ input {
 }
 
 .delete {
-    width: 20%;
+    width: 20px;
+    text-align: center;
 }
 
 .editbtn {
@@ -330,14 +357,40 @@ input {
     color: #ffffffb8;
 }
 
+/***************Table******************/
 
 .itemgroup {
     text-align: center;
-    width: 100%;
     pointer-events: none;
-    background-color: #D9E2F3;
+    background-color: #C5E0B3;
     font-weight: bolder;
     color: black;
+}
+
+.do {
+    width: 150px;
+}
+
+.with {
+    width: 150px;
+}
+
+
+.how {
+    width: 226px;
+}
+
+
+
+/***************** Cell******************/
+
+
+.withcell {
+    text-align: center;
+}
+
+.importantcell {
+    text-align: center;
 }
 
 .numbers {
@@ -351,6 +404,8 @@ input {
     font-size: 23px;
     font-family: calibri;
     display: inline-table;
+    pointer-events: none;
+    border: 0;
 }
 
 body {
@@ -394,6 +449,7 @@ body {
     font-weight: bold;
 }
 
+/***************Multi Select***********/
 .select2-container {
     min-width: 235px;
 }
