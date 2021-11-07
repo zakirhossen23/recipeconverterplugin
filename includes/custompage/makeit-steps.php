@@ -135,10 +135,11 @@
             headerrow.innerHTML = '<td colspan="5" header="' + document.getElementById("groupname").value +
                 '" headerid="' + header_id +
                 '" class="headergroup">' + document.getElementById("groupname").value +
-                '</td>' + '<td colspan=6><input id="' + row_id + //Edit Button
-                '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' + //Edit Button
-                '<td colspan=7><input id="' + row_id + //Save Button
-                '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>';
+                '</td>' + '<td colspan=6><input id="' + header_id + //Edit Button
+                '" value="Edit" name="header" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' +
+                //Edit Button
+                '<td colspan=7><input id="' + header_id + //Save Button
+                '" value="Delete" onclick="return onDelete(this);" class="deletebtn" type="button" /></td>';
             var optionelement = document.createElement("option");
             optionelement.value = document.getElementById("groupname").value;
             headerrow.setAttribute("groupname", selectedvalue);
@@ -168,16 +169,19 @@
 
         for (let i = 0; i < choosen.length; i++) {
             if (isNaN(choosen[i].innerText.replace("×", "")) == false) {
-                withbox.push('<input class="numbers" value="' + choosen[i].innerText.replace("×", "") + '"/>');
+                withbox.push('<input name="withvalue' + row_id + '" class="numbers" value="' + choosen[i].innerText
+                    .replace(
+                        "×", "") + '"/>');
             } else {
-                withbox.push('<span>' + choosen[i].innerText.replace("×", "") + '</span>')
+                withbox.push('<span name="withvalue' + row_id + '">' + choosen[i].innerText.replace("×", "") +
+                    '</span>')
             }
 
         }
 
 
         var dohtml =
-            '<td colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
+            '<td class="maindocell" colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
             '"style="pointer-events:none;" type="text" name="do">' + dobox
             .join("/") +
             '</span></td>';
@@ -185,7 +189,7 @@
 
         var withthml = '<td class="withcell" colspan=1>' + withbox.join(" + ") + '</td>';
         var howbox = document.getElementById("how").value;
-        var howhtml = '<td colspan=2><span readonly="readonly" class="howcell" id="how' + row_id +
+        var howhtml = '<td colspan=2 class="howmaincell"><span readonly="readonly" class="howcell" id="how' + row_id +
             '" name="how" style="pointer-events:none;" type="text">' + howbox + '</span></td>';
 
         var importantbox = document.getElementById("Important").value;
@@ -225,47 +229,92 @@
 
     function onEdit(btn) {
         var id = btn.id;
-        if (btn.value == "Edit") {
+        if (btn.value == "Edit" && btn.name != "header") {
 
 
             btn.style.background = " #88a28e";
-            document.getElementById('ingredient' + id).removeAttribute("Readonly");
-            document.getElementById('ingredient' + id).style.border = "solid 1px";
-            document.getElementById('ingredient' + id).style.fontSize = "larger";
-            document.getElementById('ingredient' + id).style.margin = "0px 0px 0px 10px";
-            document.getElementById('ingredient' + id).style.height = "93%";
-            document.getElementById('ingredient' + id).style.width = "95%";
-            document.getElementById('ingredient' + id).style.pointerEvents = "all";
+            document.getElementById('do' + id).removeAttribute("Readonly");
+            document.getElementById('do' + id).style.border = "solid 1px";
+            document.getElementById('do' + id).style.fontSize = "larger";
+            document.getElementById('do' + id).style.margin = "0px 0px 0px 10px";
+            document.getElementById('do' + id).style.height = "93%";
+            document.getElementById('do' + id).style.width = "95%";
+            document.getElementById('do' + id).style.pointerEvents = "all";
+            document.getElementById('do' + id).setAttribute("contenteditable", true);
 
-            document.getElementById('perep' + id).removeAttribute("Readonly");
-            document.getElementById('perep' + id).style.border = "solid 1px";
-            document.getElementById('perep' + id).style.fontSize = "larger";
-            document.getElementById('perep' + id).style.margin = "0px 0px 0px 10px";
-            document.getElementById('perep' + id).style.height = "93%";
-            document.getElementById('perep' + id).style.width = "95%";
-            document.getElementById('perep' + id).style.pointerEvents = "all";
 
+            document.getElementById('how' + id).removeAttribute("Readonly");
+            document.getElementById('how' + id).style.border = "solid 1px";
+            document.getElementById('how' + id).style.fontSize = "larger";
+            document.getElementById('how' + id).style.margin = "0px 0px 0px 10px";
+            document.getElementById('how' + id).style.height = "93%";
+            document.getElementById('how' + id).style.width = "95%";
+            document.getElementById('how' + id).style.pointerEvents = "all";
+            document.getElementById('how' + id).setAttribute("contenteditable", true);
+
+            document.getElementById('important' + id).removeAttribute("Readonly");
+            document.getElementById('important' + id).style.border = "solid 1px";
+            document.getElementById('important' + id).style.fontSize = "larger";
+            document.getElementById('important' + id).style.margin = "0px 0px 0px 10px";
+            document.getElementById('important' + id).style.height = "93%";
+            document.getElementById('important' + id).style.width = "95%";
+            document.getElementById('important' + id).style.pointerEvents = "all";
+            document.getElementById('important' + id).setAttribute("contenteditable", true);
+
+            var allwithvalues = $('[name="withvalue' + id + '"]');
+            for (let i = 0; i < allwithvalues.length; i++) {
+                allwithvalues[i].removeAttribute("Readonly");
+                allwithvalues[i].style.border = "2px solid lime";
+                allwithvalues[i].style.fontSize = "larger";
+                allwithvalues[i].style.margin = "0px 0px 0px 10px";
+                allwithvalues[i].style.pointerEvents = "all";
+                allwithvalues[i].setAttribute("contenteditable", true);
+            }
             document.getElementById(id).value = "Save";
 
             return true;
         }
-        if (btn.value == "Save") {
+        if (btn.value == "Save" && btn.name != "header") {
             document.getElementById(id).value = "Edit";
-            document.getElementById('ingredient' + id).setAttribute("Readonly", "readonly");
-            document.getElementById('ingredient' + id).style.border = "none";
-            document.getElementById('ingredient' + id).style.fontSize = "revert";
-            document.getElementById('ingredient' + id).style.margin = "0px 0px 0px 0px";
-            document.getElementById('ingredient' + id).style.height = "93%";
-            document.getElementById('ingredient' + id).style.width = "97%";
-            document.getElementById('ingredient' + id).style.pointerEvents = "none";
 
-            document.getElementById('perep' + id).setAttribute("Readonly", "readonly");
-            document.getElementById('perep' + id).style.border = "none";
-            document.getElementById('perep' + id).style.fontSize = "revert";
-            document.getElementById('perep' + id).style.margin = "0px 0px 0px 0px";
-            document.getElementById('perep' + id).style.height = "93%";
-            document.getElementById('perep' + id).style.width = "97%";
-            document.getElementById('perep' + id).style.pointerEvents = "none";
+
+            document.getElementById('do' + id).setAttribute("Readonly", "readonly");
+            document.getElementById('do' + id).style.border = "none";
+            document.getElementById('do' + id).style.fontSize = "revert";
+            document.getElementById('do' + id).style.margin = "0px 0px 0px 0px";
+            document.getElementById('do' + id).style.height = "93%";
+            document.getElementById('do' + id).style.width = "97%";
+            document.getElementById('do' + id).style.pointerEvents = "none";
+            document.getElementById('do' + id).setAttribute("contenteditable", false);
+
+
+            document.getElementById('how' + id).setAttribute("Readonly", "readonly");
+            document.getElementById('how' + id).style.border = "none";
+            document.getElementById('how' + id).style.fontSize = "revert";
+            document.getElementById('how' + id).style.margin = "0px 0px 0px 0px";
+            document.getElementById('how' + id).style.height = "93%";
+            document.getElementById('how' + id).style.width = "97%";
+            document.getElementById('how' + id).style.pointerEvents = "none";
+            document.getElementById('how' + id).setAttribute("contenteditable", false);
+
+            document.getElementById('important' + id).setAttribute("Readonly", "readonly");
+            document.getElementById('important' + id).style.border = "none";
+            document.getElementById('important' + id).style.fontSize = "revert";
+            document.getElementById('important' + id).style.margin = "0px 0px 0px 0px";
+            document.getElementById('important' + id).style.height = "93%";
+            document.getElementById('important' + id).style.width = "97%";
+            document.getElementById('important' + id).style.pointerEvents = "none";
+            document.getElementById('important' + id).setAttribute("contenteditable", false);
+
+            var allwithvalues = $('[name="withvalue' + id + '"]');
+            for (let i = 0; i < allwithvalues.length; i++) {
+                allwithvalues[i].setAttribute("Readonly", "readonly");
+                allwithvalues[i].style.border = "none";
+                allwithvalues[i].style.fontSize = "";
+                allwithvalues[i].style.margin = "0px 0px 0px 0px";
+                allwithvalues[i].style.pointerEvents = "none";
+                allwithvalues[i].setAttribute("contenteditable", false);
+            }
 
             btn.style.background = "";
             return false;
@@ -445,8 +494,20 @@ input {
     padding-left: 10px;
 }
 
+.maindocell {
+    min-width: 105px;
+    max-width: 160px;
+}
+
+.howmaincell {
+    max-width: 225px;
+    min-width: 225px;
+}
+
 .withcell {
     text-align: center;
+    min-width: 167px;
+    max-width: 167px;
 }
 
 .howcell {
@@ -455,6 +516,8 @@ input {
 
 .importantcell {
     text-align: center;
+    min-width: 97px;
+    max-width: 97px;
 }
 
 .numbers {
