@@ -59,6 +59,11 @@
                 </div>
                 <textarea id="how" placeholder="How" autocomplete="off" class="freeform"></textarea>
                 <textarea id="Important" placeholder="Important" autocomplete="on" class="Important"></textarea>
+                <input list="grouplist" class="Item" id="groupname" placeholder="Group Name" name="groupname" /></label>
+                <datalist id="grouplist">
+
+                </datalist>
+
             </div>
 
             <button class="btn-add" onclick="onAdd()">+ </button>
@@ -94,6 +99,105 @@
     itemfield.innerHTML = codeitem;
     item_id = 1;
     makegroup();
+    header_id = 0;
+
+    function makegroup() {
+        var table = document.getElementById("Item-table");
+        var row = table.insertRow(-1);
+        row.innerHTML = '<tr><td colspan="0" class="itemgroup do">DO</td>' +
+            '<td colspan="1" class="itemgroup with">WITH</td>' +
+            '<td colspan="2" class="itemgroup how">HOW</td>' +
+            '<td colspan="3" class="itemgroup important">IMPORTANT</td>' +
+            '<td colspan="4" class="edit">Eidt</td>' +
+            '<td colspan="5" class="delete">Delete</td>' +
+            ' </tr>';
+
+        item_id++;
+
+    }
+    row_id = 1;
+
+    function onAdd() {
+        setstatus = 0; // 0 = normal at last
+        var table = document.getElementById("Item-table");
+        var placingheader = null;
+        var selectedvalue = document.getElementById("groupname").value;
+        if ($('[header="' + document.getElementById("groupname").value + '"]').length == 0) {
+            var headerrow = table.insertRow(-1);
+            headerrow.innerHTML = '<td colspan="12" header="' + document.getElementById("groupname").value +
+                '" headerid="' + header_id +
+                '" class="headergroup">' + document.getElementById("groupname").value +
+                '</td>';
+            var optionelement = document.createElement("option");
+            optionelement.value = document.getElementById("groupname").value;
+            headerrow.setAttribute("groupname", selectedvalue);
+            optionelement.setAttribute("nameid", header_id);
+            document.getElementById("grouplist").appendChild(optionelement);
+            header_id++;
+            placingheader = headerrow;
+        } else {
+
+            placingheader = $('[groupname="' + selectedvalue + '"]')[$('[groupname="' + selectedvalue + '"]').length -
+                1]
+            setstatus = 1;
+        }
+
+        var row = table.insertRow(-1);
+        var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[0]
+        var choosen = element.getElementsByClassName("select2-selection__choice")
+
+        var dobox = [];
+        for (let i = 0; i < choosen.length; i++) {
+
+            dobox.push(choosen[i].innerText.replace("×", ""));
+        }
+
+        var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[1]
+        var choosen = element.getElementsByClassName("select2-selection__choice")
+        var withbox = [];
+
+        for (let i = 0; i < choosen.length; i++) {
+            if (isNaN(choosen[i].innerText.replace("×", "")) == false) {
+                withbox.push('<input class="numbers" value="' + choosen[i].innerText.replace("×", "") + '"/>');
+            } else {
+                withbox.push('<span>' + choosen[i].innerText.replace("×", "") + '</span>')
+            }
+
+        }
+
+
+        var dohtml =
+            '<td colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
+            '"style="pointer-events:none;" type="text" name="do">' + dobox
+            .join("/") +
+            '</span></td>';
+
+
+        var withthml = '<td class="withcell" colspan=1>' + withbox.join(" + ") + '</td>';
+        var howbox = document.getElementById("how").value;
+        var howhtml = '<td colspan=2><span readonly="readonly" class="howcell" id="how' + row_id +
+            '" name="how" style="pointer-events:none;" type="text">' + howbox + '</span></td>';
+
+        var importantbox = document.getElementById("Important").value;
+        var importhtml =
+            '<td colspan=3 class="importantcell"><span readonly="readonly" class="importantcell" id="important' +
+            row_id +
+            '" name="important" style="pointer-events:none;" type="text">' + importantbox + '</span></td>';
+        row.innerHTML = '<tr>' + dohtml + withthml + howhtml + importhtml +
+            '<td colspan=4><input id="' + row_id + //Edit Button
+            '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' + //Edit Button
+            '<td colspan=5><input id="' + row_id + //Save Button
+            '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>' + //Save Button
+            '</tr>';
+        row.setAttribute("groupname", selectedvalue);
+        if (setstatus != 0) {
+            insertAfter(placingheader, row)
+
+        }
+
+
+        row_id++;
+    }
 
     function Makeit() {
         var allitem = document.getElementsByClassName("ingredient")
@@ -170,78 +274,8 @@
 
     }
 
-    function makegroup() {
-        var table = document.getElementById("Item-table");
-        var row = table.insertRow(-1);
-        row.innerHTML = '<tr><td colspan="0" class="itemgroup do">DO</td>' +
-            '<td colspan="1" class="itemgroup with">WITH</td>' +
-            '<td colspan="2" class="itemgroup how">HOW</td>' +
-            '<td colspan="3" class="itemgroup important">IMPORTANT</td>' +
-            '<td colspan="4" class="edit">Eidt</td>' +
-            '<td colspan="5" class="delete">Delete</td>' +
-            ' </tr>';
-
-        item_id++;
-
-    }
-
     function insertAfter(referenceNode, newNode) {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-    }
-
-    row_id = 1;
-
-    function onAdd() {
-        var table = document.getElementById("Item-table");
-        var row = table.insertRow(-1);
-
-        var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[0]
-        var choosen = element.getElementsByClassName("select2-selection__choice")
-
-        var dobox = [];
-        for (let i = 0; i < choosen.length; i++) {
-
-            dobox.push(choosen[i].innerText.replace("×", ""));
-        }
-
-        var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[1]
-        var choosen = element.getElementsByClassName("select2-selection__choice")
-        var withbox = [];
-
-        for (let i = 0; i < choosen.length; i++) {
-            if (isNaN(choosen[i].innerText.replace("×", "")) == false) {
-                withbox.push('<input class="numbers" value="' + choosen[i].innerText.replace("×", "") + '"/>');
-            } else {
-                withbox.push('<span>' + choosen[i].innerText.replace("×", "") + '</span>')
-            }
-
-        }
-
-
-        var dohtml =
-            '<td colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
-            '"style="pointer-events:none;" type="text" name="do">' + dobox
-            .join("/") +
-            '</span></td>';
-
-
-        var withthml = '<td class="withcell" colspan=1>' + withbox.join(" + ") + '</td>';
-        var howbox = document.getElementById("how").value;
-        var howhtml = '<td colspan=2><span readonly="readonly" class="howcell" id="how' + row_id +
-            '" name="how" style="pointer-events:none;" type="text">' + howbox + '</span></td>';
-
-        var importantbox = document.getElementById("Important").value;
-        var importhtml =
-            '<td colspan=3 class="importantcell"><span readonly="readonly" class="importantcell" id="important' +
-            row_id +
-            '" name="important" style="pointer-events:none;" type="text">' + importantbox + '</span></td>';
-        row.innerHTML = '<tr>' + dohtml + withthml + howhtml + importhtml +
-            '<td colspan=4><input id="' + row_id + //Edit Button
-            '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' + //Edit Button
-            '<td colspan=5><input id="' + row_id + //Save Button
-            '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>' + //Save Button
-            '</tr>'
-        row_id++;
     }
     </script>
     <script>
@@ -301,7 +335,7 @@ td {
 
 table {
     border-collapse: collapse;
-    width: 946px;
+    width: 953px;
 }
 
 input {
@@ -365,6 +399,14 @@ input {
     text-align: center;
     pointer-events: none;
     background-color: #C5E0B3;
+    font-weight: bolder;
+    color: black;
+}
+
+.headergroup {
+    text-align: left;
+    pointer-events: none;
+    background-color: #D9D9D9;
     font-weight: bolder;
     color: black;
 }
