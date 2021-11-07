@@ -73,6 +73,7 @@
             document.getElementById('ingredient' + id).style.height = "93%";
             document.getElementById('ingredient' + id).style.width = "95%";
             document.getElementById('ingredient' + id).style.pointerEvents = "all";
+            document.getElementById('ingredient' + id).setAttribute("contenteditable", true);
 
             document.getElementById('perep' + id).removeAttribute("Readonly");
             document.getElementById('perep' + id).style.border = "solid 1px";
@@ -81,6 +82,7 @@
             document.getElementById('perep' + id).style.height = "93%";
             document.getElementById('perep' + id).style.width = "95%";
             document.getElementById('perep' + id).style.pointerEvents = "all";
+            document.getElementById('perep' + id).setAttribute("contenteditable", true);
 
             document.getElementsByName(id)[0].value = "Save";
 
@@ -95,6 +97,7 @@
             document.getElementById('ingredient' + id).style.height = "93%";
             document.getElementById('ingredient' + id).style.width = "97%";
             document.getElementById('ingredient' + id).style.pointerEvents = "none";
+            document.getElementById('ingredient' + id).setAttribute("contenteditable", false);
 
             document.getElementById('perep' + id).setAttribute("Readonly", "readonly");
             document.getElementById('perep' + id).style.border = "none";
@@ -103,6 +106,7 @@
             document.getElementById('perep' + id).style.height = "93%";
             document.getElementById('perep' + id).style.width = "97%";
             document.getElementById('perep' + id).style.pointerEvents = "none";
+            document.getElementById('perep' + id).setAttribute("contenteditable", false);
 
             btn.style.background = "";
             return false;
@@ -150,16 +154,14 @@
         var pereperationvalue = document.getElementById("Preparation").value
 
         var el = document.createElement("tr");
-        el.innerHTML = '<td><input readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
-            '" name="' + rowname + '" value="' +
-            ingredientvalue + '" /></td>' +
+        el.innerHTML = '<td class="cell"><span readonly="readonly" class="ingredient" id="ingredient' + row_id +
+            //inputbox
+            '" name="' + rowname + '" >' +
+            ingredientvalue + '</span></td>' +
 
-            '<td><input readonly="readonly" class="perep" id="perep' + row_id + //inputbox
-            '" name="' + rowname + '" value="' +
-            pereperationvalue + '" /></td>' +
-
-
-
+            '<td class="cell"><span readonly="readonly" class="perep" id="perep' + row_id + //inputbox
+            '" name="' + rowname + '" >' +
+            pereperationvalue + '</span></td>' +
             '<td><input type="button" class="editbtn" name="' + row_id + //edit button
             '" value="Edit" onclick="return onEdit(this)"></td>' +
             '<td><input type="button" class="deletebtn" name="' + row_id + //delete button
@@ -190,6 +192,11 @@
     background-color: #fffdf6;
 }
 
+.cell {
+    min-width: 130px;
+    max-width: 130px;
+    padding-left: 4px;
+}
 
 .makeitbtn {
     float: right;

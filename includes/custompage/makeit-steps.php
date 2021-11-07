@@ -117,6 +117,14 @@
     }
     row_id = 1;
 
+    function clear() {
+        $("select").val('').change();
+        $("#how").val('').change();
+        $("#Important").val('').change();
+        $("#groupname").val('').change();
+
+    }
+
     function onAdd() {
         setstatus = 0; // 0 = normal at last
         var table = document.getElementById("Item-table");
@@ -124,10 +132,13 @@
         var selectedvalue = document.getElementById("groupname").value;
         if ($('[header="' + document.getElementById("groupname").value + '"]').length == 0) {
             var headerrow = table.insertRow(-1);
-            headerrow.innerHTML = '<td colspan="12" header="' + document.getElementById("groupname").value +
+            headerrow.innerHTML = '<td colspan="5" header="' + document.getElementById("groupname").value +
                 '" headerid="' + header_id +
                 '" class="headergroup">' + document.getElementById("groupname").value +
-                '</td>';
+                '</td>' + '<td colspan=6><input id="' + row_id + //Edit Button
+                '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' + //Edit Button
+                '<td colspan=7><input id="' + row_id + //Save Button
+                '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>';
             var optionelement = document.createElement("option");
             optionelement.value = document.getElementById("groupname").value;
             headerrow.setAttribute("groupname", selectedvalue);
@@ -136,7 +147,6 @@
             header_id++;
             placingheader = headerrow;
         } else {
-
             placingheader = $('[groupname="' + selectedvalue + '"]')[$('[groupname="' + selectedvalue + '"]').length -
                 1]
             setstatus = 1;
@@ -194,7 +204,7 @@
             insertAfter(placingheader, row)
 
         }
-
+        clear();
 
         row_id++;
     }
@@ -284,7 +294,8 @@
         placeholder: "Do",
         // allowHtml: true,
         allowClear: false,
-        tags: true
+        tags: true,
+        multiple: true
 
     });
     $(".js-select2with").select2({
@@ -292,7 +303,8 @@
         placeholder: "With",
         allowHtml: true,
         allowClear: false,
-        tags: true
+        tags: true,
+        multiple: true
 
     });
     </script>
@@ -409,6 +421,7 @@ input {
     background-color: #D9D9D9;
     font-weight: bolder;
     color: black;
+    padding-left: 10px;
 }
 
 .do {
@@ -428,9 +441,16 @@ input {
 
 /***************** Cell******************/
 
+.docell {
+    padding-left: 10px;
+}
 
 .withcell {
     text-align: center;
+}
+
+.howcell {
+    padding-left: 10px;
 }
 
 .importantcell {
