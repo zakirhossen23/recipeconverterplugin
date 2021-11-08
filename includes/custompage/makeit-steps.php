@@ -226,11 +226,11 @@
 
         document.getElementById("all").innerHTML = '<iframe name = "makeit" id="makeit"  src = "makeit" />'
     }
+    var editing = "";
 
     function onEdit(btn) {
         var id = btn.id;
         if (btn.value == "Edit" && btn.name != "header") {
-
 
             btn.style.background = " #88a28e";
             document.getElementById('do' + id).removeAttribute("Readonly");
@@ -272,6 +272,21 @@
             }
             document.getElementById(id).value = "Save";
 
+            return true;
+        } else if (btn.value == "Edit" && btn.name == "header") {
+
+            var headerlabel = $('[headerid="' + id + '"]')[0]
+            editing = headerlabel.getAttribute("header")
+            console.log(editing);
+            headerlabel.removeAttribute("Readonly");
+            headerlabel.style.border = "solid 1px";
+            headerlabel.style.fontSize = "larger";
+            headerlabel.style.margin = "0px 0px 0px 10px";
+            headerlabel.style.height = "93%";
+            headerlabel.style.width = "95%";
+            headerlabel.style.pointerEvents = "all";
+            headerlabel.setAttribute("contenteditable", true);
+            btn.value = "Save";
             return true;
         }
         if (btn.value == "Save" && btn.name != "header") {
@@ -319,6 +334,30 @@
             btn.style.background = "";
             return false;
 
+        } else if (btn.value == "Save" && btn.name == "header") {
+            var headerlabel = $('[headerid="' + id + '"]')[0]
+            var allgroupheader = $('[groupname="' + editing + '"]');
+            for (let i = 0; i < allgroupheader.length; i++) {
+                allgroupheader[i].setAttribute("groupname", headerlabel.innerHTML)
+            }
+
+            var allheaderwithold = $('[header="' + editing + '"]');
+            for (let i = 0; i < allheaderwithold.length; i++) {
+                allheaderwithold[i].setAttribute("header", headerlabel.innerHTML)
+            }
+
+
+            headerlabel.setAttribute("Readonly", "readonly");
+            headerlabel.style.border = "";
+            headerlabel.style.fontSize = "revert";
+            headerlabel.style.margin = "0px 0px 0px 0px";
+            headerlabel.style.height = "";
+            headerlabel.style.width = "";
+            headerlabel.style.pointerEvents = "none";
+            headerlabel.setAttribute("contenteditable", false);
+            btn.style.background = "";
+            btn.value = "Edit";
+            return false;
         }
 
     }
