@@ -35,10 +35,14 @@ function addItmes() {
     cursor: pointer;
     color: white;
     background: #88a28e;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .Ingredientsbtn:active {
     background-color: #fffdf6;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 iframe {
@@ -46,27 +50,51 @@ iframe {
     height: 100%;
     writing-mode: vertical-lr;
     border: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
 input {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .no-margin {
     margin: 1px;
+    font-family: Calibri !important;
+
+}
+
+.headername {
+    font-size: 40px;
+    font-family: Calibri !important;
+}
+
+textarea {
+    font-family: Calibri !important;
+    font-size: 15px;
+
 }
 
 .top-margin {
     margin-top: 10px;
+    font-family: Calibri !important;
+
 }
 
 body {
     background: white;
     font-family: Calibri;
+    margin: 0px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 input[type="text"] {
     border: 0;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 </style>

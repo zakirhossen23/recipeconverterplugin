@@ -147,10 +147,13 @@ function onDelete(btn) {
     height: 38px;
     cursor: pointer;
     color: white;
+
 }
 
 .btn-add:active {
     background-color: #fffdf6;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .numbers {
@@ -163,6 +166,7 @@ function onDelete(btn) {
     text-align: center;
     font-size: 23px;
     font-family: calibri;
+
 }
 
 .Ingredientsbtn {
@@ -173,10 +177,14 @@ function onDelete(btn) {
     cursor: pointer;
     color: white;
     background: #4E5975;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .Ingredientsbtn:active {
     background-color: #fffdf6;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 iframe {
@@ -184,56 +192,81 @@ iframe {
     height: 100%;
     writing-mode: vertical-lr;
     border: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 th,
 td {
     border: 0.5px solid black;
     height: 41px;
+    font-family: Calibri !important;
+    font-size: 15px;
 
 }
 
 table {
     border-collapse: collapse;
     width: 500px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
 input {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .no-margin {
     margin: 1px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .top-margin {
     margin-top: 10px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 body {
     background: white;
     font-family: Calibri;
+    font-family: Calibri !important;
+
+
+    margin: 0px;
 }
 
 input[type="text"] {
     border: 0;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .edit {
     width: 61px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .delete {
     width: 71px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .table-margin {
     margin-top: 30px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .Item {
-    font: 15px/24px "Lato", Calibri, sans-serif;
+    font-family: Calibri !important;
+    font-size: 15px;
     color: #333;
     letter-spacing: 1px;
     outline: none !important;
@@ -245,6 +278,8 @@ input[type="text"] {
 .itemtext {
     vertical-align: middle;
     margin: 9px 0px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .editbtn {
@@ -254,11 +289,15 @@ input[type="text"] {
     background: #4E5975;
     border: none;
     color: white;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .editbtn:active {
     background: #2c3240;
     color: #adadad;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .deletebtn {
@@ -268,15 +307,21 @@ input[type="text"] {
     border: none;
     color: white;
     cursor: pointer;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .deletebtn:active {
     background: #2c3240;
     color: #ffffffb8;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .headername {
     font-size: 40px;
+    font-family: Calibri !important;
+
 }
 
 .hidden {
@@ -284,5 +329,7 @@ input[type="text"] {
     border: 0;
     pointer-events: none;
     outline: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 </style>

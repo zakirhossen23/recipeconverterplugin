@@ -164,11 +164,14 @@
     width: 57px;
     height: 38px;
     cursor: pointer;
+    font-family: Calibri !important;
 
 }
 
 .btn-add:active {
     background-color: #fffdf6;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
@@ -176,30 +179,41 @@ th,
 td {
     border: 0.5px solid black;
     height: 41px;
-
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 table {
     border-collapse: collapse;
     width: 500px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 input {
-    font-family: Calibri;
+
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .edit {
     width: 20%;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .ingredient {
     border: none;
     outline: none;
     pointer-events: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .delete {
     width: 20%;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .editbtn {
@@ -209,11 +223,15 @@ input {
     background: #debf54;
     border: none;
     color: black;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .editbtn:active {
     background: #6c5f31;
     color: black;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .deletebtn {
@@ -223,11 +241,15 @@ input {
     border: none;
     color: black;
     cursor: pointer;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .deletebtn:active {
     background: #6c5f31;
     color: black;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
@@ -237,18 +259,27 @@ input {
     pointer-events: none;
     background-color: #ffe69a;
     font-weight: bolder;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 body {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
+    margin: 0px;
 }
 
 button {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 select {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
@@ -256,6 +287,8 @@ select {
     margin-left: 34%;
 
     pointer-events: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 iframe {
@@ -263,14 +296,18 @@ iframe {
     height: 100%;
 
     border: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .miseitbtn {
     width: 146px;
-    font-size: 85%;
+
     padding: 8px;
     float: right;
     margin: 13px 0px 2px 3px;
     background-color: #debf54;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 </style>

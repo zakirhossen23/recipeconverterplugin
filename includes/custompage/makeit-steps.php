@@ -79,7 +79,7 @@
         </div>
 
         <button class="makeitbtn" onclick="Makeit()">
-            Let's Make It!
+            Create Recipe Card
         </button>
     </div>
 
@@ -410,6 +410,7 @@
 </html>
 <style>
 .btn-add {
+    font-family: Calibri !important;
     border: solid black 1px;
     background: #88a28e;
     font-size: 29px;
@@ -421,11 +422,14 @@
 }
 
 .btn-add:active {
+    font-family: Calibri !important;
     background-color: #fffdf6;
+    font-size: 15px;
 }
 
 
 .makeitbtn {
+    font-family: Calibri !important;
     float: right;
     width: 172px;
     height: 37px;
@@ -433,105 +437,142 @@
     cursor: pointer;
     color: white;
     background: #88a28e;
+    font-size: 15px;
 }
 
 th,
 td {
+    font-family: Calibri !important;
     border: 0.5px solid black;
     height: 41px;
+    font-size: 15px;
 
 }
 
 table {
+    font-family: Calibri !important;
     border-collapse: collapse;
-    width: 953px;
+    width: 966px;
+    font-size: 15px;
 }
 
 input {
+    font-family: Calibri !important;
     font-family: Calibri;
+    font-size: 15px;
 }
 
 .edit {
+    font-family: Calibri !important;
     width: 37px;
     text-align: center;
+    font-size: 15px;
+    background-color: #C5E0B3;
+    font-weight: bolder;
 }
 
 .ingredient {
+    font-family: Calibri !important;
     border: none;
     outline: none;
     pointer-events: none;
+    font-size: 15px;
 }
 
 .perep {
+    font-family: Calibri !important;
     border: none;
     outline: none;
     pointer-events: none;
+    font-size: 15px;
 }
 
 .delete {
+    font-family: Calibri !important;
     width: 20px;
     text-align: center;
+    font-size: 15px;
+    background-color: #C5E0B3;
+    font-weight: bolder;
 }
 
 .editbtn {
+    font-family: Calibri !important;
     width: 100%;
     height: 100%;
     cursor: pointer;
     background: #88a28e;
     border: none;
     color: white;
+    font-size: 15px;
 }
 
 .editbtn:active {
+    font-family: Calibri !important;
     background: #2e364a;
+    font-size: 15px;
     color: #adadad;
 }
 
 .deletebtn {
+    font-family: Calibri !important;
     width: 100%;
     height: 100%;
     background: #88a28e;
     border: none;
     color: white;
     cursor: pointer;
+    font-size: 15px;
 }
 
 
 .deletebtn:active {
+    font-family: Calibri !important;
     background: #2c3240;
     color: #ffffffb8;
+    font-size: 15px;
 }
 
 /***************Table******************/
 
 .itemgroup {
+    font-family: Calibri !important;
     text-align: center;
     pointer-events: none;
     background-color: #C5E0B3;
     font-weight: bolder;
     color: black;
+    font-size: 15px;
 }
 
 .headergroup {
+    font-family: Calibri !important;
     text-align: left;
     pointer-events: none;
     background-color: #D9D9D9;
     font-weight: bolder;
     color: black;
     padding-left: 10px;
+    font-size: 15px;
 }
 
 .do {
+    font-family: Calibri !important;
     width: 150px;
+    font-size: 15px;
 }
 
 .with {
+    font-family: Calibri !important;
     width: 150px;
+    font-size: 15px;
 }
 
 
 .how {
+    font-family: Calibri !important;
     width: 226px;
+    font-size: 15px;
 }
 
 
@@ -539,36 +580,49 @@ input {
 /***************** Cell******************/
 
 .docell {
+    font-family: Calibri !important;
     padding-left: 10px;
+    font-size: 15px;
 }
 
 .maindocell {
+    font-family: Calibri !important;
     min-width: 105px;
     max-width: 160px;
+    font-size: 15px;
 }
 
 .howmaincell {
+    font-family: Calibri !important;
     max-width: 225px;
     min-width: 225px;
+    font-size: 15px;
 }
 
 .withcell {
+    font-family: Calibri !important;
     text-align: center;
     min-width: 167px;
     max-width: 167px;
+    font-size: 15px;
 }
 
 .howcell {
+    font-family: Calibri !important;
     padding-left: 10px;
+    font-size: 15px;
 }
 
 .importantcell {
+    font-family: Calibri !important;
     text-align: center;
     min-width: 97px;
     max-width: 97px;
+    font-size: 15px;
 }
 
 .numbers {
+    font-family: Calibri !important;
     background: black;
     color: white;
     border-radius: 50%;
@@ -584,34 +638,40 @@ input {
 }
 
 body {
-    font-family: Calibri;
+    font-size: 15px;
+    font-family: Calibri !important;
 }
 
 button {
-    font-family: Calibri;
+    font-size: 15px;
+    font-family: Calibri !important;
 }
 
 select {
-    font-family: Calibri;
+    font-size: 15px;
+    font-family: Calibri !important;
 }
 
 
 .perepbtn {
     margin-left: 34%;
-
+    font-family: Calibri !important;
     pointer-events: none;
+    font-size: 15px;
 }
 
 iframe {
     width: 100%;
     height: 100%;
-
+    font-family: Calibri !important;
     border: none;
+    font-size: 15px;
 }
 
 .miseitbtn {
+    font-family: Calibri !important;
     width: 146px;
-    font-size: 85%;
+    font-size: 15px;
     padding: 8px;
     float: right;
     margin: 13px 0px 2px 3px;
@@ -620,21 +680,26 @@ iframe {
 
 
 body {
-    /* 	font-family: 'Ubuntu', sans-serif; */
-    font-weight: bold;
+    font-family: Calibri !important;
+    /* font-weight: bold; */
+    margin: 0px;
+    font-size: 15px;
 }
 
 /***************Multi Select***********/
 .select2-container {
+    font-family: Calibri !important;
     min-width: 235px;
 }
 
 .select2-results__option {
+    font-family: Calibri !important;
     padding-right: 20px;
     vertical-align: middle;
 }
 
 .select2-results__option:before {
+    font-family: Calibri !important;
     content: "";
     display: inline-block;
     position: relative;
@@ -648,6 +713,7 @@ body {
 }
 
 .select2-results__option[aria-selected=true]:before {
+
     font-family: fontAwesome;
     content: "\f00c";
     color: #fff;
@@ -738,5 +804,6 @@ input.select2-search__field {
 textarea {
     font-family: Calibri;
     height: 100%;
+    resize: inherit;
 }
 </style>

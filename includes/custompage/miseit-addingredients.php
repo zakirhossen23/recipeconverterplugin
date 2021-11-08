@@ -186,16 +186,22 @@
     height: 38px;
     cursor: pointer;
     color: white;
+    font-family: Calibri !important;
+
 }
 
 .btn-add:active {
     background-color: #fffdf6;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .cell {
     min-width: 130px;
     max-width: 130px;
     padding-left: 4px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .makeitbtn {
@@ -206,42 +212,58 @@
     cursor: pointer;
     color: white;
     background: #4E5975;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 th,
 td {
     border: 0.5px solid black;
     height: 41px;
+    font-family: Calibri !important;
+    font-size: 15px;
 
 }
 
 table {
     border-collapse: collapse;
-    width: 500px;
+    width: 514px;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 input {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .edit {
     width: 20%;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .ingredient {
     border: none;
     outline: none;
     pointer-events: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .perep {
     border: none;
     outline: none;
     pointer-events: none;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .delete {
     width: 20%;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .editbtn {
@@ -251,11 +273,15 @@ input {
     background: #4E5975;
     border: none;
     color: white;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .editbtn:active {
     background: #2e364a;
     color: #adadad;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .deletebtn {
@@ -265,12 +291,16 @@ input {
     border: none;
     color: white;
     cursor: pointer;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
 .deletebtn:active {
     background: #2c3240;
     color: #ffffffb8;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
@@ -281,6 +311,8 @@ input {
     background-color: #D9E2F3;
     font-weight: bolder;
     color: black;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .numbers {
@@ -298,36 +330,46 @@ input {
 
 body {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
+    margin: 0px;
 }
 
 button {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 select {
     font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 
 .perepbtn {
     margin-left: 34%;
-
+    font-family: Calibri !important;
+    font-size: 15px;
     pointer-events: none;
 }
 
 iframe {
     width: 100%;
     height: 100%;
-
+    font-family: Calibri !important;
+    font-size: 15px;
     border: none;
 }
 
 .miseitbtn {
     width: 146px;
-    font-size: 85%;
     padding: 8px;
     float: right;
     margin: 13px 0px 2px 3px;
     background-color: #debf54;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 </style>

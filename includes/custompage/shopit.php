@@ -46,7 +46,7 @@ function onEdit(btn) {
     if (btn.value == "Save") {
         document.getElementById('aisle' + id).setAttribute("Readonly", "readonly");
         document.getElementById('aisle' + id).style.border = "none";
-        document.getElementById('aisle' + id).style.fontSize = "revert";
+        document.getElementById('aisle' + id).style.fontSize = "15px";
         document.getElementById(id).value = "Edit";
         document.getElementById('aisle' + id).style.margin = "0px 0px 0px 0px";
         document.getElementById('aisle' + id).style.height = "93%";
@@ -102,6 +102,7 @@ function onDelete(btn) {
 </script>
 <style>
 .btn-add {
+    font-family: Calibri !important;
     border: solid black 1px;
     background: #debf54;
     font-size: 29px;
@@ -112,119 +113,158 @@ function onDelete(btn) {
 }
 
 .btn-add:active {
+    font-family: Calibri !important;
     background-color: #fffdf6;
+    font-size: 15px;
 }
 
 .Ingredientsbtn {
+    font-family: Calibri !important;
     float: right;
     width: 125px;
     height: 37px;
     margin: 10px 1px 12px 0px;
     cursor: pointer;
     background: #debf54;
+    font-size: 15px;
 }
 
 .Ingredientsbtn:active {
+    font-family: Calibri !important;
     background-color: #fffdf6;
+    font-size: 15px;
 }
 
 iframe {
+    font-family: Calibri !important;
     width: 100%;
     height: 100%;
     writing-mode: vertical-lr;
     border: none;
+    font-size: 15px;
 }
 
 th,
 td {
+    font-family: Calibri !important;
     border: 0.5px solid black;
     height: 41px;
+    font-size: 15px;
 
 }
 
 table {
+    font-family: Calibri !important;
     border-collapse: collapse;
     width: 500px;
+    font-size: 15px;
 }
 
 
 input {
-    font-family: Calibri;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .no-margin {
+    font-family: Calibri !important;
     margin: 1px;
 }
 
 .top-margin {
+    font-family: Calibri !important;
     margin-top: 10px;
 }
 
 body {
+    font-family: Calibri !important;
     background: white;
-    font-family: Calibri;
+    font-size: 15px;
+    margin: 0px;
 }
 
 input[type="text"] {
+    font-family: Calibri !important;
     border: 0;
+    font-size: 15px;
 }
 
 .edit {
+    font-family: Calibri !important;
     width: 61px;
+    font-size: 15px;
 }
 
 .delete {
+    font-family: Calibri !important;
     width: 71px;
+    font-size: 15px;
 }
 
 .table-margin {
+    font-family: Calibri !important;
     margin-top: 30px;
+    font-size: 15px;
 }
 
 .Aisle {
-    font: 15px/24px "Lato", Calibri, sans-serif;
+    font-family: Calibri !important;
     color: #333;
     letter-spacing: 1px;
     outline: none !important;
     padding: 5px 5px;
     height: 38px;
     margin: 0px 6px 0px 6px;
+    font-size: 15px;
 }
 
 .aisletext {
+    font-family: Calibri !important;
     vertical-align: middle;
     margin: 9px 0px;
+    font-size: 15px;
 }
 
 .editbtn {
+    font-family: Calibri !important;
     width: 100%;
     height: 100%;
     cursor: pointer;
     background: #debf54;
     border: none;
     color: black;
+    font-size: 15px;
 }
 
 .editbtn:active {
+    font-family: Calibri !important;
     background: #897636;
     color: #adadad;
+    font-size: 15px;
 }
 
 .deletebtn {
+    font-family: Calibri !important;
     width: 100%;
     height: 100%;
     background: #debf54;
     border: none;
     color: black;
     cursor: pointer;
+    font-size: 15px;
 }
 
 .deletebtn:active {
+
     background: #897636;
     color: #ffffffb8;
+    font-family: Calibri !important;
+    font-size: 15px;
 }
 
 .headername {
+    font-family: Calibri !important;
     font-size: 40px;
+
 }
 </style>
