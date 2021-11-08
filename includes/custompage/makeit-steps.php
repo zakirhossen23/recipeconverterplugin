@@ -130,7 +130,7 @@
         var table = document.getElementById("Item-table");
         var placingheader = null;
         var selectedvalue = document.getElementById("groupname").value;
-        if ($('[header="' + document.getElementById("groupname").value + '"]').length == 0) {
+        if ($('[header="' + document.getElementById("groupname").value + '"]').length == 0 && selectedvalue != "") {
             var headerrow = table.insertRow(-1);
             headerrow.innerHTML = '<td colspan="5" header="' + document.getElementById("groupname").value +
                 '" headerid="' + header_id +
@@ -147,7 +147,7 @@
             document.getElementById("grouplist").appendChild(optionelement);
             header_id++;
             placingheader = headerrow;
-        } else {
+        } else if (selectedvalue != "") {
             placingheader = $('[groupname="' + selectedvalue + '"]')[$('[groupname="' + selectedvalue + '"]').length -
                 1]
             setstatus = 1;
