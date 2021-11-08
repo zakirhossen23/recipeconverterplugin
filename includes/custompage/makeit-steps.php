@@ -104,14 +104,14 @@
     function makegroup() {
         var table = document.getElementById("Item-table");
         var row = table.insertRow(-1);
-        row.innerHTML = '<tr><td colspan="0" class="itemgroup do">DO</td>' +
+        row.innerHTML = '<tr id="startheader"><td colspan="0" class="itemgroup do">DO</td>' +
             '<td colspan="1" class="itemgroup with">WITH</td>' +
             '<td colspan="2" class="itemgroup how">HOW</td>' +
             '<td colspan="3" class="itemgroup important">IMPORTANT</td>' +
             '<td colspan="4" class="edit">Eidt</td>' +
             '<td colspan="5" class="delete">Delete</td>' +
             ' </tr>';
-
+        row.id = "startheader";
         item_id++;
 
     }
@@ -151,6 +151,16 @@
             placingheader = $('[groupname="' + selectedvalue + '"]')[$('[groupname="' + selectedvalue + '"]').length -
                 1]
             setstatus = 1;
+        } else if (selectedvalue == "") {
+            setstatus = 1;
+            var allinsertedinempty = $('[groupname=""]');
+            if (allinsertedinempty.length != 0) {
+                placingheader = allinsertedinempty[allinsertedinempty.length - 1];
+            } else {
+                var headerelement = document.getElementById("startheader");
+                placingheader = headerelement;
+            }
+
         }
 
         var row = table.insertRow(-1);
@@ -206,7 +216,6 @@
         row.setAttribute("groupname", selectedvalue);
         if (setstatus != 0) {
             insertAfter(placingheader, row)
-
         }
         clear();
 
