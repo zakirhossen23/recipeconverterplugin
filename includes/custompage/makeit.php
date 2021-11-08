@@ -1,8 +1,8 @@
 <div id="all" class="all">
     <div class="no-margin">
         <h1 class="headername top-margin">MAKE IT!</h1>
-        <h1 style="margin-top: -24px;">Please enter the tools or cooking techniques you need for this recipe:</h1>
-        <div class="no-margin">
+        <h1 class="no-margin">Please enter the tools or cooking techniques you need for this recipe:</h1>
+        <div class="top-margin">
             <div style="display: flex;"> </div>
             <div style="display: flex;">
                 <textarea id="itemname" placeholder="Tools or Cooking Techniques" name="tools" type="textarea"

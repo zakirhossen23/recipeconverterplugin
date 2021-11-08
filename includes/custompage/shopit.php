@@ -2,11 +2,9 @@
     <div class="no-margin">
         <h1 class="headername top-margin">SHOP IT!</h1>
         <h1 class="no-margin">Please select or enter your First Aisle in the proper order:</h1>
-        <div class="no-margin">
+        <div class="top-margin">
             <div style="display: flex;">
-                <strong style="
-" class="aisletext"> Aisle Name:</strong>
-                <input id="aislename" placeholder="Aisle Name" style="
+                <input id="aislename" placeholder="Aisle Name" style="margin-left: 0;
 " autocomplete="off" class="Aisle">
                 <button class="btn-add" onclick="onAdd()" style="">
                     +

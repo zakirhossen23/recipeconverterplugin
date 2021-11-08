@@ -1,12 +1,11 @@
 <div id="all" class="all">
     <div class="no-margin">
         <h1 class="headername top-margin">MISE IT!</h1>
-        <h1 style="margin-top: -24px;">Please select or enter your First Mise It! Item in the proper order:</h1>
-        <div class="no-margin">
+        <h1 class="no-margin">Please select or enter your First Mise It! Item in the proper order:</h1>
+        <div class="top-margin">
             <div style="display: flex;">
-                <strong style="
-" class="itemtext">Item Name:</strong>
-                <input list="itemslist" class="Item" id="itemname" placeholder="Item Name" name="myBrowser" /></label>
+                <input list="itemslist" class="Item" id="itemname" placeholder="Item Name" style="margin-left: 0px;"
+                    name="myBrowser" /></label>
                 <datalist id="itemslist">
                     <option value="Mini Bowl">
                     <option value="Small Bowl">
@@ -222,7 +221,7 @@ input {
 .no-margin {
     margin: 1px;
     font-family: Calibri !important;
-    font-size: 15px;
+
 }
 
 .top-margin {
