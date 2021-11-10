@@ -78,10 +78,13 @@ function onAdd() {
     cell1.innerHTML = '<input readonly="readonly" id="aisle' + row_id + '" name="aisle" value="' + document
         .getElementById(
             "aislename").value + '" style="pointer-events:none;" type="text" />'
+    cell1.style = "width:100%;";
     cell2.innerHTML = '<input id="' + row_id +
         '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
+    cell2.style = "min-width: 43px; max-width: 43px;";
     cell3.innerHTML = '<input id="' + row_id +
         '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" />';
+    cell3.style = "min-width: 65;max-width: 65;";
     document.getElementById(
         "aislename").value = "";
     row_id++;
@@ -103,7 +106,7 @@ function onDelete(btn) {
     font-family: Calibri !important;
     border: solid black 1px;
     background: #debf54;
-    font-size: 29px;
+    font-size: 27px;
     width: 57px;
     height: 38px;
     cursor: pointer;
@@ -240,6 +243,7 @@ input[type="text"] {
     color: #adadad;
     font-size: 15px;
 }
+
 
 .deletebtn {
     font-family: Calibri !important;

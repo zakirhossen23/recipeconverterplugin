@@ -137,9 +137,11 @@
             "<input class='overbuybtn' name='" +
             row_id + "'id='overbuyrow" + row_id + "' type = 'radio' /> " + //overbuy
             "</td>" +
-            '<td><input type="button" class="editbtn" name="' + row_id + //edit button
+            '<td style="min-width: 43px; max-width: 43px;"><input type="button" class="editbtn" name="' + row_id +
+            //edit button
             '" value="Edit" onclick="return onEdit(this)"></td>' +
-            '<td><input type="button" class="deletebtn" name="' + row_id + //delete button
+            '<td style="min-width: 65;max-width: 65;"><input type="button" class="deletebtn" name="' + row_id +
+            //delete button
             '" value="Delete" onclick="return onDelete(this)"></td>';
         document.getElementById(rowname + 1).before(el);
 
@@ -160,7 +162,7 @@
 .btn-add {
     border: solid black 1px;
     background: #debf54;
-    font-size: 29px;
+    font-size: 27px;
     width: 57px;
     height: 38px;
     cursor: pointer;

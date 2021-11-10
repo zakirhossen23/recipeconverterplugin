@@ -108,10 +108,13 @@ function onAdd() {
     cell1.innerHTML = '<input readonly="readonly" id="item' + row_id + '" name="item" value="' + document
         .getElementById(
             "itemname").value + '" style="pointer-events:none;" type="text" />'
+    cell1.style = "width:100%;";
     cell2.innerHTML = '<input id="' + row_id +
         '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
+    cell2.style = "min-width: 43px; max-width: 43px;";
     cell3.innerHTML = '<input id="' + row_id +
         '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" />';
+    cell3.style = "min-width: 65;max-width: 65;";
     document.getElementById(
         "itemname").value = "";
     row_id++;
@@ -141,7 +144,7 @@ function onDelete(btn) {
 .btn-add {
     border: solid black 1px;
     background: #4E5975;
-    font-size: 29px;
+    font-size: 27px;
     width: 57px;
     height: 38px;
     cursor: pointer;

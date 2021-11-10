@@ -51,7 +51,9 @@
         var savingmiseit = [];
         for (let i = 0; i < allperep.length; i++) {
 
-            var text = "miseit:" + allitem[i].name + ":" + allitem[i].value + ":" + allperep[i].value;
+            var text = "miseit:" + allitem[i].getAttribute("groupname") + ": " + allitem[i].innerText + ": " + allperep[
+                    i]
+                .innerText;
             savingmiseit.push(text)
         }
         localStorage.setItem("miseit", savingmiseit);
@@ -154,7 +156,8 @@
         var pereperationvalue = document.getElementById("Preparation").value
 
         var el = document.createElement("tr");
-        el.innerHTML = '<td class="cell"><span readonly="readonly" class="ingredient" id="ingredient' + row_id +
+        el.innerHTML = '<td class="cell"><span readonly="readonly" class="ingredient" groupname="' + document
+            .getElementById("itemname").value + '" id="ingredient' + row_id +
             //inputbox
             '" name="' + rowname + '" >' +
             ingredientvalue + '</span></td>' +
@@ -181,7 +184,7 @@
 .btn-add {
     border: solid black 1px;
     background: #4E5975;
-    font-size: 29px;
+    font-size: 27px;
     width: 57px;
     height: 38px;
     cursor: pointer;

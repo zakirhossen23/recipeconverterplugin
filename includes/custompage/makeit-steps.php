@@ -78,7 +78,7 @@
 
         </div>
 
-        <button class="makeitbtn" onclick="Makeit()">
+        <button class="makeitbtn" onclick="recipecard()">
             Create Recipe Card
         </button>
     </div>
@@ -179,9 +179,9 @@
 
         for (let i = 0; i < choosen.length; i++) {
             if (isNaN(choosen[i].innerText.replace("×", "")) == false) {
-                withbox.push('<input name="withvalue' + row_id + '" class="numbers" value="' + choosen[i].innerText
+                withbox.push('<span name="withvalue' + row_id + '" class="numbers" >' + choosen[i].innerText
                     .replace(
-                        "×", "") + '"/>');
+                        "×", "") + '</span>');
             } else {
                 withbox.push('<span name="withvalue' + row_id + '">' + choosen[i].innerText.replace("×", "") +
                     '</span>')
@@ -204,7 +204,7 @@
 
         var importantbox = document.getElementById("Important").value;
         var importhtml =
-            '<td colspan=3 class="importantcell"><span readonly="readonly" class="importantcell" id="important' +
+            '<td colspan=3 class="importantmaincell"><span readonly="readonly" class="importantcell" id="important' +
             row_id +
             '" name="important" style="pointer-events:none;" type="text">' + importantbox + '</span></td>';
         row.innerHTML = '<tr>' + dohtml + withthml + howhtml + importhtml +
@@ -222,18 +222,23 @@
         row_id++;
     }
 
-    function Makeit() {
-        var allitem = document.getElementsByClassName("ingredient")
-        var allperep = document.getElementsByClassName("perep");
-        var savingmiseit = [];
-        for (let i = 0; i < allperep.length; i++) {
+    function recipecard() {
+        var alldo = document.getElementsByClassName("docell")
+        var allwith = document.getElementsByClassName("withcell");
+        var allhow = document.getElementsByClassName("howcell");
+        var allimportant = document.getElementsByClassName("importantcell");
 
-            var text = "miseit:" + allitem[i].name + ":" + allitem[i].value + ":" + allperep[i].value;
-            savingmiseit.push(text)
+        var savingmakeit = [];
+        for (let i = 0; i < alldo.length; i++) {
+
+            var text = "makeit:" + alldo[i].parentElement.parentElement.getAttribute("groupname") + ":" +
+                alldo[i].innerText + ":" + allwith[i].innerText + ":" + allhow[i].innerText + ":" + allimportant[i]
+                .innerText;
+            savingmakeit.push(text)
         }
-        localStorage.setItem("miseit", savingmiseit);
+        localStorage.setItem("makeit", savingmakeit);
 
-        document.getElementById("all").innerHTML = '<iframe name = "makeit" id="makeit"  src = "makeit" />'
+        document.getElementById("all").innerHTML = '<iframe name = "recipecard" id="recipecard"  src = "recipecard" />'
     }
     var editing = "";
 
@@ -413,7 +418,7 @@
     font-family: Calibri !important;
     border: solid black 1px;
     background: #88a28e;
-    font-size: 29px;
+    font-size: 27px;
     width: 57px;
     cursor: pointer;
     color: white;
@@ -621,6 +626,14 @@ input {
     font-size: 15px;
 }
 
+.importantmaincell {
+    font-family: Calibri !important;
+    text-align: center;
+    min-width: 97px;
+    max-width: 97px;
+    font-size: 15px;
+}
+
 .numbers {
     font-family: Calibri !important;
     background: black;
@@ -699,7 +712,7 @@ body {
 }
 
 .select2-results__option:before {
-    font-family: Calibri !important;
+
     content: "";
     display: inline-block;
     position: relative;
