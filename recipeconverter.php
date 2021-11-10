@@ -43,6 +43,10 @@ function recipe_converter_page_template($template)
 
         return plugin_dir_path(__FILE__) . "includes/custompage/makeit-steps.php";
     }
+    if (is_page('recipecard')) {
+
+        return plugin_dir_path(__FILE__) . "includes/output/recipecard.php";
+    }
 
     return $template;
 }
