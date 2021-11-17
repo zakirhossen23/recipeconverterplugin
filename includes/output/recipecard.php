@@ -49,7 +49,7 @@
                         <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 15px;">
                             <tbody class="miseitbody">
                                 <!--  hidden-->
-                                <tr>
+                                <tr tablefor="miseit">
 
                                     <th colspan="0"></th>
                                     <td colspan="1" style="text-align:center;">
@@ -144,6 +144,30 @@
             var trelement = '<tr class = "shopittr" tablefor="shopit" groupnameshopit="' + groupname +
                 '"><td>' + ingredientname + '</td><td class="shopitradio">' + radioelement + '</td></tr>'
             var allgrouptr = $('[groupnameshopit="' + groupname + '"]');
+            $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
+        }
+
+
+        // Mise It! ******************************************************************************************
+        //***************************** Mise It! Item Name ******************************
+        var item = localStorage.getItem("items");
+        allitemcode = JSON.parse(item);
+        for (let i = 0; i < allitemcode.length; i++) {
+            var trelement = '<tr class = "miseittr" tablefor="miseit" groupnamesmiseit="' + allitemcode[i] +
+                '"><th colspan="2" class="itemgroup">' + allitemcode[i] + '</th> <td colspan="1" style="text-align:center;"> <div class="numbers">' + (i + 1) + '</div></td></tr>'
+            var allmiseitttr = $('[tablefor="miseit"]');
+            $(trelement).insertAfter(allmiseitttr[allmiseitttr.length - 1]);
+        }
+        //***************************** Mise It! ingredients ******************************
+        var all = JSON.parse(localStorage.getItem("miseit"));
+        for (let i = 0; i < all.length; i++) {
+            var ingredientname = JSON.parse(all[i]).ingredient;
+            var groupname = JSON.parse(all[i]).groupname;
+            var prepname = JSON.parse(all[i]).prep;
+
+            var trelement = '<tr class = "miseittr" tablefor="miseit" groupnamemiseit="' + groupname +
+                '"><td class="cell"><span  class="ingredient"  >' + ingredientname + '</span></td><td class="cell" colspan="2"><span class="perep">' + prepname + '</span></td></tr>';
+            var allgrouptr = $('[groupnamesmiseit="' + groupname + '"]');
             $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
         }
 
