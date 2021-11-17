@@ -82,25 +82,17 @@
                                 <tr class="hiddenrow">
                                     <td class="hiddenrow"></td>
                                 </tr>
-                                <tr id="startheader">
+                                <tr tablefor="makeit" id="startheader">
                                     <td colspan="0" class="makeititemgroup do">DO</td>
                                     <td colspan="1" class="makeititemgroup with">WITH</td>
                                     <td colspan="2" class="makeititemgroup how">HOW</td>
                                     <td colspan="3" class="makeititemgroup important">IMPORTANT</td>
                                 </tr>
-                                <tr groupname="yrtyrt">
-                                    <td colspan="5" header="yrtyrt" headerid="0" class="headergroup">yrtyrt</td>
-                                </tr>
-                                <tr groupname="yrtyrt">
-                                    <td class="maindocell" colspan="0"><span readonly="readonly" class="docell" id="do1" style="pointer-events:none;" type="text" name="do">Form/Heat</span></td>
-                                    <td class="withcell" colspan="1"><span name="withvalue1">try</span></td>
-                                    <td colspan="2" class="howmaincell"><span readonly="readonly" class="howcell" id="how1" name="how" style="pointer-events:none;" type="text">rtyrty</span>
-                                    </td>
-                                    <td colspan="3" class="importantmaincell"><span readonly="readonly" class="importantcell" id="important1" name="important" style="pointer-events:none;" type="text">rt</span></td>
-                                </tr>
+
                             </tbody>
                         </table>
-
+                        <div class="makeittools">TOOLS AND TECHNIQUES REQUIRED</div>
+                        <span id="toolstechniques"></span>
                     </td>
                 </tr>
             </tbody>
@@ -168,6 +160,39 @@
             var trelement = '<tr class = "miseittr" tablefor="miseit" groupnamemiseit="' + groupname +
                 '"><td class="cell"><span  class="ingredient"  >' + ingredientname + '</span></td><td class="cell" colspan="2"><span class="perep">' + prepname + '</span></td></tr>';
             var allgrouptr = $('[groupnamesmiseit="' + groupname + '"]');
+            $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
+        }
+
+        // Make It! ******************************************************************************************
+        //***************************** Make It! Tools and Techniques ******************************
+        var item = localStorage.getItem("tools");
+        document.getElementById("toolstechniques").innerHTML = item;
+
+
+        //***************************** Make It! Steps Groups ******************************
+        var all = JSON.parse(localStorage.getItem("makeit"));
+
+        for (let i = 0; i < all.length; i++) {
+            var groupname = JSON.parse(all[i]).groupname;
+            var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "5"class = "headergroup"> ' + groupname + ' </td> </tr>'
+            var trelement = $('[tablefor="makeit"]');
+            $(groupelement).insertAfter(trelement[trelement.length - 1]);
+        }
+
+        //***************************** Make It! Steps  ******************************
+        var all = JSON.parse(localStorage.getItem("makeit"));
+
+        for (let i = 0; i < all.length; i++) {
+            var groupname = JSON.parse(all[i]).groupname;
+            var dotext = JSON.parse(all[i]).do;
+            var withtext = JSON.parse(all[i]).with;
+            var howtext = JSON.parse(all[i]).how;
+            var importanttext = JSON.parse(all[i]).important;
+
+            var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="maindocell" colspan="0"><span class="docell" >' + dotext + '</span></td> <td class="withcell" colspan="1"><span>' + withtext + '</span></td><td colspan="2" class="howmaincell"><span class="howcell" >' +
+                howtext + '</span></td><td colspan="3" class="importantmaincell"><span class="importantcell" >' + importanttext + '</span></td></tr>';
+
+            var allgrouptr = $('[groupnamemakeit="' + groupname + '"]');
             $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
         }
 
@@ -367,6 +392,15 @@
     .makeititemgroup .how {
         font-family: Calibri !important;
         width: 226px;
+        font-size: 15px;
+    }
+
+    .makeittools {
+        text-align: center;
+        background: #E2EFD9;
+        margin-top: 16px;
+        border-top: 2.5px solid black;
+        font-family: calibri;
         font-size: 15px;
     }
 
