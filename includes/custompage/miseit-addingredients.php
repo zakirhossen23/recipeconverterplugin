@@ -19,7 +19,11 @@
 
             <table id="Item-table">
                 <tr>
-
+                    <th class="hiddenrow"></th>
+                    <th class="hiddenrow"></th>
+                    <th class="hiddenrow" style="min-width: 30px;"></th>
+                    <th class="hiddenrow" style="min-width: 0px;"></th>
+                    <th class="hiddenrow"></th>
                 </tr>
             </table>
 
@@ -133,7 +137,7 @@
             var table = document.getElementById("Item-table");
             allitemcode.forEach(element => {
                 var row = table.insertRow(-1);
-                row.innerHTML = '<tr><td colspan="3" class="itemgroup">' + element +
+                row.innerHTML = '<tr><td colspan="4" class="itemgroup">' + element +
                     '</td>' + '<td colspan="4" style="text-align:center;">' + '<div class="numbers">' + item_id +
                     '</div>' +
                     '</td>' + ' </tr>';
@@ -169,7 +173,7 @@
                 pereperationvalue + '</span></td>' +
                 '<td><input type="button" class="editbtn" name="' + row_id + //edit button
                 '" value="Edit" onclick="return onEdit(this)"></td>' +
-                '<td><input type="button" class="deletebtn" name="' + row_id + //delete button
+                '<td colspan="2"><input type="button" class="deletebtn" name="' + row_id + //delete button
                 '" value="Delete" onclick="return onDelete(this)"></td>';
             document.getElementById(rowname + 1).before(el);
             document.getElementById("ingredientname").value = "";
@@ -269,6 +273,13 @@
         width: 20%;
         font-family: Calibri !important;
         font-size: 15px;
+    }
+
+    .hiddenrow {
+        opacity: 0 !important;
+        margin: 0px !important;
+        height: 0 !important;
+        border: 0 !important;
     }
 
     .editbtn {

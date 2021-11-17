@@ -60,16 +60,7 @@
                                     </td>
                                 </tr>
                                 <!--  Visible-->
-                                <tr class="miseittr">
-                                    <th colspan="2" class="itemgroup">bvnvbn</th>
-                                    <td colspan="1" style="text-align:center;">
-                                        <div class="numbers">1</div>
-                                    </td>
-                                </tr>
-                                <tr class="miseittr">
-                                    <td class="cell"><span readonly="readonly" class="ingredient" groupname="bvnvbn" id="ingredient1" name="0">sdfsd</span></td>
-                                    <td class="cell" colspan="2"><span readonly="readonly" class="perep" id="perep1" name="0">sdf</span></td>
-                                </tr>
+
                             </tbody>
                         </table>
 

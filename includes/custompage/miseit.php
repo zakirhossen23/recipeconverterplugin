@@ -26,17 +26,15 @@
 
         <table id="Item-table" class=" no-margin">
             <tbody>
-                <tr style="
-    height: 0px;
-">
-                    <th style="width:0" class="hidden">
+                <tr class="hiddenrow">
+                    <th class="hiddenrow">
                         <div></div>
                     </th>
-                    <th class="hidden"><input type="nothing"></th>
-                    <th style="width: 45px;" class="hidden">
+                    <th class="hiddenrow"><input type="nothing"></th>
+                    <th class="hiddenrow">
                         <p type="button"></p>
                     </th>
-                    <th style="width: 63px;" class="hidden">
+                    <th class="hiddenrow">
                         <p type="button"></p>
                     </th>
                 </tr>
@@ -148,7 +146,15 @@
         height: 38px;
         cursor: pointer;
         color: white;
+        font-family: Calibri !important;
 
+    }
+
+    .hiddenrow {
+        opacity: 0 !important;
+        margin: 0px !important;
+        height: 0 !important;
+        border: 0 !important;
     }
 
     .btn-add:active {

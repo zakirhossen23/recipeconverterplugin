@@ -138,7 +138,7 @@
             var el = document.createElement("tr");
             el.innerHTML = '<td><input readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
                 '" name="' + rowname + '" groupname="' + groupname + '" value="' +
-                ingredientvalue + '" /></td>' + "<td>" +
+                ingredientvalue + '" /></td>' + '<td class="radiotd">' +
                 "<input class='overbuybtn' name='" +
                 row_id + "'id='overbuyrow" + row_id + "' type = 'radio' /> " + //overbuy
                 "</td>" +
@@ -181,9 +181,13 @@
         font-size: 15px;
     }
 
+    .radiotd {
+        min-width: 35px;
+    }
 
     th,
     td {
+        width: 100%;
         border: 0.5px solid black;
         height: 41px;
         font-family: Calibri !important;
