@@ -100,7 +100,7 @@
                 document.getElementsByName(id)[0].value = "Edit";
                 document.getElementById('ingredient' + id).setAttribute("Readonly", "readonly");
                 document.getElementById('ingredient' + id).style.border = "none";
-                document.getElementById('ingredient' + id).style.fontSize = "revert";
+                document.getElementById('ingredient' + id).style.fontSize = "";
                 document.getElementById('ingredient' + id).style.margin = "0px 0px 0px 0px";
                 document.getElementById('ingredient' + id).style.height = "93%";
                 document.getElementById('ingredient' + id).style.width = "97%";
@@ -109,7 +109,7 @@
 
                 document.getElementById('perep' + id).setAttribute("Readonly", "readonly");
                 document.getElementById('perep' + id).style.border = "none";
-                document.getElementById('perep' + id).style.fontSize = "revert";
+                document.getElementById('perep' + id).style.fontSize = "";
                 document.getElementById('perep' + id).style.margin = "0px 0px 0px 0px";
                 document.getElementById('perep' + id).style.height = "93%";
                 document.getElementById('perep' + id).style.width = "97%";

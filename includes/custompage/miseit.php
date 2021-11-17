@@ -62,17 +62,19 @@
             document.getElementById('item' + id).style.width = "97%";
             document.getElementById(id).value = "Save";
             document.getElementById('item' + id).style.pointerEvents = "all";
+            document.getElementById('item' + id).setAttribute("contenteditable", true);
             return false;
         }
         if (btn.value == "Save") {
             document.getElementById('item' + id).setAttribute("Readonly", "readonly");
             document.getElementById('item' + id).style.border = "none";
-            document.getElementById('item' + id).style.fontSize = "revert";
+            document.getElementById('item' + id).style.fontSize = "";
             document.getElementById(id).value = "Edit";
             document.getElementById('item' + id).style.margin = "0px 0px 0px 0px";
             document.getElementById('item' + id).style.height = "93%";
             document.getElementById('item' + id).style.width = "97%";
             document.getElementById('item' + id).style.pointerEvents = "none";
+            document.getElementById('item' + id).setAttribute("contenteditable", false);
             btn.style.background = "";
 
             return false;
@@ -84,7 +86,7 @@
 
         var allitem = document.getElementsByName("item");
         var savingitem = [];
-        allitem.forEach(v => savingitem.push(v.value));
+        allitem.forEach(v => savingitem.push(v.innerHTML));
         localStorage.setItem("items", JSON.stringify(savingitem));
         document.getElementById("all").innerHTML =
             ' <iframe name = "miseit-addingredient" src = "miseit-add-ingredient" />'
@@ -102,9 +104,9 @@
         var cell3 = row.insertCell(-1);
         var serial = Number(allserial.length) + Number(1)
         cell0.innerHTML = '<div class="numbers">' + serial + '</div>';
-        cell1.innerHTML = '<input readonly="readonly" id="item' + row_id + '" name="item" value="' + document
+        cell1.innerHTML = '<span readonly="readonly" id="item' + row_id + '" name="item"style="pointer-events:none;" >' + document
             .getElementById(
-                "itemname").value + '" style="pointer-events:none;" type="text" />'
+                "itemname").value + ' </span>'
         cell1.style = "width:100%;";
         cell2.innerHTML = '<input id="' + row_id +
             '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';

@@ -53,7 +53,7 @@
             for (let i = 0; i < alloverbuy.length; i++) {
                 let obj = {
                     groupname: allaisle[i].getAttribute("groupname"),
-                    ingredient: allaisle[i].value,
+                    ingredient: allaisle[i].innerHTML,
                     radiochecked: alloverbuy[i].checked
                 };
                 var text = "shopit:" + allaisle[i].getAttribute("groupname") + ":" + allaisle[i].value + ":" + alloverbuy[i].checked;
@@ -79,6 +79,7 @@
                 document.getElementById('ingredient' + id).style.pointerEvents = "all";
                 document.getElementById('overbuyrow' + id).style.pointerEvents = "all";
                 document.getElementById('overbuyrow' + id).style.margin = "0px -3px 0px 7px";
+                document.getElementById('ingredient' + id).setAttribute("contenteditable", true);
                 btn.value = "Save";
 
                 return true;
@@ -87,7 +88,8 @@
 
                 document.getElementById('ingredient' + id).setAttribute("Readonly", "readonly");
                 document.getElementById('ingredient' + id).style.border = "none";
-                document.getElementById('ingredient' + id).style.fontSize = "revert";
+                document.getElementById('ingredient' + id).style.fontSize = "";
+                document.getElementById('ingredient' + id).setAttribute("contenteditable", false);
                 btn.value = "Edit";
                 document.getElementById('ingredient' + id).style.margin = "0px 0px 0px 0px";
                 document.getElementById('ingredient' + id).style.height = "93%";
@@ -136,9 +138,9 @@
             var ingredientvalue = document.getElementById("ingredientname").value
             var overbuyvalue = document.getElementById("overbuy").checked;
             var el = document.createElement("tr");
-            el.innerHTML = '<td><input readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
-                '" name="' + rowname + '" groupname="' + groupname + '" value="' +
-                ingredientvalue + '" /></td>' + '<td class="radiotd">' +
+            el.innerHTML = '<td><span readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
+                '" name="' + rowname + '" groupname="' + groupname + '" >' +
+                ingredientvalue + '</span></td>' + '<td class="radiotd">' +
                 "<input class='overbuybtn' name='" +
                 row_id + "'id='overbuyrow" + row_id + "' type = 'radio' /> " + //overbuy
                 "</td>" +
@@ -219,6 +221,7 @@
         pointer-events: none;
         font-family: Calibri !important;
         font-size: 15px;
+        padding-left: 6px;
     }
 
     .delete {
