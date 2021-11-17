@@ -25,248 +25,248 @@
 </div>
 </div>
 <script>
-var row_id = 1;
+    var row_id = 1;
 
-function onEdit(btn) {
-    var id = btn.id;
-    if (btn.value == "Edit") {
-        document.getElementById('aisle' + id).removeAttribute("Readonly");
-        document.getElementById('aisle' + id).style.border = "solid 1px";
-        document.getElementById('aisle' + id).style.fontSize = "larger";
-        btn.style.background = "#debf54";
-        document.getElementById('aisle' + id).style.margin = "0px 0px 0px 10px";
-        document.getElementById('aisle' + id).style.height = "93%";
-        document.getElementById('aisle' + id).style.width = "97%";
-        document.getElementById(id).value = "Save";
-        document.getElementById('aisle' + id).style.pointerEvents = "all";
-        return false;
+    function onEdit(btn) {
+        var id = btn.id;
+        if (btn.value == "Edit") {
+            document.getElementById('aisle' + id).removeAttribute("Readonly");
+            document.getElementById('aisle' + id).style.border = "solid 1px";
+            document.getElementById('aisle' + id).style.fontSize = "larger";
+            btn.style.background = "#debf54";
+            document.getElementById('aisle' + id).style.margin = "0px 0px 0px 10px";
+            document.getElementById('aisle' + id).style.height = "93%";
+            document.getElementById('aisle' + id).style.width = "97%";
+            document.getElementById(id).value = "Save";
+            document.getElementById('aisle' + id).style.pointerEvents = "all";
+            return false;
+        }
+        if (btn.value == "Save") {
+            document.getElementById('aisle' + id).setAttribute("Readonly", "readonly");
+            document.getElementById('aisle' + id).style.border = "none";
+            document.getElementById('aisle' + id).style.fontSize = "15px";
+            document.getElementById(id).value = "Edit";
+            document.getElementById('aisle' + id).style.margin = "0px 0px 0px 0px";
+            document.getElementById('aisle' + id).style.height = "93%";
+            document.getElementById('aisle' + id).style.width = "97%";
+            document.getElementById('aisle' + id).style.pointerEvents = "none";
+            btn.style.background = "";
+
+            return false;
+        }
+
     }
-    if (btn.value == "Save") {
-        document.getElementById('aisle' + id).setAttribute("Readonly", "readonly");
-        document.getElementById('aisle' + id).style.border = "none";
-        document.getElementById('aisle' + id).style.fontSize = "15px";
-        document.getElementById(id).value = "Edit";
-        document.getElementById('aisle' + id).style.margin = "0px 0px 0px 0px";
-        document.getElementById('aisle' + id).style.height = "93%";
-        document.getElementById('aisle' + id).style.width = "97%";
-        document.getElementById('aisle' + id).style.pointerEvents = "none";
-        btn.style.background = "";
 
-        return false;
+    function Ingredients() {
+
+        var allaisle = document.getElementsByName("aisle");
+        var savingaisle = [];
+        allaisle.forEach(v => savingaisle.push(v.value));
+        localStorage.setItem("aisles", JSON.stringify(savingaisle));
+        document.getElementById("all").innerHTML =
+            ' <iframe name = "addingredient" src = "add-ingredient" />'
+
     }
 
-}
 
-function Ingredients() {
-
-    var allaisle = document.getElementsByName("aisle");
-    var savingaisle = [];
-    allaisle.forEach(v => savingaisle.push(v.value));
-    localStorage.setItem("aisles", savingaisle);
-    document.getElementById("all").innerHTML =
-        ' <iframe name = "addingredient" src = "add-ingredient" />'
-
-}
-
-
-function onAdd() {
-    var table = document.getElementById("Aisle-table");
-    var row = table.insertRow(-1);
-    var cell1 = row.insertCell(-1);
-    var cell2 = row.insertCell(-1);
-    var cell3 = row.insertCell(-1);
-    cell1.innerHTML = '<input readonly="readonly" id="aisle' + row_id + '" name="aisle" value="' + document
-        .getElementById(
-            "aislename").value + '" style="pointer-events:none;" type="text" />'
-    cell1.style = "width:100%;";
-    cell2.innerHTML = '<input id="' + row_id +
-        '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
-    cell2.style = "min-width: 43px; max-width: 43px;";
-    cell3.innerHTML = '<input id="' + row_id +
-        '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" />';
-    cell3.style = "min-width: 65;max-width: 65;";
-    document.getElementById(
-        "aislename").value = "";
-    row_id++;
-}
+    function onAdd() {
+        var table = document.getElementById("Aisle-table");
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(-1);
+        var cell2 = row.insertCell(-1);
+        var cell3 = row.insertCell(-1);
+        cell1.innerHTML = '<input readonly="readonly" id="aisle' + row_id + '" name="aisle" value="' + document
+            .getElementById(
+                "aislename").value + '" style="pointer-events:none;" type="text" />'
+        cell1.style = "width:100%;";
+        cell2.innerHTML = '<input id="' + row_id +
+            '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
+        cell2.style = "min-width: 43px; max-width: 43px;";
+        cell3.innerHTML = '<input id="' + row_id +
+            '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" />';
+        cell3.style = "min-width: 65;max-width: 65;";
+        document.getElementById(
+            "aislename").value = "";
+        row_id++;
+    }
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
-function onDelete(btn) {
-    var row = $(btn).closest("TR");
-    var name = $("TD", row).eq(0).html();
+    function onDelete(btn) {
+        var row = $(btn).closest("TR");
+        var name = $("TD", row).eq(0).html();
 
-    var table = $("#Aisle-table")[0];
+        var table = $("#Aisle-table")[0];
 
-    table.deleteRow(row[0].rowIndex);
-}
+        table.deleteRow(row[0].rowIndex);
+    }
 </script>
 <style>
-.btn-add {
-    font-family: Calibri !important;
-    border: solid black 1px;
-    background: #debf54;
-    font-size: 27px;
-    width: 57px;
-    height: 38px;
-    cursor: pointer;
+    .btn-add {
+        font-family: Calibri !important;
+        border: solid black 1px;
+        background: #debf54;
+        font-size: 27px;
+        width: 57px;
+        height: 38px;
+        cursor: pointer;
 
-}
+    }
 
-.btn-add:active {
-    font-family: Calibri !important;
-    background-color: #fffdf6;
-    font-size: 15px;
-}
+    .btn-add:active {
+        font-family: Calibri !important;
+        background-color: #fffdf6;
+        font-size: 15px;
+    }
 
-.Ingredientsbtn {
-    font-family: Calibri !important;
-    float: right;
-    width: 125px;
-    height: 37px;
-    margin: 10px 1px 12px 0px;
-    cursor: pointer;
-    background: #debf54;
-    font-size: 15px;
-}
+    .Ingredientsbtn {
+        font-family: Calibri !important;
+        float: right;
+        width: 125px;
+        height: 37px;
+        margin: 10px 1px 12px 0px;
+        cursor: pointer;
+        background: #debf54;
+        font-size: 15px;
+    }
 
-.Ingredientsbtn:active {
-    font-family: Calibri !important;
-    background-color: #fffdf6;
-    font-size: 15px;
-}
+    .Ingredientsbtn:active {
+        font-family: Calibri !important;
+        background-color: #fffdf6;
+        font-size: 15px;
+    }
 
-iframe {
-    font-family: Calibri !important;
-    width: 100%;
-    height: 100%;
-    writing-mode: vertical-lr;
-    border: none;
-    font-size: 15px;
-}
+    iframe {
+        font-family: Calibri !important;
+        width: 100%;
+        height: 100%;
+        writing-mode: vertical-lr;
+        border: none;
+        font-size: 15px;
+    }
 
-th,
-td {
-    font-family: Calibri !important;
-    border: 0.5px solid black;
-    height: 41px;
-    font-size: 15px;
+    th,
+    td {
+        font-family: Calibri !important;
+        border: 0.5px solid black;
+        height: 41px;
+        font-size: 15px;
 
-}
+    }
 
-table {
-    font-family: Calibri !important;
-    border-collapse: collapse;
-    width: 500px;
-    font-size: 15px;
-}
-
-
-input {
-    font-family: Calibri !important;
-    font-size: 15px;
-}
-
-.no-margin {
-    font-family: Calibri !important;
-    margin: 1px;
-}
-
-.top-margin {
-    font-family: Calibri !important;
-    margin-top: 10px;
-}
-
-body {
-    font-family: Calibri !important;
-    background: white;
-    font-size: 15px;
-    margin: 0px;
-}
-
-input[type="text"] {
-    font-family: Calibri !important;
-    border: 0;
-    font-size: 15px;
-}
-
-.edit {
-    font-family: Calibri !important;
-    width: 61px;
-    font-size: 15px;
-}
-
-.delete {
-    font-family: Calibri !important;
-    width: 71px;
-    font-size: 15px;
-}
-
-.table-margin {
-    font-family: Calibri !important;
-    margin-top: 30px;
-    font-size: 15px;
-}
-
-.Aisle {
-    font-family: Calibri !important;
-    color: #333;
-    letter-spacing: 1px;
-    outline: none !important;
-    padding: 5px 5px;
-    height: 38px;
-    margin: 0px 6px 0px 6px;
-    font-size: 15px;
-}
-
-.aisletext {
-    font-family: Calibri !important;
-    vertical-align: middle;
-    margin: 9px 0px;
-    font-size: 15px;
-}
-
-.editbtn {
-    font-family: Calibri !important;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    background: #debf54;
-    border: none;
-    color: black;
-    font-size: 15px;
-}
-
-.editbtn:active {
-    font-family: Calibri !important;
-    background: #897636;
-    color: #adadad;
-    font-size: 15px;
-}
+    table {
+        font-family: Calibri !important;
+        border-collapse: collapse;
+        width: 500px;
+        font-size: 15px;
+    }
 
 
-.deletebtn {
-    font-family: Calibri !important;
-    width: 100%;
-    height: 100%;
-    background: #debf54;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font-size: 15px;
-}
+    input {
+        font-family: Calibri !important;
+        font-size: 15px;
+    }
 
-.deletebtn:active {
+    .no-margin {
+        font-family: Calibri !important;
+        margin: 1px;
+    }
 
-    background: #897636;
-    color: #ffffffb8;
-    font-family: Calibri !important;
-    font-size: 15px;
-}
+    .top-margin {
+        font-family: Calibri !important;
+        margin-top: 10px;
+    }
 
-.headername {
-    font-family: Calibri !important;
-    font-size: 40px;
+    body {
+        font-family: Calibri !important;
+        background: white;
+        font-size: 15px;
+        margin: 0px;
+    }
 
-}
+    input[type="text"] {
+        font-family: Calibri !important;
+        border: 0;
+        font-size: 15px;
+    }
+
+    .edit {
+        font-family: Calibri !important;
+        width: 61px;
+        font-size: 15px;
+    }
+
+    .delete {
+        font-family: Calibri !important;
+        width: 71px;
+        font-size: 15px;
+    }
+
+    .table-margin {
+        font-family: Calibri !important;
+        margin-top: 30px;
+        font-size: 15px;
+    }
+
+    .Aisle {
+        font-family: Calibri !important;
+        color: #333;
+        letter-spacing: 1px;
+        outline: none !important;
+        padding: 5px 5px;
+        height: 38px;
+        margin: 0px 6px 0px 6px;
+        font-size: 15px;
+    }
+
+    .aisletext {
+        font-family: Calibri !important;
+        vertical-align: middle;
+        margin: 9px 0px;
+        font-size: 15px;
+    }
+
+    .editbtn {
+        font-family: Calibri !important;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background: #debf54;
+        border: none;
+        color: black;
+        font-size: 15px;
+    }
+
+    .editbtn:active {
+        font-family: Calibri !important;
+        background: #897636;
+        color: #adadad;
+        font-size: 15px;
+    }
+
+
+    .deletebtn {
+        font-family: Calibri !important;
+        width: 100%;
+        height: 100%;
+        background: #debf54;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .deletebtn:active {
+
+        background: #897636;
+        color: #ffffffb8;
+        font-family: Calibri !important;
+        font-size: 15px;
+    }
+
+    .headername {
+        font-family: Calibri !important;
+        font-size: 40px;
+
+    }
 </style>
