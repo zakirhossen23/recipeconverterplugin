@@ -465,6 +465,8 @@
         font-family: Calibri !important;
         font-family: Calibri;
         font-size: 15px;
+        border: 2px solid #aaa;
+        border-radius: 4px;
     }
 
     .edit {
@@ -769,6 +771,10 @@
 
     }
 
+    .select2-container--default .select2-selection--multiple {
+        height: 100%;
+    }
+
     .select2-selection .select2-selection--multiple:after {
         content: 'hhghgh';
     }
@@ -785,10 +791,21 @@
     .select2-container--default .select2-selection--multiple .select2-selection__rendered {
         box-sizing: border-box;
         list-style: none;
-        margin: 0;
-        padding: 0 5px;
+        margin: 0px 0px 7px 0px;
+        padding: 3px 5px;
         width: 100%;
-        min-height: 94%;
+
+    }
+
+    textarea::placeholder {
+        /* Webkit */
+        line-height: 190%;
+        font-size: 15px;
+        font-family: calibri;
+    }
+
+    .select2-container--default .select2-selection--multiple {
+        margin-bottom: 0px;
     }
 
     .select-icon .select2-results__option:before,
@@ -818,5 +835,7 @@
         font-family: Calibri;
         height: 100%;
         resize: inherit;
+        border: 2px solid #aaa;
+        border-radius: 4px;
     }
 </style>
