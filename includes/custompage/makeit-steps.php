@@ -458,6 +458,7 @@
         border-collapse: collapse;
         width: 966px;
         font-size: 15px;
+        margin-top: 30px;
     }
 
     input {

@@ -159,6 +159,7 @@
         border-collapse: collapse;
         width: 500px;
         font-size: 15px;
+        margin-top: 30px;
     }
 
 

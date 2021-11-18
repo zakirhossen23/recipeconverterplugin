@@ -201,6 +201,7 @@
         width: 500px;
         font-family: Calibri !important;
         font-size: 15px;
+        margin-top: 30px;
     }
 
     input {
