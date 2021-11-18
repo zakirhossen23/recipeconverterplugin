@@ -559,7 +559,7 @@
         background-color: #D9D9D9;
         font-weight: bolder;
         color: black;
-        padding-left: 10px;
+        padding-left: 10PX;
         font-size: 15px;
     }
 
@@ -588,7 +588,7 @@
 
     .docell {
         font-family: Calibri !important;
-        padding-left: 10px;
+        overflow-wrap: break-word;
         font-size: 15px;
     }
 
@@ -597,6 +597,7 @@
         min-width: 105px;
         max-width: 160px;
         font-size: 15px;
+        padding-left: 10px;
     }
 
     .howmaincell {
@@ -604,6 +605,8 @@
         max-width: 225px;
         min-width: 225px;
         font-size: 15px;
+
+        padding-left: 10px;
     }
 
     .withcell {
@@ -612,11 +615,12 @@
         min-width: 167px;
         max-width: 167px;
         font-size: 15px;
+        overflow-wrap: break-word;
     }
 
     .howcell {
         font-family: Calibri !important;
-        padding-left: 10px;
+        overflow-wrap: break-word;
         font-size: 15px;
     }
 
@@ -626,6 +630,7 @@
         min-width: 97px;
         max-width: 97px;
         font-size: 15px;
+        overflow-wrap: break-word;
     }
 
     .importantmaincell {
@@ -634,6 +639,7 @@
         min-width: 97px;
         max-width: 97px;
         font-size: 15px;
+        padding-left: 10px;
     }
 
     .numbers {
