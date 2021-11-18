@@ -39,6 +39,7 @@
             document.getElementById('aisle' + id).style.width = "97%";
             document.getElementById(id).value = "Save";
             document.getElementById('aisle' + id).style.pointerEvents = "all";
+            document.getElementById('aisle' + id).setAttribute("contenteditable", true);
             return false;
         }
         if (btn.value == "Save") {
@@ -50,6 +51,7 @@
             document.getElementById('aisle' + id).style.height = "93%";
             document.getElementById('aisle' + id).style.width = "97%";
             document.getElementById('aisle' + id).style.pointerEvents = "none";
+            document.getElementById('aisle' + id).setAttribute("contenteditable", false);
             btn.style.background = "";
 
             return false;
@@ -61,7 +63,7 @@
 
         var allaisle = document.getElementsByName("aisle");
         var savingaisle = [];
-        allaisle.forEach(v => savingaisle.push(v.value));
+        allaisle.forEach(v => savingaisle.push(v.innerText));
         localStorage.setItem("aisles", JSON.stringify(savingaisle));
         document.getElementById("all").innerHTML =
             ' <iframe name = "addingredient" src = "add-ingredient" />'
@@ -75,10 +77,10 @@
         var cell1 = row.insertCell(-1);
         var cell2 = row.insertCell(-1);
         var cell3 = row.insertCell(-1);
-        cell1.innerHTML = '<input readonly="readonly" id="aisle' + row_id + '" name="aisle" value="' + document
+        cell1.innerHTML = '<span readonly="readonly" id="aisle' + row_id + '" name="aisle" >' + document
             .getElementById(
-                "aislename").value + '" style="pointer-events:none;" type="text" />'
-        cell1.style = "width:100%;";
+                "aislename").value + '</span>'
+        cell1.style = "width:100%; padding-left: 7px;";
         cell2.innerHTML = '<input id="' + row_id +
             '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
         cell2.style = "min-width: 43px; max-width: 43px;";

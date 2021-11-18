@@ -138,7 +138,7 @@
             var ingredientvalue = document.getElementById("ingredientname").value
             var overbuyvalue = document.getElementById("overbuy").checked;
             var el = document.createElement("tr");
-            el.innerHTML = '<td><span readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
+            el.innerHTML = '<td style="padding-left: 7px;"><span readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
                 '" name="' + rowname + '" groupname="' + groupname + '" >' +
                 ingredientvalue + '</span></td>' + '<td class="radiotd">' +
                 "<input class='overbuybtn' name='" +
@@ -222,7 +222,6 @@
         pointer-events: none;
         font-family: Calibri !important;
         font-size: 15px;
-        padding-left: 6px;
     }
 
     .delete {

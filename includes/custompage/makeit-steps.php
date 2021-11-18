@@ -308,7 +308,7 @@
 
                 document.getElementById('do' + id).setAttribute("Readonly", "readonly");
                 document.getElementById('do' + id).style.border = "none";
-                document.getElementById('do' + id).style.fontSize = "revert";
+                document.getElementById('do' + id).style.fontSize = "";
                 document.getElementById('do' + id).style.margin = "0px 0px 0px 0px";
                 document.getElementById('do' + id).style.height = "93%";
                 document.getElementById('do' + id).style.width = "97%";
@@ -318,7 +318,7 @@
 
                 document.getElementById('how' + id).setAttribute("Readonly", "readonly");
                 document.getElementById('how' + id).style.border = "none";
-                document.getElementById('how' + id).style.fontSize = "revert";
+                document.getElementById('how' + id).style.fontSize = "";
                 document.getElementById('how' + id).style.margin = "0px 0px 0px 0px";
                 document.getElementById('how' + id).style.height = "93%";
                 document.getElementById('how' + id).style.width = "97%";
@@ -327,7 +327,7 @@
 
                 document.getElementById('important' + id).setAttribute("Readonly", "readonly");
                 document.getElementById('important' + id).style.border = "none";
-                document.getElementById('important' + id).style.fontSize = "revert";
+                document.getElementById('important' + id).style.fontSize = "";
                 document.getElementById('important' + id).style.margin = "0px 0px 0px 0px";
                 document.getElementById('important' + id).style.height = "93%";
                 document.getElementById('important' + id).style.width = "97%";
@@ -362,7 +362,7 @@
 
                 headerlabel.setAttribute("Readonly", "readonly");
                 headerlabel.style.border = "";
-                headerlabel.style.fontSize = "revert";
+                headerlabel.style.fontSize = "";
                 headerlabel.style.margin = "0px 0px 0px 0px";
                 headerlabel.style.height = "";
                 headerlabel.style.width = "";

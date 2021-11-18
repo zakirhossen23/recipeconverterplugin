@@ -208,7 +208,7 @@
     .cell {
         min-width: 130px;
         max-width: 130px;
-        padding-left: 4px;
+        padding-left: 7px;
         font-family: Calibri !important;
         font-size: 15px;
     }

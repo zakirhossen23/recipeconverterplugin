@@ -104,10 +104,11 @@
         var cell3 = row.insertCell(-1);
         var serial = Number(allserial.length) + Number(1)
         cell0.innerHTML = '<div class="numbers">' + serial + '</div>';
+
         cell1.innerHTML = '<span readonly="readonly" id="item' + row_id + '" name="item"style="pointer-events:none;" >' + document
             .getElementById(
                 "itemname").value + ' </span>'
-        cell1.style = "width:100%;";
+        cell1.style = "width:100%; padding-left: 7px;";
         cell2.innerHTML = '<input id="' + row_id +
             '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
         cell2.style = "min-width: 43px; max-width: 43px;";
