@@ -124,8 +124,8 @@
                 checkedstatus = "checked";
             }
             var radioelement = '<input class="overbuybtn" type="radio" style="pointer-events: none;" ' + checkedstatus + '>';
-            var trelement = '<tr class = "shopittr" tablefor="shopit" groupnameshopit="' + groupname +
-                '"><td>' + ingredientname + '</td><td class="shopitradio">' + radioelement + '</td></tr>'
+            var trelement = '<tr class = "shopittr ingredientcell" tablefor="shopit" groupnameshopit="' + groupname +
+                '"><td class="ingredientcell"><span>' + ingredientname + '</span></td><td class="shopitradio">' + radioelement + '</td></tr>'
             var allgrouptr = $('[groupnameshopit="' + groupname + '"]');
             $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
         }
@@ -137,20 +137,21 @@
         allitemcode = JSON.parse(item);
         for (let i = 0; i < allitemcode.length; i++) {
             var trelement = '<tr class = "miseittr" tablefor="miseit" groupnamesmiseit="' + allitemcode[i] +
-                '"><th colspan="2" class="itemgroup">' + allitemcode[i] + '</th> <td colspan="1" style="text-align:center;"> <div class="numbers">' + (i + 1) + '</div></td></tr>'
+                '" groupmiseitid="' + i + '"><th colspan="2" class="itemgroup">' + allitemcode[i] + '</th> <td class="itemgroup" colspan="1"  style="text-align:center;"> <div class="numbers">' + (i + 1) + '</div></td></tr>'
             var allmiseitttr = $('[tablefor="miseit"]');
             $(trelement).insertAfter(allmiseitttr[allmiseitttr.length - 1]);
         }
         //***************************** Mise It! ingredients ******************************
         var all = JSON.parse(localStorage.getItem("miseit"));
         for (let i = 0; i < all.length; i++) {
+            var groupid = JSON.parse(all[i]).id;
             var ingredientname = JSON.parse(all[i]).ingredient;
             var groupname = JSON.parse(all[i]).groupname;
             var prepname = JSON.parse(all[i]).prep;
 
             var trelement = '<tr class = "miseittr" tablefor="miseit" groupnamemiseit="' + groupname +
                 '"><td class="cell"><span  class="ingredient"  >' + ingredientname + '</span></td><td class="cell" colspan="2"><span class="perep">' + prepname + '</span></td></tr>';
-            var allgrouptr = $('[groupnamesmiseit="' + groupname + '"]');
+            var allgrouptr = $('[groupmiseitid="' + groupid + '"]');
             $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
         }
 
@@ -165,9 +166,12 @@
 
         for (let i = 0; i < all.length; i++) {
             var groupname = JSON.parse(all[i]).groupname;
-            var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "5"class = "headergroup"> ' + groupname + ' </td> </tr>'
-            var trelement = $('[tablefor="makeit"]');
-            $(groupelement).insertAfter(trelement[trelement.length - 1]);
+            if (groupname != "") {
+                var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "5"class = "headergroup"> ' + groupname + ' </td> </tr>'
+                var trelement = $('[tablefor="makeit"]');
+                $(groupelement).insertAfter(trelement[trelement.length - 1]);
+            }
+
         }
 
         //***************************** Make It! Steps  ******************************
@@ -182,9 +186,14 @@
 
             var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="maindocell" colspan="0"><span class="docell" >' + dotext + '</span></td> <td class="withcell" colspan="1"><span>' + withtext + '</span></td><td colspan="2" class="howmaincell"><span class="howcell" >' +
                 howtext + '</span></td><td colspan="3" class="importantmaincell"><span class="importantcell" >' + importanttext + '</span></td></tr>';
+            if (groupname == "") {
+                var allgrouptr = $('[id="startheader"]');
+                $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
+            } else {
+                var allgrouptr = $('[groupnamemakeit="' + groupname + '"]');
+                $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
+            }
 
-            var allgrouptr = $('[groupnamemakeit="' + groupname + '"]');
-            $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
         }
 
 
@@ -229,6 +238,16 @@
         vertical-align: top;
     }
 
+    .ingredientcell {
+        max-width: 221px;
+    }
+
+    td.shopitradio {
+        width: 25px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center;
+    }
 
     .shopittr th,
     .shopittr td {
@@ -240,7 +259,8 @@
     }
 
     .shopittr td {
-        padding-left: 8px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 
     .aislegroup {
@@ -275,8 +295,10 @@
     }
 
     .miseittr td {
-        padding-left: 8px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
+
 
     .itemgroup {
         text-align: center;
@@ -293,11 +315,10 @@
         background: black;
         color: white;
         border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        width: 28px;
         align-items: center;
         text-align: center;
-        font-size: 23px;
+        font-size: 22px;
         font-family: calibri;
         display: inline-table;
     }
@@ -356,7 +377,8 @@
         background-color: #D9D9D9;
         font-weight: bolder;
         color: black;
-        padding-left: 10px;
+        padding-left: 6px;
+        padding-right: 6px;
         font-size: 15px;
     }
 
@@ -366,6 +388,9 @@
         border: 0.5px solid black;
         height: 30px;
         font-size: 15px;
+        max-width: 130px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 
     .makeititemgroup.do {
@@ -397,8 +422,8 @@
 
     .docell {
         font-family: Calibri !important;
-        padding-left: 10px;
         font-size: 15px;
+        overflow-wrap: break-word;
     }
 
     .withcell {
@@ -407,12 +432,19 @@
         min-width: 133px;
         max-width: 175px;
         font-size: 15px;
+        overflow-wrap: break-word;
     }
 
     .howcell {
         font-family: Calibri !important;
-        padding-left: 10px;
+
         font-size: 15px;
+        overflow-wrap: break-word;
+    }
+
+    .makeititemgroup.how {
+        max-width: 300px !IMPORTANT;
+        min-width: 300px !important;
     }
 
     .howmaincell {
@@ -427,6 +459,7 @@
         text-align: center;
         min-width: 97px;
         max-width: 97px;
+        overflow-wrap: break-word;
         font-size: 15px;
     }
 
@@ -438,12 +471,32 @@
         font-size: 15px;
     }
 
-    .hiddenrow {
+    .makeititemgroup.important {
+        width: 100%;
+    }
 
+    .hiddenrow {
         opacity: 0 !important;
         margin: 0px !important;
         height: 0 !important;
         border: 0 !important;
+    }
 
+
+    td {
+        font-family: Calibri;
+    }
+
+    h1 {
+        font-family: Calibri;
+    }
+
+    p {
+        font-family: Calibri;
+    }
+
+    span {
+        font-family: Calibri;
+        overflow-wrap: break-word;
     }
 </style>

@@ -408,9 +408,9 @@
         $(".js-select2with").on("select2:select", function(evt) {
             var element = evt.params.data.element;
             var $element = $(element);
-            // $element.detach();
+            $element.detach();
              $(this).append($element);
-            //  $(this).trigger("change");
+             $(this).trigger("change");
         });
 
 
@@ -421,7 +421,7 @@
             placeholder: "Do",
             allowHtml: true,
            allowClear: false,
-           tokenSeparators: [','],
+           
             tags: true,
             multiple: true
 
@@ -432,7 +432,7 @@
             allowHtml: true,
             allowClear: false,
             tags: true,
-            tokenSeparators: [','],
+            
             multiple: true
 
         });
@@ -877,4 +877,10 @@
         border-radius: 4px;
         width: 183px;
     }
+
+
+    td{font-family: Calibri;}
+    h1{font-family: Calibri;}
+    p{font-family: Calibri;}
+    span{font-family: Calibri;}
 </style>

@@ -281,4 +281,9 @@ var totalamount = document.getElementById("totalamount");
         font-size: 40px;
 
     }
+
+    td{font-family: Calibri;}
+    h1{font-family: Calibri;}
+    p{font-family: Calibri;}
+    span{font-family: Calibri;}
 </style>

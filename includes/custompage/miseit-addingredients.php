@@ -62,11 +62,11 @@
             var savingmiseit = [];
             for (let i = 0; i < allperep.length; i++) {
                 let obj = {
+                    id: (Number(allitem[i].getAttribute("name"))),
                     groupname: allitem[i].getAttribute("groupname"),
                     ingredient: allitem[i].innerText,
                     prep: allperep[i].innerText
                 };
-                var text = "miseit:" + allitem[i].getAttribute("groupname") + ": " + allitem[i].innerText + ": " + allperep[i].innerText;
                 savingmiseit.push(JSON.stringify(obj))
             }
             localStorage.setItem("miseit", JSON.stringify(savingmiseit));
@@ -398,4 +398,9 @@
         font-family: Calibri !important;
         font-size: 15px;
     }
+
+    td{font-family: Calibri;}
+    h1{font-family: Calibri;}
+    p{font-family: Calibri;}
+    span{font-family: Calibri;}
 </style>

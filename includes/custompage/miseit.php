@@ -353,4 +353,10 @@
         font-family: Calibri !important;
         font-size: 15px;
     }
+
+
+    td{font-family: Calibri;}
+    h1{font-family: Calibri;}
+    p{font-family: Calibri;}
+    span{font-family: Calibri;}
 </style>
