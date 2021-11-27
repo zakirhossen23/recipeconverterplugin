@@ -13,6 +13,12 @@
 
             </select>
             <button class="btn-add" onclick="onAdd()">+ </button>
+            
+            <!------------------------------------ Total ---------------------------------->
+            <div style="display: flex;height: 38px;">
+                <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+            </div>
         </div>
 
 
@@ -111,6 +117,7 @@
             var table = $("#Item-table")[0];
 
             table.deleteRow(row[0].rowIndex);
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
         }
 
         function makegroup() {
@@ -133,6 +140,7 @@
 
 
         function onAdd() {
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
             var groupname = document.getElementById("aislename").value;
             var rowname = document.getElementById("aislename").selectedIndex;
             var ingredientvalue = document.getElementById("ingredientname").value

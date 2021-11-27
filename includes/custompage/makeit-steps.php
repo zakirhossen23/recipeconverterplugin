@@ -36,7 +36,7 @@
                         <option value="O7" data-badge="">Bring</option>
                         <option value="O7" data-badge="">Reduce</option>
                         <option value="O7" data-badge="">Lower</option>
-                        <option value="O7" data-badge="">Sinmar</option>
+                        <option value="O7" data-badge="">Simmer</option>
                         <option value="O7" data-badge="">Stir</option>
                         <option value="O7" data-badge="">Top</option>
                         <option value="O7" data-badge="">Cover</option>
@@ -60,6 +60,11 @@
             </div>
 
             <button class="btn-add" onclick="onAdd()">+ </button>
+               <!------------------------------------ Total ---------------------------------->
+               <div style="display: flex;height: 38px;">
+                    <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                    <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+                </div>
         </div>
         <div>
 
@@ -119,6 +124,7 @@
         }
 
         function onAdd() {
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
             setstatus = 0; // 0 = normal at last
             var table = document.getElementById("Item-table");
             var placingheader = null;
@@ -376,6 +382,7 @@
         }
 
         function onDelete(btn) {
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
             var row = $(btn).closest("TR");
             var name = $("TD", row).eq(0).html();
 
@@ -390,11 +397,23 @@
         }
     </script>
     <script>
+        $(".js-select2").on("select2:select", function(evt) {
+            var element = evt.params.data.element;
+            var $element = $(element);
+            $element.detach();
+            $(this).append($element);
+            $(this).trigger("change");
+        });
+
+
         $(".js-select2").select2({
+            cache: false,
+            selectOnClose: true,
             closeOnSelect: true,
             placeholder: "Do",
-            // allowHtml: true,
-            allowClear: false,
+            allowHtml: true,
+           allowClear: false,
+           tokenSeparators: [','],
             tags: true,
             multiple: true
 
@@ -405,6 +424,7 @@
             allowHtml: true,
             allowClear: false,
             tags: true,
+            tokenSeparators: [','],
             multiple: true
 
         });
@@ -731,6 +751,11 @@
         background-color: #fff;
         margin-right: 20px;
         vertical-align: middle;
+    }
+
+    .select2-container {
+        font-family: Calibri !important;
+        min-width: 154px;
     }
 
     .select2-results__option[aria-selected=true]:before {

@@ -12,6 +12,11 @@
 
             </select>
             <button class="btn-add" onclick="onAdd()">+ </button>
+              <!------------------------------------ Total ---------------------------------->
+              <div style="display: flex;height: 38px;">
+                    <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                    <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+                </div>
         </div>
 
 
@@ -42,8 +47,10 @@
         var codeitem = [];
         var item = localStorage.getItem("items");
         allitemcode = JSON.parse(item);
+        var count = 1;
         allitemcode.forEach(element => {
-            codeitem.push("<option>" + element + "</option>");
+            codeitem.push("<option>"+ count +" - " + element + "</option>");
+            count++;
         });
         itemfield.innerHTML = codeitem;
         var item_id = 1;
@@ -124,6 +131,7 @@
         }
 
         function onDelete(btn) {
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
             var row = $(btn).closest("TR");
             var name = $("TD", row).eq(0).html();
 
@@ -157,6 +165,7 @@
         }
 
         function onAdd() {
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
             var rowname = document.getElementById("itemname").selectedIndex;
             var ingredientvalue = document.getElementById("ingredientname").value
             var pereperationvalue = document.getElementById("Preparation").value
@@ -236,7 +245,7 @@
 
     table {
         border-collapse: collapse;
-        width: 514px;
+        width: 592px;
         font-family: Calibri !important;
         font-size: 15px;
         margin-top: 30px;

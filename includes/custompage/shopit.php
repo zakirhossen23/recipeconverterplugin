@@ -4,11 +4,16 @@
         <h1 class="no-margin">Please select or enter your First Aisle in the proper order:</h1>
         <div class="top-margin">
             <div style="display: flex;">
-                <input id="aislename" placeholder="Aisle Name" style="margin-left: 0;
-" autocomplete="off" class="Aisle">
-                <button class="btn-add" onclick="onAdd()" style="">
+                <input id="aislename" placeholder="Aisle Name" style="margin-left: 0;" autocomplete="off" class="Aisle">
+                <button class="btn-add" onclick="onAdd()">
                     +
                 </button>
+
+                <!------------------------------------ Total ---------------------------------->
+                <div style="display: flex;height: 38px;">
+                    <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                    <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+                </div>
             </div>
         </div>
 
@@ -21,6 +26,7 @@
         <button class="Ingredientsbtn" onclick="Ingredients()">
             Add Shop It! List
         </button>
+
     </div>
 </div>
 </div>
@@ -69,9 +75,11 @@
             ' <iframe name = "addingredient" src = "add-ingredient" />'
 
     }
-
+var totalamount = document.getElementById("totalamount");
 
     function onAdd() {
+        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
+        console.log("clicked");
         var table = document.getElementById("Aisle-table");
         var row = table.insertRow(-1);
         var cell1 = row.insertCell(-1);
@@ -101,6 +109,7 @@
         var table = $("#Aisle-table")[0];
 
         table.deleteRow(row[0].rowIndex);
+        document.getElementById("totalamount").innerHTML =   Number(totalamount.innerHTML) - Number(1);
     }
 </script>
 <style>
