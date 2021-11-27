@@ -25,23 +25,23 @@
                 <!--  DO -->
                 <div class="row">
                     <select class="js-select2" multiple="multiple">
-                        <option value="O1" data-badge="">Mix</option>
-                        <option value="O2" data-badge="">Season</option>
+                        <option value="O1" data-badge="01">Mix</option>
+                        <option value="O2" data-badge="02">Season</option>
                         <option value="O3" data-badge="">Form</option>
                         <option value="O4" data-badge="">Rub</option>
                         <option value="O5" data-badge="">Heat</option>
                         <option value="O6" data-badge="">Cook</option>
                         <option value="O7" data-badge="">Transfer</option>
-                        <option value="O7" data-badge="">Add</option>
-                        <option value="O7" data-badge="">Bring</option>
-                        <option value="O7" data-badge="">Reduce</option>
-                        <option value="O7" data-badge="">Lower</option>
-                        <option value="O7" data-badge="">Simmer</option>
-                        <option value="O7" data-badge="">Stir</option>
-                        <option value="O7" data-badge="">Top</option>
-                        <option value="O7" data-badge="">Cover</option>
-                        <option value="O7" data-badge="">Boil</option>
-                        <option value="O7" data-badge="">Fry</option>
+                        <option value="O8" data-badge="">Add</option>
+                        <option value="O9" data-badge="">Bring</option>
+                        <option value="10" data-badge="">Reduce</option>
+                        <option value="11" data-badge="">Lower</option>
+                        <option value="12" data-badge="">Simmer</option>
+                        <option value="13" data-badge="">Stir</option>
+                        <option value="14" data-badge="">Top</option>
+                        <option value="15" data-badge="">Cover</option>
+                        <option value="16" data-badge="">Boil</option>
+                        <option value="17" data-badge="">Fry</option>
                     </select>
                 </div>
                 <!--  With -->
@@ -405,6 +405,14 @@
             $(this).trigger("change");
         });
 
+        $(".js-select2with").on("select2:select", function(evt) {
+            var element = evt.params.data.element;
+            var $element = $(element);
+            // $element.detach();
+             $(this).append($element);
+            //  $(this).trigger("change");
+        });
+
 
         $(".js-select2").select2({
             cache: false,
@@ -615,7 +623,7 @@
     .maindocell {
         font-family: Calibri !important;
         min-width: 105px;
-        max-width: 160px;
+        max-width: 141px;
         font-size: 15px;
         padding-left: 10px;
     }
@@ -632,8 +640,7 @@
     .withcell {
         font-family: Calibri !important;
         text-align: center;
-        min-width: 167px;
-        max-width: 167px;
+ 
         font-size: 15px;
         overflow-wrap: break-word;
     }
@@ -868,5 +875,6 @@
         resize: inherit;
         border: 2px solid #aaa;
         border-radius: 4px;
+        width: 183px;
     }
 </style>
