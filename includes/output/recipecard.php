@@ -79,7 +79,7 @@
                                     <td colspan="2" class="makeititemgroup how">HOW</td>
                                     <td colspan="3" class="makeititemgroup important">IMPORTANT</td>
                                 </tr>
-
+                                <tr tablefor="makeit" groupnamemakeit=""></tr>
                             </tbody>
                         </table>
                         <div class="makeittools">TOOLS AND TECHNIQUES REQUIRED</div>
@@ -187,8 +187,8 @@
             var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="maindocell" colspan="0"><span class="docell" >' + dotext + '</span></td> <td class="withcell" colspan="1"><span>' + withtext + '</span></td><td colspan="2" class="howmaincell"><span class="howcell" >' +
                 howtext + '</span></td><td colspan="3" class="importantmaincell"><span class="importantcell" >' + importanttext + '</span></td></tr>';
             if (groupname == "") {
-                var allgrouptr = $('[id="startheader"]');
-                $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
+                var allspace = $('[groupnamemakeit=""]')
+                $(trelement).insertAfter(allspace[allspace.length - 1]);
             } else {
                 var allgrouptr = $('[groupnamemakeit="' + groupname + '"]');
                 $(trelement).insertAfter(allgrouptr[allgrouptr.length - 1]);
