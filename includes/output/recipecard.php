@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <div class="header">
+    <div class="header" style="margin: 0 30px;">
         <div style="display: flex;"><img src="https://miseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg">
             <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 58%;">
                 <h1 id="recipename">Recipe name</h1>
@@ -23,12 +23,28 @@
 
 <body>
     <div id="all">
-        <table style="width:100%">
+        <table style="width:100%;border-spacing: 30px 0;">
             <tbody>
                 <tr>
-                    <th> SHOP IT!</th>
-                    <th> MISE IT!</th>
-                    <th> MAKE IT!</th>
+                    <th>
+                        <div class="shophead">
+                            <img class="shopheadimg" src="https://miseitmakeit.ca/wp-content/uploads/2021/11/shopit-icon.png" />
+                            <p class="shopheadheadtext">SHOP IT!</p>
+                        </div>
+
+                    </th>
+                    <th>
+                        <div class="misehead">
+                            <img class="miseheadimg" src="https://miseitmakeit.ca/wp-content/uploads/2021/11/mise-it-icon.jpg" />
+                            <p class="miseheadheadtext">MISE IT!</p>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="makehead">
+                            <img class="makeheadimg" src="https://miseitmakeit.ca/wp-content/uploads/2021/11/makeit-icon.jpg" />
+                            <p class="makeheadheadtext">MAKE IT!</p>
+                        </div>
+                    </th>
                 </tr>
                 <tr>
                     <!--    main td  Shop it-->
@@ -209,7 +225,9 @@
 <style>
     .tdheader {
         color: blue;
-        font-style: italic;
+    font-style: italic;
+    padding: 8px 9px;
+    font-size: revert;
     }
 
     img {
@@ -217,10 +235,10 @@
     }
 
     .border1 {
-        height: 1px;
-        border: 1px solid;
-        border-left: 0;
-        border-right: 0;
+        height: 0px;
+    border: 1px solid;
+    border-left: 0;
+    border-right: 0;
     }
 
     .border0 {
@@ -326,8 +344,8 @@
     /********** Make it ************/
     .makeit {
         width: 40%;
-    height: 100%;
-    vertical-align: top;
+        height: 100%;
+        vertical-align: top;
     }
 
     .makeittable {
@@ -472,9 +490,7 @@
         font-size: 15px;
     }
 
-    .makeititemgroup.important {
-        
-    }
+    .makeititemgroup.important {}
 
     .hiddenrow {
         opacity: 0 !important;
@@ -499,5 +515,66 @@
     span {
         font-family: Calibri;
         overflow-wrap: break-word;
+    }
+
+    th {
+        font-family: Calibri;
+    }
+
+    /**************************************************** SHOP HEADER ***************************************/
+    .shophead {
+        color: #cdba81;
+        justify-content: center;
+        display: flex;
+        height: auto;
+    }
+
+    .shopheadimg {
+        width: auto;
+        align-self: center;
+    }
+
+    .shopheadheadtext {
+        font-size: 48px;
+        margin: 0;
+        align-self: center;
+    }
+
+    /**************************************************** Mise IT HEADER ***************************************/
+    .misehead {
+        color: #64647e;
+        justify-content: center;
+        display: flex;
+        height: auto;
+    }
+
+    .miseheadimg {
+        width: auto;
+        align-self: center;
+    }
+
+    .miseheadheadtext {
+        font-size: 48px;
+        margin: 0;
+        align-self: center;
+    }
+
+    /**************************************************** MAKE IT HEADER ***************************************/
+    .makehead {
+        color: #899f90;
+        justify-content: center;
+        display: flex;
+        height: auto;
+    }
+
+    .makeheadimg {
+        width: auto;
+        align-self: center;
+    }
+
+    .makeheadheadtext {
+        font-size: 48px;
+        margin: 0;
+        align-self: center;
     }
 </style>
