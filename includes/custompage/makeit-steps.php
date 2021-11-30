@@ -249,7 +249,7 @@
             }
             
             localStorage.setItem("makeitgroup",JSON.stringify(allgroup));
-            window.location.replace("recipecard");   }
+            window.location.href =("recipecard");   }
         var editing = "";
 
         function onEdit(btn) {
