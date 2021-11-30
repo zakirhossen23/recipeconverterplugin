@@ -106,7 +106,7 @@
                 '<td colspan="1" class="itemgroup with">WITH</td>' +
                 '<td colspan="2" class="itemgroup how">HOW</td>' +
                 '<td colspan="3" class="itemgroup important">IMPORTANT</td>' +
-                '<td colspan="4" class="edit">Eidt</td>' +
+                '<td colspan="4" class="edit">Edit</td>' +
                 '<td colspan="5" class="delete">Delete</td>' +
                 ' </tr>';
             row.id = "startheader";
@@ -138,7 +138,7 @@
                     '" value="Edit" name="header" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' +
                     //Edit Button
                     '<td colspan=7><input id="' + header_id + //Save Button
-                    '" value="Delete" onclick="return onDelete(this);" class="deletebtn" type="button" /></td>';
+                    '" value="Delete" name="header" onclick="return onDelete(this);" class="deletebtn" type="button" /></td>';
                 var optionelement = document.createElement("option");
                 optionelement.value = document.getElementById("groupname").value;
                 headerrow.setAttribute("groupname", selectedvalue);
@@ -236,15 +236,20 @@
                     how: allhow[i].innerText,
                     important: allimportant[i].innerText
                 };
-                var text = "makeit:" + alldo[i].parentElement.parentElement.getAttribute("groupname") + ":" +
-                    alldo[i].innerText + ":" + allwith[i].innerText + ":" + allhow[i].innerText + ":" + allimportant[i]
-                    .innerText;
+           
                 savingmakeit.push(JSON.stringify(obj))
             }
             localStorage.setItem("makeit", JSON.stringify(savingmakeit));
+            var allgroup = [];
+          var allgroupelement = $('[class="headergroup"]');
 
-            document.getElementById("all").innerHTML = '<iframe name = "recipecard" id="recipecard"  src = "recipecard" />'
-        }
+            for (let i = 0; i < allgroupelement.length; i++) {
+          
+                allgroup.push(JSON.stringify(allgroupelement[i].innerText))
+            }
+            
+            localStorage.setItem("makeitgroup",JSON.stringify(allgroup));
+            window.location.replace("recipecard");   }
         var editing = "";
 
         function onEdit(btn) {
@@ -382,13 +387,26 @@
         }
 
         function onDelete(btn) {
-            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
+            if (btn.name=="header"){
+                
+             var groupname=   btn.parentElement.parentElement.getAttribute("groupname")
+             var allsamegroup =  $('[groupname="'+groupname+'"]')
+             document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
+             for (let i = 0; i < allsamegroup.length; i++) {
+                allsamegroup[i].remove()
+                document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
+             }
+            }else{
+                document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
             var row = $(btn).closest("TR");
             var name = $("TD", row).eq(0).html();
 
             var table = $("#Item-table")[0];
 
             table.deleteRow(row[0].rowIndex);
+            }
+            
+
 
         }
 

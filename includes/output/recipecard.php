@@ -162,10 +162,10 @@
 
 
         //***************************** Make It! Steps Groups ******************************
-        var all = JSON.parse(localStorage.getItem("makeit"));
+        var all = JSON.parse(localStorage.getItem("makeitgroup"));
 
         for (let i = 0; i < all.length; i++) {
-            var groupname = JSON.parse(all[i]).groupname;
+            var groupname = JSON.parse(all[i]);
             if (groupname != "") {
                 var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "5"class = "headergroup"> ' + groupname + ' </td> </tr>'
                 var trelement = $('[tablefor="makeit"]');
@@ -325,9 +325,9 @@
 
     /********** Make it ************/
     .makeit {
-        width: 405px;
-        height: 100%;
-        vertical-align: top;
+        width: 40%;
+    height: 100%;
+    vertical-align: top;
     }
 
     .makeittable {
@@ -391,6 +391,7 @@
         max-width: 130px;
         padding-left: 6px;
         padding-right: 6px;
+        min-width: 130px;
     }
 
     .makeititemgroup.do {
@@ -472,7 +473,7 @@
     }
 
     .makeititemgroup.important {
-        width: 100%;
+        
     }
 
     .hiddenrow {
