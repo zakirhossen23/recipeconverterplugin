@@ -1,4 +1,3 @@
-
 <?php
 get_header();
 ?>
@@ -7,7 +6,7 @@ get_header();
         <h1 class="headername top-margin">SHOP IT!</h1>
         <h1 class="no-margin headertwo">Please select or enter your First Aisle in the proper order:</h1>
         <div class="top-margin headerthree">
-            <div  style="display: flex; ">
+            <div style="display: flex; ">
                 <input id="aislename" placeholder="Aisle Name" style="margin-left: 0;" autocomplete="off" class="Aisle">
                 <button class="btn-add" onclick="onAdd()">
                     +
@@ -16,7 +15,7 @@ get_header();
                 <!------------------------------------ Total ---------------------------------->
                 <div style="display: flex;height: 38px;">
                     <p style="margin: 6px 0px 0px 7px;">Total:</p>
-                    <p id="totalamount" class="totalamount" >0</p>
+                    <p id="totalamount" class="totalamount">0</p>
                 </div>
             </div>
         </div>
@@ -79,10 +78,10 @@ get_header();
             ' <iframe name = "addingredient" src = "add-ingredient" />'
 
     }
-var totalamount = document.getElementById("totalamount");
+    var totalamount = document.getElementById("totalamount");
 
     function onAdd() {
-        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
+        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
         console.log("clicked");
         var table = document.getElementById("Aisle-table");
         var row = table.insertRow(-1);
@@ -113,41 +112,38 @@ var totalamount = document.getElementById("totalamount");
         var table = $("#Aisle-table")[0];
 
         table.deleteRow(row[0].rowIndex);
-        document.getElementById("totalamount").innerHTML =   Number(totalamount.innerHTML) - Number(1);
+        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
     }
 </script>
 <style>
     .btn-add {
         font-family: Calibri !important;
-    border: solid black 1px  !important;
-    background: #debf54  !important;
-    font-size: 24px  !important;
-    width: 57px  !important;
-    height: 38px  !important;
-    cursor: pointer  !important;
-    padding: 0  !important;
-    color: black  !important;
-    margin: 0  !important;
+        border: solid black 1px !important;
+        background: #debf54 !important;
+        font-size: 20px !important;
+        width: 57px !important;
+        height: 38px !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+        color: black !important;
+        margin: 0 !important;
 
     }
 
-    .btn-add:active {
-        font-family: Calibri !important;
-        background-color: #fffdf6;
-        font-size: 15px;
-    }
     .Ingredientsbtn {
-    font-family: Calibri !important;
-    float: right !important;
-    width: 125px !important;
-    height: 37px !important;
-    margin: 10px 1px 12px 0px !important;
-    cursor: pointer;
-    background: #debf54 !important;
-    font-size: 15px !important;
-    color: black !important;
-    padding: 0 !important;
-}
+        font-family: Calibri !important;
+        float: right !important;
+        width: 153px !important;
+        height: 37px !important;
+        margin: 10px 1px 12px 0px !important;
+        cursor: pointer;
+        background: #debf54 !important;
+        font-size: 15px !important;
+        color: black !important;
+        padding: 0 !important;
+        border: 1px solid;
+    }
+
     .Ingredientsbtn:active {
         font-family: Calibri !important;
         background-color: #fffdf6;
@@ -166,7 +162,7 @@ var totalamount = document.getElementById("totalamount");
     th,
     td {
         font-family: Calibri !important;
-        border: 0.5px solid black;
+        border: 0.5px solid black !important;
         height: 41px;
         font-size: 15px;
 
@@ -288,28 +284,59 @@ var totalamount = document.getElementById("totalamount");
         font-size: 40px;
 
     }
-.headertwo{
-    font-size: 30px;
-}
-.headerthree{
-    font-size: 16px;
-}
 
-    td{font-family: Calibri;}
-    h1{font-family: Calibri;}
-    p{font-family: Calibri;}
-    span{font-family: Calibri;}
-
-    .totalamount{
-        margin: 4px 0px 0px 4px;
-    background: white;
-    width: 33px;
-    height: 31px;
-    border: 2px solid;
-    text-align: center;
+    .headertwo {
+        font-size: 30px;
     }
-    table td, table th, .wp-block-table td, .wp-block-table th{
+
+    .headerthree {
+        font-size: 16px;
+    }
+
+    td {
+        font-family: Calibri;
+    }
+
+    h1 {
+        font-family: Calibri;
+    }
+
+    p {
+        font-family: Calibri;
+    }
+
+    span {
+        font-family: Calibri;
+    }
+
+    .totalamount {
+        margin: 4px 0px 0px 4px;
+        background: white;
+        width: 33px;
+        height: 31px;
+        border: 2px solid;
+        text-align: center;
+    }
+
+    table td,
+    table th,
+    .wp-block-table td,
+    .wp-block-table th {
         padding: 0 0 0 0 !important;
-       
+
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    button:active {
+        font-family: Calibri !important;
+        background-color: #fffdf6 !important;
+        outline: none;
+
+        background: white !important;
+        font-size: 21px !important;
+
     }
 </style>
