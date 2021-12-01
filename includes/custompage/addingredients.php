@@ -19,9 +19,9 @@ get_header();
 
             <!------------------------------------ Total ---------------------------------->
             <div style="display: flex;height: 38px;">
-                    <p style="margin: 6px 0px 0px 7px;">Total:</p>
-                    <p id="totalamount" class="totalamount">0</p>
-                </div>
+                <p style="margin: 6px 0px 0px 7px;">Total:</p>
+                <p id="totalamount" class="totalamount">0</p>
+            </div>
         </div>
 
 
@@ -177,21 +177,21 @@ get_header();
 
 </html>
 <style>
-  
     .btn-add {
-    font-family: Calibri !important;
-    border: solid black 1px !important;
-    background: #debf54 !important;
-    font-size: 20px !important;
-    width: 57px !important;
-    height: 38px !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    color: black !important;
-    margin: 0 !important;
-}
+        font-family: Calibri !important;
+        border: solid black 1px !important;
+        background: #debf54 !important;
+        font-size: 20px !important;
+        width: 57px !important;
+        height: 38px !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+        color: black !important;
+        margin: 0 !important;
+    }
+
     .btn-add:active {
-        background-color: ;
+        background-color: white;
         font-family: Calibri !important;
         font-size: 15px;
     }
