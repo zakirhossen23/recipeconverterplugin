@@ -1,9 +1,13 @@
+
+<?php
+get_header();
+?>
 <div id="all" class="all">
     <div class="no-margin">
         <h1 class="headername top-margin">SHOP IT!</h1>
-        <h1 class="no-margin">Please select or enter your First Aisle in the proper order:</h1>
-        <div class="top-margin">
-            <div style="display: flex;">
+        <h1 class="no-margin headertwo">Please select or enter your First Aisle in the proper order:</h1>
+        <div class="top-margin headerthree">
+            <div  style="display: flex; ">
                 <input id="aislename" placeholder="Aisle Name" style="margin-left: 0;" autocomplete="off" class="Aisle">
                 <button class="btn-add" onclick="onAdd()">
                     +
@@ -11,8 +15,8 @@
 
                 <!------------------------------------ Total ---------------------------------->
                 <div style="display: flex;height: 38px;">
-                    <p style="margin: 10px 0px 0px 7px;">Total:</p>
-                    <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+                    <p style="margin: 6px 0px 0px 7px;">Total:</p>
+                    <p id="totalamount" class="totalamount" >0</p>
                 </div>
             </div>
         </div>
@@ -88,7 +92,7 @@ var totalamount = document.getElementById("totalamount");
         cell1.innerHTML = '<span readonly="readonly" id="aisle' + row_id + '" name="aisle" >' + document
             .getElementById(
                 "aislename").value + '</span>'
-        cell1.style = "width:100%; padding-left: 7px;";
+        cell1.style = "width:100%; padding-left: 7px !important;";
         cell2.innerHTML = '<input id="' + row_id +
             '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
         cell2.style = "min-width: 43px; max-width: 43px;";
@@ -115,12 +119,15 @@ var totalamount = document.getElementById("totalamount");
 <style>
     .btn-add {
         font-family: Calibri !important;
-        border: solid black 1px;
-        background: #debf54;
-        font-size: 27px;
-        width: 57px;
-        height: 38px;
-        cursor: pointer;
+    border: solid black 1px  !important;
+    background: #debf54  !important;
+    font-size: 24px  !important;
+    width: 57px  !important;
+    height: 38px  !important;
+    cursor: pointer  !important;
+    padding: 0  !important;
+    color: black  !important;
+    margin: 0  !important;
 
     }
 
@@ -129,18 +136,18 @@ var totalamount = document.getElementById("totalamount");
         background-color: #fffdf6;
         font-size: 15px;
     }
-
     .Ingredientsbtn {
-        font-family: Calibri !important;
-        float: right;
-        width: 125px;
-        height: 37px;
-        margin: 10px 1px 12px 0px;
-        cursor: pointer;
-        background: #debf54;
-        font-size: 15px;
-    }
-
+    font-family: Calibri !important;
+    float: right !important;
+    width: 125px !important;
+    height: 37px !important;
+    margin: 10px 1px 12px 0px !important;
+    cursor: pointer;
+    background: #debf54 !important;
+    font-size: 15px !important;
+    color: black !important;
+    padding: 0 !important;
+}
     .Ingredientsbtn:active {
         font-family: Calibri !important;
         background-color: #fffdf6;
@@ -281,9 +288,28 @@ var totalamount = document.getElementById("totalamount");
         font-size: 40px;
 
     }
+.headertwo{
+    font-size: 30px;
+}
+.headerthree{
+    font-size: 16px;
+}
 
     td{font-family: Calibri;}
     h1{font-family: Calibri;}
     p{font-family: Calibri;}
     span{font-family: Calibri;}
+
+    .totalamount{
+        margin: 4px 0px 0px 4px;
+    background: white;
+    width: 33px;
+    height: 31px;
+    border: 2px solid;
+    text-align: center;
+    }
+    table td, table th, .wp-block-table td, .wp-block-table th{
+        padding: 0 0 0 0 !important;
+       
+    }
 </style>

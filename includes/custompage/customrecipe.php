@@ -38,8 +38,7 @@ function onNext() {
     localStorage.setItem("recipesource", recipesource);
     localStorage.setItem("serves", serves);
     localStorage.setItem("effort", effort);
-    document.getElementById("all").innerHTML =
-        ' <iframe name = "shopit" src = "shopit" />'
+   window.location.href="shopit";
 
 }
 </script>

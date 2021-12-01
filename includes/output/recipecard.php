@@ -106,7 +106,15 @@
         </table>
 
     </div>
-
+    <div class="footercontainer">
+         <button class="downloadbtn" onclick="">
+            Download as PDF
+        </button>
+        <button class="downloadbtn" onclick="">
+            Download as .docx
+        </button>
+    </div>
+   
 
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -576,5 +584,17 @@
         font-size: 48px;
         margin: 0;
         align-self: center;
+    }
+
+    .downloadbtn{
+        font-family: Calibri !important;
+        float: right;
+        width: 172px;
+        height: 37px;
+        margin: 10px 1px 12px 0px;
+        cursor: pointer;
+        color: white;
+        background: #242d9d;
+        font-size: 15px;
     }
 </style>
