@@ -2,9 +2,12 @@
 
 <head>
     <div class="header" style="margin: 0 30px 0 30px;">
-        <div style="display: flex;"><img src="https://miseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg">
+        <div style="overflow: hidden;display: flex;">
+            <div style="width: 17%;">
+                <img src="https://miseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
+            </div>
             <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 58%;">
-                <h1 id="recipename">Recipe name</h1>
+                <h1 id="recipename">sd</h1>
             </div>
         </div>
         <div class="border1"></div>
@@ -17,7 +20,7 @@
                 </tr>
             </tbody>
         </table>
-        <div class="border0"></div>
+        <div class="border1"></div>
     </div>
 </head>
 
@@ -239,6 +242,7 @@
         border: 1px solid;
         border-left: 0;
         border-right: 0;
+        background: black;
     }
 
     .border0 {
@@ -343,10 +347,10 @@
 
     /********** Make it ************/
     .makeit {
-    min-width: 50%;
-    height: 100%;
-    vertical-align: top;
-}
+        min-width: 50%;
+        height: 100%;
+        vertical-align: top;
+    }
 
     .makeittable {
         width: 100%;
@@ -406,10 +410,8 @@
         border: 0.5px solid black;
         height: 30px;
         font-size: 15px;
-        max-width: 130px;
         padding-left: 6px;
-        padding-right: 6px;
-        min-width: 130px;
+        min-width: 95px;
     }
 
     .makeititemgroup.do {
@@ -446,11 +448,10 @@
     }
 
     .withcell {
+
         font-family: Calibri !important;
         text-align: center;
-        min-width: 133px;
         max-width: 175px;
-        font-size: 15px;
         overflow-wrap: break-word;
     }
 
@@ -463,13 +464,12 @@
 
     .makeititemgroup.how {
         max-width: 236px !IMPORTANT;
-    min-width: 231px !important;
+        min-width: 231px !important;
     }
 
     .howmaincell {
         font-family: Calibri !important;
-        max-width: 225px;
-        min-width: 225px;
+
         font-size: 15px;
     }
 
@@ -524,10 +524,10 @@
     /**************************************************** SHOP HEADER ***************************************/
     .shophead {
         color: #cdba81;
-    justify-content: center;
-    display: flex;
-    height: auto;
-    width: 205px;
+        justify-content: center;
+        display: flex;
+        height: auto;
+        width: 205px;
     }
 
     .shopheadimg {
@@ -543,12 +543,12 @@
 
     /**************************************************** Mise IT HEADER ***************************************/
     .misehead {
-    color: #64647e;
-    justify-content: center;
-    display: flex;
-    height: fit-content;
-    width: 294px;
-}
+        color: #64647e;
+        justify-content: center;
+        display: flex;
+        height: fit-content;
+        width: 294px;
+    }
 
     .miseheadimg {
         width: 32px;
@@ -571,12 +571,12 @@
 
     .makeheadimg {
         align-self: center;
-    width: 32px;
+        width: 32px;
     }
 
     .makeheadheadtext {
         font-size: 32px;
-    margin: 0;
-    align-self: center;
+        margin: 0;
+        align-self: center;
     }
 </style>
