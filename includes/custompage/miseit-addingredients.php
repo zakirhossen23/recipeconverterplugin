@@ -1,37 +1,34 @@
-<?php
-get_header();
-?>
 <html>
 
 <head></head>
 
 <body>
     <div id="all">
-        <h1 class="headertwo no-margin">Please enter your Mise It! List:</h1>
-        <div style="display: flex;" class="headerthree">
+        <h1>Please enter your Mise It! List:</h1>
+        <div style="display: flex;">
             <input id="ingredientname" style=" padding:0px 0px 0px 4px;  width:161px;" placeholder="Qty and Ingredient">
             <input id="Preparation" style=" padding:0px 0px 0px 4px; " placeholder="Preparation Instructions">
             <select id="itemname" placeholder="Please select Item" style="padding:0px 0px 0px 4px; width: 139px;">
 
             </select>
             <button class="btn-add" onclick="onAdd()">+ </button>
-            <!------------------------------------ Total ---------------------------------->
-            <div style="display: flex;height: 38px;">
-                <p style="margin: 6px 0px 0px 7px;">Total:</p>
-                <p id="totalamount" class="totalamount">0</p>
-            </div>
+              <!------------------------------------ Total ---------------------------------->
+              <div style="display: flex;height: 38px;">
+                    <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                    <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+                </div>
         </div>
 
 
         <div>
 
             <table id="Item-table">
-            <tr>
+                <tr>
                     <th class="hiddenrow"></th>
                     <th class="hiddenrow"></th>
-                    <th class="hiddenrow" style="min-width: 48px;"></th>
-                    <th class="hiddenrow" style="min-width: 25.2px;"></th>
-                    <th class="hiddenrow" style="min-width: 39.8px;"></th>
+                    <th class="hiddenrow" style="min-width: 30px;"></th>
+                    <th class="hiddenrow" style="min-width: 0px;"></th>
+                    <th class="hiddenrow"></th>
                 </tr>
             </table>
 
@@ -52,7 +49,7 @@ get_header();
         allitemcode = JSON.parse(item);
         var count = 1;
         allitemcode.forEach(element => {
-            codeitem.push("<option>" + count + " - " + element + "</option>");
+            codeitem.push("<option>"+ count +" - " + element + "</option>");
             count++;
         });
         itemfield.innerHTML = codeitem;
@@ -134,7 +131,7 @@ get_header();
         }
 
         function onDelete(btn) {
-            document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
             var row = $(btn).closest("TR");
             var name = $("TD", row).eq(0).html();
 
@@ -168,7 +165,7 @@ get_header();
         }
 
         function onAdd() {
-            document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
             var rowname = document.getElementById("itemname").selectedIndex;
             var ingredientvalue = document.getElementById("ingredientname").value
             var pereperationvalue = document.getElementById("Preparation").value
@@ -200,65 +197,50 @@ get_header();
 </html>
 <style>
     .btn-add {
+        border: solid black 1px;
+        background: #4E5975;
+        font-size: 27px;
+        width: 57px;
+        height: 38px;
+        cursor: pointer;
+        color: white;
         font-family: Calibri !important;
-        border: solid black 1px !important;
-        background: #4E5975 !important;
-        font-size: 20px !important;
-        width: 57px !important;
-        height: 38px !important;
-        cursor: pointer !important;
-        padding: 0 !important;
-        color: white !important;
-        margin: 0 !important;
-    }
 
+    }
 
     .btn-add:active {
         background-color: #fffdf6;
         font-family: Calibri !important;
         font-size: 15px;
-        color: black !important;
     }
 
     .cell {
         min-width: 130px;
         max-width: 130px;
-        padding-left: 7px !important;
+        padding-left: 7px;
         font-family: Calibri !important;
         font-size: 15px;
-
     }
-
-  
 
     .makeitbtn {
-        width: 121px;
-        color: white !important; 
-        padding: 8px;
         float: right;
+        width: 172px;
+        height: 37px;
         margin: 10px 1px 12px 0px;
-        background-color: #4E5975 !important;
+        cursor: pointer;
+        color: white;
+        background: #4E5975;
         font-family: Calibri !important;
         font-size: 15px;
-        border: 1px solid black;
     }
-    .makeitbtn:hover{
-        color: white;
-    
-    }
-    .makeitbtn:active{
-        font-family: Calibri !important;
-        background-color: #fffdf6 !important;
-        font-size: 15px !important;
-        color: black !important;
-    }
+
     th,
     td {
-        width: 100%;
-        border: 0.5px solid black !important;
+        border: 0.5px solid black;
         height: 41px;
         font-family: Calibri !important;
         font-size: 15px;
+
     }
 
     table {
@@ -287,7 +269,6 @@ get_header();
         pointer-events: none;
         font-family: Calibri !important;
         font-size: 15px;
-        
     }
 
     .perep {
@@ -361,16 +342,18 @@ get_header();
     }
 
     .numbers {
-    background: black;
-    color: white;
-    font-size: 20px;
-    font-family: calibri;
-    width: 33px;
-    padding: 0 !important;
-    margin: 0px 3px !important;
-    border-radius: 35px;
-    height: 33px;
-}
+        background: black;
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        text-align: center;
+        font-size: 23px;
+        font-family: calibri;
+        display: inline-table;
+    }
+
     body {
         font-family: Calibri;
         font-family: Calibri !important;
@@ -385,10 +368,9 @@ get_header();
     }
 
     select {
+        font-family: Calibri;
         font-family: Calibri !important;
         font-size: 15px;
-        border: 1px solid grey;
-        color: black;
     }
 
 
@@ -417,99 +399,8 @@ get_header();
         font-size: 15px;
     }
 
-
-    .headername {
-        font-family: Calibri !important;
-        font-size: 40px;
-
-    }
-
-    .headertwo {
-        font-size: 30px;
-    }
-
-    .headerthree {
-        font-size: 16px;
-    }
-
-    .totalamount {
-        margin: 4px 0px 0px 4px;
-        background: white;
-        width: 33px;
-        height: 31px;
-        border: 2px solid;
-        text-align: center;
-    }
-
-    table td,
-    table th,
-    .wp-block-table td,
-    .wp-block-table th {
-        padding: 0 0 0 0 !important;
-
-    }
-
-    input {
-        font-family: Calibri !important;
-        font-size: 15px;
-    }
-
-    .no-margin {
-        font-family: Calibri !important;
-        margin: 12px 0;
-    }
-
-    .top-margin {
-        font-family: Calibri !important;
-        margin-top: 10px;
-    }
-
-    /*************************** Selectbox ************************/
-    select:focus {
-        outline-offset: 2px;
-        outline: none;
-    }
-
-    .cellchecked {
-        vertical-align: middle;
-        width: 100% !important;
-        position: relative !important;
-        align-self: center !important;
-        pointer-events: none;
-        padding: 0px !important;
-        height: 24px !important;
-        margin: 0;
-    }
-
-    /************************************Button **************************/
-
-    button:focus {
-        outline: none;
-    }
-
-    button:active {
-        font-family: Calibri !important;
-        background-color: #fffdf6 !important;
-        outline: none;
-
-        background: white !important;
-        font-size: 21px !important;
-
-    }
-
-    td {
-        font-family: Calibri;
-    }
-
-    h1 {
-        font-family: Calibri;
-    }
-
-    p {
-        font-family: Calibri;
-    }
-
-    span {
-        font-family: Calibri;
-    }
+    td{font-family: Calibri;}
+    h1{font-family: Calibri;}
+    p{font-family: Calibri;}
+    span{font-family: Calibri;}
 </style>

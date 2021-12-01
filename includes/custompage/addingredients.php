@@ -1,26 +1,23 @@
-<?php
-get_header();
-?>
 <html>
 
 <head></head>
 
 <body>
     <div id="all">
-        <h1 class="headertwo no-margin">Please enter your Shop It! List:</h1>
-        <div style="display: flex;" class="headerthree">
+        <h1>Please enter your Shop It! List:</h1>
+        <div style="display: flex;">
             <input id="ingredientname" style=" padding:0px 0px 0px 4px; " placeholder="Ingredient">
             <input id="overbuy" type="radio" placeholder="Overbuy" style="width: 41px; height:38px; margin: 0;vertical-align: top;" />
 
-            <select id="aislename" placeholder="Please select Aisle" style="padding:0px 0px 0px 4px; width: 139px; margin: 0px 4px 0 0;">
+            <select id="aislename" placeholder="Please select Aisle" style="padding:0px 0px 0px 4px; width: 139px;">
 
             </select>
             <button class="btn-add" onclick="onAdd()">+ </button>
-
+            
             <!------------------------------------ Total ---------------------------------->
             <div style="display: flex;height: 38px;">
-                <p style="margin: 6px 0px 0px 7px;">Total:</p>
-                <p id="totalamount" class="totalamount">0</p>
+                <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
             </div>
         </div>
 
@@ -87,7 +84,7 @@ get_header();
                 document.getElementById('ingredient' + id).style.width = "97%";
                 document.getElementById('ingredient' + id).style.pointerEvents = "all";
                 document.getElementById('overbuyrow' + id).style.pointerEvents = "all";
-
+                document.getElementById('overbuyrow' + id).style.margin = "0px -3px 0px 7px";
                 document.getElementById('ingredient' + id).setAttribute("contenteditable", true);
                 btn.value = "Save";
 
@@ -105,7 +102,7 @@ get_header();
                 document.getElementById('ingredient' + id).style.width = "97%";
                 document.getElementById('ingredient' + id).style.pointerEvents = "none";
                 document.getElementById('overbuyrow' + id).style.pointerEvents = "none";
-
+                document.getElementById('overbuyrow' + id).style.margin = "";
                 btn.style.background = "";
                 return false;
 
@@ -120,7 +117,7 @@ get_header();
             var table = $("#Item-table")[0];
 
             table.deleteRow(row[0].rowIndex);
-            document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
         }
 
         function makegroup() {
@@ -143,16 +140,16 @@ get_header();
 
 
         function onAdd() {
-            document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
+            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
             var groupname = document.getElementById("aislename").value;
             var rowname = document.getElementById("aislename").selectedIndex;
             var ingredientvalue = document.getElementById("ingredientname").value
             var overbuyvalue = document.getElementById("overbuy").checked;
             var el = document.createElement("tr");
-            el.innerHTML = '<td style="padding-left: 7px !important;"><span readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
+            el.innerHTML = '<td style="padding-left: 7px;"><span readonly="readonly" class="ingredient" id="ingredient' + row_id + //inputbox
                 '" name="' + rowname + '" groupname="' + groupname + '" >' +
                 ingredientvalue + '</span></td>' + '<td class="radiotd">' +
-                "<input class='overbuybtn cellchecked' name='" +
+                "<input class='overbuybtn' name='" +
                 row_id + "'id='overbuyrow" + row_id + "' type = 'radio' /> " + //overbuy
                 "</td>" +
                 '<td style="min-width: 43px; max-width: 43px;"><input type="button" class="editbtn" name="' + row_id +
@@ -178,20 +175,18 @@ get_header();
 </html>
 <style>
     .btn-add {
+        border: solid black 1px;
+        background: #debf54;
+        font-size: 27px;
+        width: 57px;
+        height: 38px;
+        cursor: pointer;
         font-family: Calibri !important;
-        border: solid black 1px !important;
-        background: #debf54 !important;
-        font-size: 20px !important;
-        width: 57px !important;
-        height: 38px !important;
-        cursor: pointer !important;
-        padding: 0 !important;
-        color: black !important;
-        margin: 0 !important;
+
     }
 
     .btn-add:active {
-        background-color: white;
+        background-color: #fffdf6;
         font-family: Calibri !important;
         font-size: 15px;
     }
@@ -203,7 +198,7 @@ get_header();
     th,
     td {
         width: 100%;
-        border: 0.5px solid black !important;
+        border: 0.5px solid black;
         height: 41px;
         font-family: Calibri !important;
         font-size: 15px;
@@ -304,14 +299,15 @@ get_header();
     }
 
     select {
+        font-family: Calibri;
         font-family: Calibri !important;
         font-size: 15px;
-        border: 1px solid;
-        color: black;
     }
 
 
     .overbuybtn {
+        margin-left: 34%;
+
         pointer-events: none;
         font-family: Calibri !important;
         font-size: 15px;
@@ -335,104 +331,5 @@ get_header();
         background-color: #debf54;
         font-family: Calibri !important;
         font-size: 15px;
-    }
-
-    .headername {
-        font-family: Calibri !important;
-        font-size: 40px;
-
-    }
-
-    .headertwo {
-        font-size: 30px;
-    }
-
-    .headerthree {
-        font-size: 16px;
-    }
-
-    .totalamount {
-        margin: 4px 0px 0px 4px;
-        background: white;
-        width: 33px;
-        height: 31px;
-        border: 2px solid;
-        text-align: center;
-    }
-
-    table td,
-    table th,
-    .wp-block-table td,
-    .wp-block-table th {
-        padding: 0 0 0 0 !important;
-
-    }
-
-    input {
-        font-family: Calibri !important;
-        font-size: 15px;
-    }
-
-    .no-margin {
-        font-family: Calibri !important;
-        margin: 12px 0;
-    }
-
-    .top-margin {
-        font-family: Calibri !important;
-        margin-top: 10px;
-    }
-
-    /********************* Checkedbox ******************/
-    input[type=radio]:after {
-        content: none;
-        outline: none !important;
-    }
-
-    input[type=checkbox],
-    input[type=radio] {
-        position: relative;
-        height: 25px !important;
-        align-self: center;
-        -webkit-appearance: revert;
-    }
-
-    input[type=radio]:checked {
-        border: 2px solid #000000;
-        align-self: center;
-        outline: none !important;
-    }
-
-    /*************************** Selectbox ************************/
-    select:focus {
-        outline-offset: 2px;
-        outline: none;
-    }
-
-    .cellchecked {
-        vertical-align: middle;
-        width: 100% !important;
-        position: relative !important;
-        align-self: center !important;
-        pointer-events: none;
-        padding: 0px !important;
-        height: 24px !important;
-        margin: 0;
-    }
-
-    /************************************Button **************************/
-
-    button:focus {
-        outline: none;
-    }
-
-    button:active {
-        font-family: Calibri !important;
-        background-color: #fffdf6 !important;
-        outline: none;
-
-        background: white !important;
-        font-size: 21px !important;
-
     }
 </style>

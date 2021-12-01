@@ -1,11 +1,8 @@
-<?php
-get_header();
-?>
 <div id="all" class="all">
     <div class="no-margin">
         <h1 class="headername top-margin">MISE IT!</h1>
-        <h1 class="no-margin headertwo">Please select or enter your First Mise It! Item in the proper order:</h1>
-        <div class="top-margin headerthree">
+        <h1 class="no-margin">Please select or enter your First Mise It! Item in the proper order:</h1>
+        <div class="top-margin">
             <div style="display: flex;">
                 <input list="itemslist" class="Item" id="itemname" placeholder="Item Name" style="margin-left: 0px;" name="myBrowser" /></label>
                 <datalist id="itemslist">
@@ -106,7 +103,7 @@ get_header();
 
 
     function onAdd() {
-        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
+        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
         var allserial = document.getElementsByClassName("numbers");
         var table = document.getElementById("Item-table");
         var row = table.insertRow(-1);
@@ -120,7 +117,7 @@ get_header();
         cell1.innerHTML = '<span readonly="readonly" id="item' + row_id + '" name="item"style="pointer-events:none;" >' + document
             .getElementById(
                 "itemname").value + ' </span>'
-        cell1.style = "width:100%; padding-left: 7px !important;";
+        cell1.style = "width:100%; padding-left: 7px;";
         cell2.innerHTML = '<input id="' + row_id +
             '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';
         cell2.style = "min-width: 43px; max-width: 43px;";
@@ -135,7 +132,7 @@ get_header();
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
     function onDelete(btn) {
-        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
+        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
         var row = $(btn).closest("TR");
         var name = $("TD", row).eq(0).html();
 
@@ -155,17 +152,15 @@ get_header();
 </script>
 <style>
     .btn-add {
-        background: #4E5975 !important;
+        border: solid black 1px;
+        background: #4E5975;
+        font-size: 27px;
+        width: 57px;
+        height: 38px;
+        cursor: pointer;
+        color: white;
         font-family: Calibri !important;
-        border: solid black 1px !important;
-        font-size: 20px !important;
-        width: 57px !important;
-        height: 38px !important;
-        cursor: pointer !important;
-        padding: 0 !important;
-        color: black !important;
-        margin: 0 !important;
-        color: white !important;
+
     }
 
     .hiddenrow {
@@ -185,39 +180,32 @@ get_header();
         background: black;
         color: white;
         border-radius: 50%;
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         align-items: center;
         text-align: center;
-        justify-content: center;
-        font-size: 19px;
+        font-size: 23px;
         font-family: calibri;
-        vertical-align: middle;
-        margin: 0 2px;
-        padding: 0;
+
     }
 
     .Ingredientsbtn {
-        font-family: Calibri !important;
-        float: right !important;
-        width: 172px !important;
-        height: 37px !important;
-        margin: 10px 1px 12px 0px !important;
+        float: right;
+        width: 172px;
+        height: 37px;
+        margin: 10px 1px 12px 0px;
         cursor: pointer;
-        background: #4E5975 !important;
-        font-size: 15px !important;
-        color: white !important;
-        padding: 0 !important;
-        border: 1px solid;
+        color: white;
+        background: #4E5975;
+        font-family: Calibri !important;
+        font-size: 15px;
     }
 
-
     .Ingredientsbtn:active {
-    background-color: #fffdf6 !important;
-    font-family: Calibri !important;
-    font-size: 15px !important;
-    color: black !important;
-}
+        background-color: #fffdf6;
+        font-family: Calibri !important;
+        font-size: 15px;
+    }
 
     iframe {
         width: 100%;
@@ -228,12 +216,11 @@ get_header();
         font-size: 15px;
     }
 
-
     th,
     td {
-        font-family: Calibri !important;
-        border: 0.5px solid black !important;
+        border: 0.5px solid black;
         height: 41px;
+        font-family: Calibri !important;
         font-size: 15px;
 
     }
@@ -248,7 +235,7 @@ get_header();
 
 
     input {
-
+        font-family: Calibri;
         font-family: Calibri !important;
         font-size: 15px;
     }
@@ -352,40 +339,9 @@ get_header();
         font-size: 15px;
     }
 
-
     .headername {
-        font-family: Calibri !important;
         font-size: 40px;
-
-    }
-
-    .headertwo {
-        font-size: 30px;
-    }
-
-    .headerthree {
-        font-size: 16px;
-    }
-
-    table td,
-    table th,
-    .wp-block-table td,
-    .wp-block-table th {
-        padding: 0 0 0 0 !important;
-
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    button:active {
         font-family: Calibri !important;
-        background-color: #fffdf6 !important;
-        outline: none;
-
-        background: white !important;
-        font-size: 21px !important;
 
     }
 
@@ -399,19 +355,8 @@ get_header();
     }
 
 
-    td {
-        font-family: Calibri;
-    }
-
-    h1 {
-        font-family: Calibri;
-    }
-
-    p {
-        font-family: Calibri;
-    }
-
-    span {
-        font-family: Calibri;
-    }
+    td{font-family: Calibri;}
+    h1{font-family: Calibri;}
+    p{font-family: Calibri;}
+    span{font-family: Calibri;}
 </style>

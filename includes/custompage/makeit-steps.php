@@ -60,11 +60,11 @@
             </div>
 
             <button class="btn-add" onclick="onAdd()">+ </button>
-               <!------------------------------------ Total ---------------------------------->
-               <div style="display: flex;height: 38px;">
-                    <p style="margin: 10px 0px 0px 7px;">Total:</p>
-                    <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
-                </div>
+            <!------------------------------------ Total ---------------------------------->
+            <div style="display: flex;height: 38px;">
+                <p style="margin: 10px 0px 0px 7px;">Total:</p>
+                <p id="totalamount" style="margin: 4px 0px 0px 4px;display: inline-block;background: white;    width: 30px;    height: 23px;    padding: 4px 0px 0px 1px;    border: 2px solid;    text-align: center;">0</p>
+            </div>
         </div>
         <div>
 
@@ -124,7 +124,7 @@
         }
 
         function onAdd() {
-            document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
+            document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
             setstatus = 0; // 0 = normal at last
             var table = document.getElementById("Item-table");
             var placingheader = null;
@@ -236,20 +236,21 @@
                     how: allhow[i].innerText,
                     important: allimportant[i].innerText
                 };
-           
+
                 savingmakeit.push(JSON.stringify(obj))
             }
             localStorage.setItem("makeit", JSON.stringify(savingmakeit));
             var allgroup = [];
-          var allgroupelement = $('[class="headergroup"]');
+            var allgroupelement = $('[class="headergroup"]');
 
             for (let i = 0; i < allgroupelement.length; i++) {
-          
+
                 allgroup.push(JSON.stringify(allgroupelement[i].innerText))
             }
-            
-            localStorage.setItem("makeitgroup",JSON.stringify(allgroup));
-            window.location.href =("recipecard");   }
+
+            localStorage.setItem("makeitgroup", JSON.stringify(allgroup));
+            top.location.href = ("recipecard");
+        }
         var editing = "";
 
         function onEdit(btn) {
@@ -387,25 +388,25 @@
         }
 
         function onDelete(btn) {
-            if (btn.name=="header"){
-                
-             var groupname=   btn.parentElement.parentElement.getAttribute("groupname")
-             var allsamegroup =  $('[groupname="'+groupname+'"]')
-             document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
-             for (let i = 0; i < allsamegroup.length; i++) {
-                allsamegroup[i].remove()
-                document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
-             }
-            }else{
-                document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
-            var row = $(btn).closest("TR");
-            var name = $("TD", row).eq(0).html();
+            if (btn.name == "header") {
 
-            var table = $("#Item-table")[0];
+                var groupname = btn.parentElement.parentElement.getAttribute("groupname")
+                var allsamegroup = $('[groupname="' + groupname + '"]')
+                document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
+                for (let i = 0; i < allsamegroup.length; i++) {
+                    allsamegroup[i].remove()
+                    document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
+                }
+            } else {
+                document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
+                var row = $(btn).closest("TR");
+                var name = $("TD", row).eq(0).html();
 
-            table.deleteRow(row[0].rowIndex);
+                var table = $("#Item-table")[0];
+
+                table.deleteRow(row[0].rowIndex);
             }
-            
+
 
 
         }
@@ -427,8 +428,8 @@
             var element = evt.params.data.element;
             var $element = $(element);
             $element.detach();
-             $(this).append($element);
-             $(this).trigger("change");
+            $(this).append($element);
+            $(this).trigger("change");
         });
 
 
@@ -438,8 +439,8 @@
             closeOnSelect: true,
             placeholder: "Do",
             allowHtml: true,
-           allowClear: false,
-           
+            allowClear: false,
+
             tags: true,
             multiple: true
 
@@ -450,7 +451,7 @@
             allowHtml: true,
             allowClear: false,
             tags: true,
-            
+
             multiple: true
 
         });
@@ -658,7 +659,7 @@
     .withcell {
         font-family: Calibri !important;
         text-align: center;
- 
+
         font-size: 15px;
         overflow-wrap: break-word;
     }
@@ -897,8 +898,19 @@
     }
 
 
-    td{font-family: Calibri;}
-    h1{font-family: Calibri;}
-    p{font-family: Calibri;}
-    span{font-family: Calibri;}
+    td {
+        font-family: Calibri;
+    }
+
+    h1 {
+        font-family: Calibri;
+    }
+
+    p {
+        font-family: Calibri;
+    }
+
+    span {
+        font-family: Calibri;
+    }
 </style>

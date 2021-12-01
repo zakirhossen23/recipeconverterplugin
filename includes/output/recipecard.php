@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <div class="header" style="margin: 0 30px;">
+    <div class="header" style="margin: 0 30px 0 30px;">
         <div style="display: flex;"><img src="https://miseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg">
             <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 58%;">
                 <h1 id="recipename">Recipe name</h1>
@@ -26,20 +26,20 @@
         <table style="width:100%;border-spacing: 30px 0;">
             <tbody>
                 <tr>
-                    <th>
+                    <th style="width: 20%;">
                         <div class="shophead">
                             <img class="shopheadimg" src="https://miseitmakeit.ca/wp-content/uploads/2021/11/shopit-icon.png" />
                             <p class="shopheadheadtext">SHOP IT!</p>
                         </div>
 
                     </th>
-                    <th>
+                    <th style="width: 30%;">
                         <div class="misehead">
                             <img class="miseheadimg" src="https://miseitmakeit.ca/wp-content/uploads/2021/11/mise-it-icon.jpg" />
                             <p class="miseheadheadtext">MISE IT!</p>
                         </div>
                     </th>
-                    <th>
+                    <th style="width: 50%;">
                         <div class="makehead">
                             <img class="makeheadimg" src="https://miseitmakeit.ca/wp-content/uploads/2021/11/makeit-icon.jpg" />
                             <p class="makeheadheadtext">MAKE IT!</p>
@@ -106,15 +106,7 @@
         </table>
 
     </div>
-    <div class="footercontainer">
-         <button class="downloadbtn" onclick="">
-            Download as PDF
-        </button>
-        <button class="downloadbtn" onclick="">
-            Download as .docx
-        </button>
-    </div>
-   
+
 
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -233,9 +225,9 @@
 <style>
     .tdheader {
         color: blue;
-    font-style: italic;
-    padding: 8px 9px;
-    font-size: revert;
+        font-style: italic;
+        padding: 8px 9px;
+        font-size: revert;
     }
 
     img {
@@ -244,9 +236,9 @@
 
     .border1 {
         height: 0px;
-    border: 1px solid;
-    border-left: 0;
-    border-right: 0;
+        border: 1px solid;
+        border-left: 0;
+        border-right: 0;
     }
 
     .border0 {
@@ -259,7 +251,7 @@
     /****************** Below Header *****************/
     /****************** Shopit ******************/
     .Shopittable {
-        width: 254px;
+        min-width: 20%;
         height: 100%;
         vertical-align: top;
     }
@@ -285,8 +277,8 @@
     }
 
     .shopittr td {
-        padding-left: 6px;
-        padding-right: 6px;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
     }
 
     .aislegroup {
@@ -299,7 +291,7 @@
 
     /******************Mise it ******************/
     .miseittable {
-        width: 296px;
+        min-width: 30%;
         height: 100%;
         vertical-align: top;
     }
@@ -351,10 +343,10 @@
 
     /********** Make it ************/
     .makeit {
-        width: 40%;
-        height: 100%;
-        vertical-align: top;
-    }
+    min-width: 50%;
+    height: 100%;
+    vertical-align: top;
+}
 
     .makeittable {
         width: 100%;
@@ -470,8 +462,8 @@
     }
 
     .makeititemgroup.how {
-        max-width: 300px !IMPORTANT;
-        min-width: 300px !important;
+        max-width: 236px !IMPORTANT;
+    min-width: 231px !important;
     }
 
     .howmaincell {
@@ -532,37 +524,39 @@
     /**************************************************** SHOP HEADER ***************************************/
     .shophead {
         color: #cdba81;
-        justify-content: center;
-        display: flex;
-        height: auto;
+    justify-content: center;
+    display: flex;
+    height: auto;
+    width: 205px;
     }
 
     .shopheadimg {
-        width: auto;
+        width: 32px;
         align-self: center;
     }
 
     .shopheadheadtext {
-        font-size: 48px;
+        font-size: 32px;
         margin: 0;
         align-self: center;
     }
 
     /**************************************************** Mise IT HEADER ***************************************/
     .misehead {
-        color: #64647e;
-        justify-content: center;
-        display: flex;
-        height: auto;
-    }
+    color: #64647e;
+    justify-content: center;
+    display: flex;
+    height: fit-content;
+    width: 294px;
+}
 
     .miseheadimg {
-        width: auto;
+        width: 32px;
         align-self: center;
     }
 
     .miseheadheadtext {
-        font-size: 48px;
+        font-size: 32px;
         margin: 0;
         align-self: center;
     }
@@ -576,25 +570,13 @@
     }
 
     .makeheadimg {
-        width: auto;
         align-self: center;
+    width: 32px;
     }
 
     .makeheadheadtext {
-        font-size: 48px;
-        margin: 0;
-        align-self: center;
-    }
-
-    .downloadbtn{
-        font-family: Calibri !important;
-        float: right;
-        width: 172px;
-        height: 37px;
-        margin: 10px 1px 12px 0px;
-        cursor: pointer;
-        color: white;
-        background: #242d9d;
-        font-size: 15px;
+        font-size: 32px;
+    margin: 0;
+    align-self: center;
     }
 </style>
