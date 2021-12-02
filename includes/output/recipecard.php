@@ -1,3 +1,22 @@
+<?php
+
+require 'pdfcrowd.php';
+$client = new \Pdfcrowd\HtmlToPdfClient("zakirhossen", "5f0f6799dcab7b16eb8f800dddd96ef6");
+
+if (isset($_POST["html"])) {
+
+    $pdf = $client->convertString(stripslashes($_POST["html"]));
+    header("Content-Type: application/pdf");
+    header("Cache-Control: no-cache");
+    header("Accept-Ranges: none");
+    header("Content-Disposition: inline; filename=\"example.pdf\"");
+   
+     echo  $pdf;
+    
+}
+//
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,6 +28,15 @@
             <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 58%;">
                 <h1 id="recipename">sd</h1>
             </div>
+            <div id="downloadcontainer" style="vertical-align: middle;padding-top: 26px;text-align: center;width: 25%;">
+                <form action="" id="convertingframe"  enctype='multipart/form-data' charset="utf-8" method="POST">
+                    <input type="text" id="htmlvalue" name="html" />
+                    <button onclick="docxdownload()" class="docxbtn" style="float: right;">Download as docx </button>
+
+                    <button onclick="pdfdownload()" class="pdfbtn" style="float: right;" onclick="">Download as PDF</button>
+                </form>
+            </div>
+
         </div>
         <div class="border1"></div>
         <table style="width:100%">
@@ -110,7 +138,10 @@
 
     </div>
 
+    <div id="footer" style="padding: 0 29px;position: absolute;height : 40px;">
+        <p>www.shopitmiseitmakeit.ca</p>
 
+    </div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
@@ -122,7 +153,9 @@
         document.getElementById("serves").innerHTML = "Serves: " + localStorage.getItem("serves");
         document.getElementById("effort").innerHTML = "Effort: " + localStorage.getItem("effort");
         document.getElementById("recipename").innerHTML = localStorage.getItem("recipename");
-
+        if (window.location.search == "?download") {
+            document.getElementById("downloadcontainer").style = "display:None;"
+        }
         // Shop It! ******************************************************************************************
         //***************************** Shop It! Group Name ******************************
         var aisles = JSON.parse(localStorage.getItem("aisles"));
@@ -214,15 +247,18 @@
             }
 
         }
-
-
-
     };
+
+
+    function docxdownload() {
+        document.getElementById("downloadcontainer").style.display="none";
+
+        document.getElementById("htmlvalue").value = document.documentElement.outerHTML;
+        document.getElementById("downloadcontainer").style.display="";
+
+        document.getElementById("convertingframe").submit;
+    }
 </script>
-
-</html>
-
-
 
 
 <style>
@@ -319,6 +355,7 @@
     .miseittr td {
         padding-left: 6px;
         padding-right: 6px;
+        width: 55%;
     }
 
 
@@ -527,7 +564,7 @@
         justify-content: center;
         display: flex;
         height: auto;
-        width: 205px;
+
     }
 
     .shopheadimg {
@@ -547,7 +584,7 @@
         justify-content: center;
         display: flex;
         height: fit-content;
-        width: 294px;
+
     }
 
     .miseheadimg {
@@ -579,4 +616,40 @@
         margin: 0;
         align-self: center;
     }
+
+    /* ********************************Donwload Button *********************************/
+    .docxbtn {
+        font-family: Calibri !important;
+        width: 139px;
+        height: 37px;
+        cursor: pointer;
+        background: gray;
+        color: white;
+        font-size: 15px;
+    }
+
+    .docxbtn:active {
+
+        background: #48487f;
+
+    }
+
+    .pdfbtn {
+        font-family: Calibri !important;
+        width: 139px;
+        height: 37px;
+        cursor: pointer;
+        background: gray;
+        color: white;
+        font-size: 15px;
+    }
+
+    .pdfbtn:active {
+
+        background: #48487f;
+
+    }
 </style>
+
+
+</html>
