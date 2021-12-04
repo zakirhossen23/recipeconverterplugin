@@ -82,7 +82,7 @@ if (isset($_POST["html"])) {
         .shopittr th,
         .shopittr td {
             border: 0.5px solid black;
-            height: 20px;
+            height:26px;
             font-family: Calibri !important;
             font-size: 13px;
 
@@ -119,7 +119,7 @@ if (isset($_POST["html"])) {
         .miseittr th,
         .miseittr td {
             border: 0.5px solid black;
-            height: 20px;
+            height:26px;
             font-family: Calibri !important;
             font-size: 13px;
         }
@@ -128,11 +128,11 @@ if (isset($_POST["html"])) {
             padding-left: 6px;
             padding-right: 6px;
             width: 55%;
-            height: 20px !important;
+            height:26px;
         }
 
         .miseittr {
-            height: 20px;
+            height:26px;
         }
 
         .itemgroup {
@@ -223,7 +223,7 @@ if (isset($_POST["html"])) {
         .makeit td {
             font-family: Calibri !important;
             border: 0.5px solid black;
-            height: 20px;
+            height:26px;
             font-size: 15px;
             padding-left: 6px;
 
@@ -536,7 +536,6 @@ if (isset($_POST["html"])) {
                         <!--    inside td Make it-->
                         <table id="Item-table" class="makeittable">
                             <tbody>
-
                                 <tr tablefor="makeit" id="startheader">
                                     <td colspan="0" class="makeititemgroup do">DO</td>
                                     <td colspan="1" class="makeititemgroup with">WITH</td>
@@ -600,7 +599,7 @@ if (isset($_POST["html"])) {
             if (radiochecked == true) {
                 checkedstatus = "checked";
             }
-            var radioelement = '<input class="overbuybtn" type="radio" style="pointer-events: none;" ' + checkedstatus + '>';
+            var radioelement = '<input class="overbuybtn" type="radio" style="pointer-events: none;margin: 0;vertical-align: middle;padding: 0;height: inherit;" ' + checkedstatus + '>';
             var trelement = '<tr class = "shopittr ingredientcell" tablefor="shopit" groupnameshopit="' + groupname +
                 '"><td class="ingredientcell"><span>' + ingredientname + '</span></td><td class="shopitradio">' + radioelement + '</td></tr>'
             var allgrouptr = $('[groupnameshopit="' + groupname + '"]');
