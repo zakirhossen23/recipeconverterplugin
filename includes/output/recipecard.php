@@ -82,7 +82,7 @@ if (isset($_POST["html"])) {
         .shopittr th,
         .shopittr td {
             border: 0.5px solid black;
-            height:26px;
+            height: 26px;
             font-family: Calibri !important;
             font-size: 13px;
 
@@ -119,7 +119,7 @@ if (isset($_POST["html"])) {
         .miseittr th,
         .miseittr td {
             border: 0.5px solid black;
-            height:26px;
+            height: 26px;
             font-family: Calibri !important;
             font-size: 13px;
         }
@@ -128,11 +128,11 @@ if (isset($_POST["html"])) {
             padding-left: 6px;
             padding-right: 6px;
             width: 55%;
-            height:26px;
+            height: 26px;
         }
 
         .miseittr {
-            height:26px;
+            height: 26px;
         }
 
         .itemgroup {
@@ -223,7 +223,7 @@ if (isset($_POST["html"])) {
         .makeit td {
             font-family: Calibri !important;
             border: 0.5px solid black;
-            height:26px;
+            height: 26px;
             font-size: 15px;
             width: -webkit-fill-available;
             padding-left: 6px;
@@ -440,7 +440,10 @@ if (isset($_POST["html"])) {
             background: #48487f;
 
         }
-        table { table-layout: fixed !important; }
+
+        table {
+            table-layout: fixed !important;
+        }
     </style>
 
 
@@ -519,13 +522,12 @@ if (isset($_POST["html"])) {
                             <tbody class="miseitbody">
                                 <!--  hidden-->
                                 <tr tablefor="miseit">
-
                                     <th colspan="0"></th>
-                                    <td colspan="1" style="text-align:center;">
-                                        <div style="width: 92px;"></div>
+                                    <td style="text-align:center; width:35%;">
+                                        <div ></div>
                                     </td>
-                                    <td colspan="1" style="text-align:center;">
-                                        <div></div>
+                                    <td style="text-align:center; width:29px;">
+                                        <div ></div>
                                     </td>
                                 </tr>
                                 <!--  Visible-->
