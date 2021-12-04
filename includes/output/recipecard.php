@@ -153,7 +153,7 @@ if (isset($_POST["html"])) {
             width: 18px;
             align-items: center;
             text-align: center;
-            font-size: 15px;
+            font-size: 13px;
             font-family: calibri;
 
             vertical-align: middle;
@@ -171,25 +171,25 @@ if (isset($_POST["html"])) {
             width: 100%;
             border-collapse: collapse;
             font-family: Calibri !important;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .do {
             font-family: Calibri !important;
             width: 150px;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .with {
             font-family: Calibri !important;
             width: 150px;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .how {
             font-family: Calibri !important;
             width: 226px;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .makeititemgroup {
@@ -199,7 +199,7 @@ if (isset($_POST["html"])) {
             background-color: #C5E0B3;
             font-weight: bolder;
             color: black;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         td.makeititemgroup,
@@ -216,7 +216,7 @@ if (isset($_POST["html"])) {
             color: black;
             padding-left: 6px;
             padding-right: 6px;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .makeit th,
@@ -224,7 +224,7 @@ if (isset($_POST["html"])) {
             font-family: Calibri !important;
             border: 0.5px solid black;
             height: 26px;
-            font-size: 15px;
+            font-size: 13px;
             width: -webkit-fill-available;
             padding-left: 6px;
 
@@ -233,7 +233,7 @@ if (isset($_POST["html"])) {
         .makeititemgroup.do {
             font-family: Calibri !important;
             min-width: 18%;
-            font-size: 15px;
+            font-size: 13px;
             max-width: 18%;
             width: 18%;
         }
@@ -241,18 +241,12 @@ if (isset($_POST["html"])) {
         .makeititemgroup.with {
             font-family: Calibri !important;
             min-width: 18%;
-            font-size: 15px;
+            font-size: 13px;
             max-width: 18%;
             width: 18%;
         }
 
-        .makeititemgroup .how {
-            font-family: Calibri !important;
-            width: 226px;
-            font-size: 15px;
-            min-width: 80%;
-            max-width: 80%;
-        }
+      
 
         .makeittools {
             text-align: center;
@@ -260,12 +254,12 @@ if (isset($_POST["html"])) {
             margin-top: 16px;
             border-top: 2.5px solid black;
             font-family: calibri;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .docell {
             font-family: Calibri !important;
-            font-size: 15px;
+            font-size: 13px;
             overflow-wrap: break-word;
         }
 
@@ -278,19 +272,18 @@ if (isset($_POST["html"])) {
 
         .howcell {
             font-family: Calibri !important;
-            font-size: 15px;
+            font-size: 13px;
             overflow-wrap: break-word;
         }
 
         .makeititemgroup.how {
-            width: 46%;
-            min-width: 46%;
-            max-width: 46%;
+            width: 40%;
+         
         }
 
         .howmaincell {
             font-family: Calibri !important;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .importantcell {
@@ -299,7 +292,7 @@ if (isset($_POST["html"])) {
             min-width: 97px;
             max-width: 97px;
             overflow-wrap: break-word;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .importantmaincell {
@@ -307,13 +300,12 @@ if (isset($_POST["html"])) {
             text-align: center;
             min-width: 97px;
             max-width: 97px;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .makeititemgroup.important {
-            min-width: 18%;
-            max-width: 18%;
-            width: 10%;
+          
+            width: 18%;
         }
 
         .hiddenrow {
@@ -485,7 +477,7 @@ if (isset($_POST["html"])) {
     </div>
 
     <div id="all">
-        <table style="width:100%; margin-top: 5px;">
+        <table style="border-spacing: 5px 0px;width:100%;margin-top: 5px;">
             <tbody>
                 <tr>
                     <th style="width: 20%;">
@@ -542,10 +534,10 @@ if (isset($_POST["html"])) {
                         <table id="Item-table" class="makeittable">
                             <tbody>
                                 <tr tablefor="makeit" id="startheader">
-                                    <td colspan="0" style="width: 18%;" class="makeititemgroup do">DO</td>
-                                    <td colspan="1" style="width: 18%;" class="makeititemgroup with">WITH</td>
-                                    <td colspan="2" style="min-width: 48%;max-width: 48%;width: 48%;" class="makeititemgroup how">HOW</td>
-                                    <td colspan="3" style="" class="makeititemgroup important">IMPORTANT</td>
+                                    <td   class="makeititemgroup do">DO</td>
+                                    <td   class="makeititemgroup with">WITH</td>
+                                    <td  class="makeititemgroup how">HOW</td>
+                                    <td    class="makeititemgroup important">IMPORTANT</td>
                                 </tr>
                                 <tr tablefor="makeit" groupnamemakeit=""></tr>
                             </tbody>
@@ -665,8 +657,8 @@ if (isset($_POST["html"])) {
             var howtext = JSON.parse(all[i]).how;
             var importanttext = JSON.parse(all[i]).important;
 
-            var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="" colspan="0"><span class="" >' + dotext + '</span></td> <td class="" colspan="1"><span>' + withtext + '</span></td><td colspan="2" class=""><span class="" >' +
-                howtext + '</span></td><td colspan="3" class=""><span class="" >' + importanttext + '</span></td></tr>';
+            var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="" ><span class="" >' + dotext + '</span></td> <td class="" ><span>' + withtext + '</span></td><td  class=""><span class="" >' +
+                howtext + '</span></td><td  class=""><span class="" >' + importanttext + '</span></td></tr>';
             if (groupname == "") {
                 var allspace = $('[groupnamemakeit=""]')
                 $(trelement).insertAfter(allspace[allspace.length - 1]);
