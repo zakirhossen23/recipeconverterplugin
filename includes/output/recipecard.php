@@ -69,11 +69,11 @@ if (isset($_POST["html"])) {
         }
 
         .ingredientcell {
-            max-width: 221px;
+            max-width: 100%;
         }
 
         td.shopitradio {
-            width: 11px;
+            width: 15%;
             padding-left: 0 !important;
             padding-right: 0 !important;
             text-align: center;
@@ -225,6 +225,7 @@ if (isset($_POST["html"])) {
             border: 0.5px solid black;
             height:26px;
             font-size: 15px;
+            width: -webkit-fill-available;
             padding-left: 6px;
 
         }
@@ -439,6 +440,7 @@ if (isset($_POST["html"])) {
             background: #48487f;
 
         }
+        table { table-layout: fixed !important; }
     </style>
 
 
@@ -504,6 +506,7 @@ if (isset($_POST["html"])) {
                             <tbody class="shopitbody" style="width: 100%;">
                                 <tr tablefor="shopit">
                                     <th class="hiddenrow"></th>
+                                    <th class="hiddenrow" style="width: 30px !important;"></th>
                                 </tr>
 
                             </tbody>
@@ -537,10 +540,10 @@ if (isset($_POST["html"])) {
                         <table id="Item-table" class="makeittable">
                             <tbody>
                                 <tr tablefor="makeit" id="startheader">
-                                    <td colspan="0" class="makeititemgroup do">DO</td>
-                                    <td colspan="1" class="makeititemgroup with">WITH</td>
-                                    <td colspan="2" class="makeititemgroup how">HOW</td>
-                                    <td colspan="3" class="makeititemgroup important">IMPORTANT</td>
+                                    <td colspan="0" style="width: 18%;" class="makeititemgroup do">DO</td>
+                                    <td colspan="1" style="width: 18%;" class="makeititemgroup with">WITH</td>
+                                    <td colspan="2" style="min-width: 48%;max-width: 48%;width: 48%;" class="makeititemgroup how">HOW</td>
+                                    <td colspan="3" style="" class="makeititemgroup important">IMPORTANT</td>
                                 </tr>
                                 <tr tablefor="makeit" groupnamemakeit=""></tr>
                             </tbody>
