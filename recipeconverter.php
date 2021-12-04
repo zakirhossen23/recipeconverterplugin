@@ -17,7 +17,8 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-
+require 'vendor/autoload.php';
+$pluginpath =  plugin_dir_path(__FILE__);
 add_filter('template_include', 'recipe_converter_page_template', 99);
 function recipe_converter_page_template($template)
 {
