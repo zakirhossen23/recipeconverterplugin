@@ -153,7 +153,7 @@ if (isset($_POST["html"])) {
             width: 18px;
             align-items: center;
             text-align: center;
-            font-size: 13px;
+            font-size: 15px;
             font-family: calibri;
 
             vertical-align: middle;
@@ -610,7 +610,7 @@ if (isset($_POST["html"])) {
         allitemcode = JSON.parse(item);
         for (let i = 0; i < allitemcode.length; i++) {
             var trelement = '<tr class = "miseittr" tablefor="miseit" groupnamesmiseit="' + allitemcode[i] +
-                '" groupmiseitid="' + i + '"><th colspan="2" class="itemgroup">' + allitemcode[i] + '</th> <td class="itemgroup" colspan="1"  style="width:min-content; text-align:center;"> <div class="numbers">' + (i + 1) + '</div></td></tr>'
+                '" groupmiseitid="' + i + '"><th colspan="2" class="itemgroup">' + allitemcode[i] + '</th> <td class="itemgroup" colspan="1"  style="width:min-content;vertical-align: middle; text-align:center;"> <div class="numbers">' + (i + 1) + '</div></td></tr>'
             var allmiseitttr = $('[tablefor="miseit"]');
             $(trelement).insertAfter(allmiseitttr[allmiseitttr.length - 1]);
         }
