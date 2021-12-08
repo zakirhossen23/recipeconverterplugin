@@ -158,6 +158,7 @@ if (isset($_POST["html"])) {
 
             vertical-align: middle;
             height: 18px;
+            display: inline-block;
         }
 
         /********** Make it ************/
@@ -446,7 +447,7 @@ if (isset($_POST["html"])) {
 
         <div style="overflow: hidden;display: flex; height: 100px;">
             <div style="width: 17%;">
-                <img src="https://miseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
+                <img src="https://shopitmiseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
             </div>
             <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 58%;">
                 <h1 id="recipename">sd</h1>
@@ -481,14 +482,14 @@ if (isset($_POST["html"])) {
             <tbody>
                 <tr>
                     <th style="width: 20%;">
-                        <img style="height: 33px;width: auto;" src="https://miseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Shopit.png" />
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Shopit.png" />
                     </th>
                     <th style="width: 30%;">
-                        <img style="height: 33px;width: auto;" src="https://miseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Miseit.png" />
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Miseit.png" />
 
                     </th>
                     <th style="width: 50%;">
-                        <img style="height: 33px;width: auto;" src="https://miseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Makeit.png" />
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Makeit.png" />
 
 
                     </th>
@@ -640,8 +641,8 @@ if (isset($_POST["html"])) {
         for (let i = 0; i < all.length; i++) {
             var groupname = JSON.parse(all[i]);
             if (groupname != "") {
-                var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "5"class = ""> ' + groupname + ' </td> </tr>'
-                var trelement = $('[tablefor="makeit"]');
+                var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "4"style = "background-color: gainsboro !important; font-weight: bolder;"> ' + groupname + ' </td> </tr>'
+                 var trelement = $('[tablefor="makeit"]');
                 $(groupelement).insertAfter(trelement[trelement.length - 1]);
             }
 
@@ -656,10 +657,10 @@ if (isset($_POST["html"])) {
             var withtext = JSON.parse(all[i]).with;
             var howtext = JSON.parse(all[i]).how;
             var importanttext = JSON.parse(all[i]).important;
-
             var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="" ><span class="" >' + dotext + '</span></td> <td class="" ><span>' + withtext + '</span></td><td  class=""><span class="" >' +
                 howtext + '</span></td><td  class=""><span class="" >' + importanttext + '</span></td></tr>';
-            if (groupname == "") {
+                
+                if (groupname == "") {
                 var allspace = $('[groupnamemakeit=""]')
                 $(trelement).insertAfter(allspace[allspace.length - 1]);
             } else {
