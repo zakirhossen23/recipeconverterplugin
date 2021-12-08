@@ -482,14 +482,14 @@ if (isset($_POST["html"])) {
             <tbody>
                 <tr>
                     <th style="width: 20%;">
-                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Shopit.png" />
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Shopit.png" />
                     </th>
                     <th style="width: 30%;">
-                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Miseit.png" />
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Miseit.png" />
 
                     </th>
                     <th style="width: 50%;">
-                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content\plugins\recipeconverter/assets/Makeit.png" />
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Makeit.png" />
 
 
                     </th>
