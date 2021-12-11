@@ -5,11 +5,20 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8a1a8c186833d40df4483b52e5a5367a8caf4cc6',
+        'reference' => 'b9681bbbe0dc0c1d294797d71c59351b6e8c7cce',
         'name' => 'hlashbrooke/wordpress-plugin-template',
         'dev' => true,
     ),
     'versions' => array(
+        'convertapi/convertapi-php' => array(
+            'pretty_version' => 'v1.5.0',
+            'version' => '1.5.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../convertapi/convertapi-php',
+            'aliases' => array(),
+            'reference' => '89d1600a19b3e541fd93abfe6788d8881f84ac6a',
+            'dev_requirement' => false,
+        ),
         'dompdf/dompdf' => array(
             'pretty_version' => 'v1.1.1',
             'version' => '1.1.1.0',
@@ -25,7 +34,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8a1a8c186833d40df4483b52e5a5367a8caf4cc6',
+            'reference' => 'b9681bbbe0dc0c1d294797d71c59351b6e8c7cce',
             'dev_requirement' => false,
         ),
         'pdfcrowd/pdfcrowd' => array(

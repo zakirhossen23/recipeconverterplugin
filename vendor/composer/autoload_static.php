@@ -44,6 +44,13 @@ class ComposerStaticInit239808df890228311e38f5ce3f5c7938
                 0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
             ),
         ),
+        'C' => 
+        array (
+            'ConvertApi\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/convertapi/convertapi-php/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (

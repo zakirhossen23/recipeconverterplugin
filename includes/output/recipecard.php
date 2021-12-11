@@ -1,32 +1,43 @@
 <?php
 
+use \ConvertApi\ConvertApi;
+
 
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-if (isset($_POST["html"])) {
-    $options = new Options();
 
-    $options->set('enable_remote', true);
-    // instantiate and use the dompdf class
-    $dompdf = new Dompdf($options);
+// if (isset($_POST["html"]) && $_POST["htmldocvalue"] != "" ) {
+//     $options = new Options();
 
-    $dompdf->loadHtml(stripslashes($_POST["html"]));
+//     $options->set('enable_remote', true);
+//     // instantiate and use the dompdf class
+//     $dompdf = new Dompdf($options);
 
-    // (Optional) Setup the paper size and orientation
-    $dompdf->setPaper('A4', 'landscape');
+//     $dompdf->loadHtml(stripslashes($_POST["html"]));
 
-    // Render the HTML as PDF
-    $dompdf->render();
-    header("Content-Type: application/pdf");
-    header("Cache-Control: no-cache");
-    header("Accept-Ranges: none");
-    header("Content-Disposition: inline; filename=\"example.pdf\"");
-    // Output the generated PDF to Browser
-    $dompdf->stream("codexworld", array("Attachment" => 0));
+//     // (Optional) Setup the paper size and orientation
+//     $dompdf->setPaper('A4', 'landscape');
+
+//     // Render the HTML as PDF
+//     $dompdf->render();
+//     header("Content-Type: application/pdf");
+//     header("Cache-Control: no-cache");
+//     header("Accept-Ranges: none");
+//     header("Content-Disposition: inline; filename=\"example.pdf\"");
+//     // Output the generated PDF to Browser
+//     $dompdf->stream("Recipe Card", array("Attachment" => 1));
+// }
+if (isset($_POST["htmldocvalue"]) && isset($_POST["htmldocvalue"]) != "" ) {
+  file_put_contents('html.html', stripslashes($_POST["htmldocvalue"]));
+    ConvertApi::setApiSecret('GucM6XtfmfWuA3e2');
+    $result = ConvertApi::convert('docx', [
+            'File' => 'html.html',
+        ], 'html'
+    );
+    $result->saveFiles('output.docx');
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -247,7 +258,7 @@ if (isset($_POST["html"])) {
             width: 18%;
         }
 
-      
+
 
         .makeittools {
             text-align: center;
@@ -279,7 +290,7 @@ if (isset($_POST["html"])) {
 
         .makeititemgroup.how {
             width: 40%;
-         
+
         }
 
         .howmaincell {
@@ -305,7 +316,7 @@ if (isset($_POST["html"])) {
         }
 
         .makeititemgroup.important {
-          
+
             width: 18%;
         }
 
@@ -446,15 +457,18 @@ if (isset($_POST["html"])) {
     <div class="header" style="margin: 0 0px">
 
         <div style="overflow: hidden;display: flex; height: 100px;">
-            <div style="width: 17%;">
+            <div style="width: 20%;">
                 <img src="https://shopitmiseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
             </div>
-            <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 58%;">
-                <h1 id="recipename">sd</h1>
+            <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 100%;">
+                <span id="recipename" style="text-align: center;padding: 0;margin: 0;font-size: 41px;">
+                    sdd
+                </span>
             </div>
-            <div id="downloadcontainer" style="vertical-align: middle;padding-top: 26px;text-align: center;width: 25%;">
+            <div id="downloadcontainer" style="vertical-align: middle;padding-top: 26px;text-align: center;width: 14%;">
                 <form action="" id="convertingframe" enctype='multipart/form-data' charset="utf-8" method="POST">
-                    <input hidden type="text" id="htmlvalue" name="html" />
+                    <input hidden type="text" id="htmlvalue" name="html" /> 
+                    <input hidden type="text" id="htmldocvalue" name="htmldocvalue" />
                     <button onclick="docxdownload()" class="docxbtn" style="float: right;">Download as docx </button>
 
                     <button onclick="pdfdownload()" class="pdfbtn" style="float: right;" onclick="">Download as PDF</button>
@@ -517,10 +531,10 @@ if (isset($_POST["html"])) {
                                 <tr tablefor="miseit">
                                     <th colspan="0"></th>
                                     <td style="text-align:center; width:35%;">
-                                        <div ></div>
+                                        <div></div>
                                     </td>
                                     <td style="text-align:center; width:29px;">
-                                        <div ></div>
+                                        <div></div>
                                     </td>
                                 </tr>
                                 <!--  Visible-->
@@ -535,10 +549,10 @@ if (isset($_POST["html"])) {
                         <table id="Item-table" class="makeittable">
                             <tbody>
                                 <tr tablefor="makeit" id="startheader">
-                                    <td   class="makeititemgroup do">DO</td>
-                                    <td   class="makeititemgroup with">WITH</td>
-                                    <td  class="makeititemgroup how">HOW</td>
-                                    <td    class="makeititemgroup important">IMPORTANT</td>
+                                    <td class="makeititemgroup do">DO</td>
+                                    <td class="makeititemgroup with">WITH</td>
+                                    <td class="makeititemgroup how">HOW</td>
+                                    <td class="makeititemgroup important">IMPORTANT</td>
                                 </tr>
                                 <tr tablefor="makeit" groupnamemakeit=""></tr>
                             </tbody>
@@ -642,7 +656,7 @@ if (isset($_POST["html"])) {
             var groupname = JSON.parse(all[i]);
             if (groupname != "") {
                 var groupelement = '<tr groupnamemakeit="' + groupname + '" tablefor="makeit" "> <td colspan = "4"style = "background-color: gainsboro !important; font-weight: bolder;"> ' + groupname + ' </td> </tr>'
-                 var trelement = $('[tablefor="makeit"]');
+                var trelement = $('[tablefor="makeit"]');
                 $(groupelement).insertAfter(trelement[trelement.length - 1]);
             }
 
@@ -659,8 +673,8 @@ if (isset($_POST["html"])) {
             var importanttext = JSON.parse(all[i]).important;
             var trelement = '<tr  groupnamemakeit="' + groupname + '" tablefor="makeit" ><td class="" ><span class="" >' + dotext + '</span></td> <td class="" ><span>' + withtext + '</span></td><td  class=""><span class="" >' +
                 howtext + '</span></td><td  class=""><span class="" >' + importanttext + '</span></td></tr>';
-                
-                if (groupname == "") {
+
+            if (groupname == "") {
                 var allspace = $('[groupnamemakeit=""]')
                 $(trelement).insertAfter(allspace[allspace.length - 1]);
             } else {
@@ -671,7 +685,14 @@ if (isset($_POST["html"])) {
         }
     };
 
+       function docxdownload() {
+        document.getElementById("downloadcontainer").style.display = "none";
+        $('[groupnamemakeit=""]')[0].remove();
+        document.getElementById("htmldocvalue").value = document.getElementsByTagName("html")[0].outerHTML;
+        document.getElementById("downloadcontainer").style.display = "";
 
+        document.getElementById("convertingframe").submit;
+    }
     function pdfdownload() {
         document.getElementById("downloadcontainer").style.display = "none";
         $('[groupnamemakeit=""]')[0].remove();
