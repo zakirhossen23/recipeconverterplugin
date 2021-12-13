@@ -11,6 +11,14 @@ class ComposerStaticInit239808df890228311e38f5ce3f5c7938
         array (
             'Svg\\' => 4,
         ),
+        'P' => 
+        array (
+            'PhpOffice\\PhpWord\\' => 18,
+        ),
+        'L' => 
+        array (
+            'Laminas\\Escaper\\' => 16,
+        ),
         'F' => 
         array (
             'FontLib\\' => 8,
@@ -25,6 +33,14 @@ class ComposerStaticInit239808df890228311e38f5ce3f5c7938
         'Svg\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'PhpOffice\\PhpWord\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
+        ),
+        'Laminas\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-escaper/src',
         ),
         'FontLib\\' => 
         array (
@@ -42,13 +58,6 @@ class ComposerStaticInit239808df890228311e38f5ce3f5c7938
             'Sabberworm\\CSS' => 
             array (
                 0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
-            ),
-        ),
-        'C' => 
-        array (
-            'ConvertApi\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/convertapi/convertapi-php/lib',
             ),
         ),
     );

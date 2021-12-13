@@ -6,43 +6,164 @@ use \ConvertApi\ConvertApi;
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use \PhpOffice\PhpWord\PhpWord;
 
+if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
+        $options = new Options();
 
-// if (isset($_POST["html"]) && $_POST["htmldocvalue"] != "" ) {
-//     $options = new Options();
+        $options->set('enable_remote', true);
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf($options);
 
-//     $options->set('enable_remote', true);
-//     // instantiate and use the dompdf class
-//     $dompdf = new Dompdf($options);
+        $dompdf->loadHtml(stripslashes($_POST["html"]));
 
-//     $dompdf->loadHtml(stripslashes($_POST["html"]));
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
 
-//     // (Optional) Setup the paper size and orientation
-//     $dompdf->setPaper('A4', 'landscape');
-
-//     // Render the HTML as PDF
-//     $dompdf->render();
-//     header("Content-Type: application/pdf");
-//     header("Cache-Control: no-cache");
-//     header("Accept-Ranges: none");
-//     header("Content-Disposition: inline; filename=\"example.pdf\"");
-//     // Output the generated PDF to Browser
-//     $dompdf->stream("Recipe Card", array("Attachment" => 1));
-// }
-if (isset($_POST["htmldocvalue"]) && isset($_POST["htmldocvalue"]) != "" ) {
-  file_put_contents('html.html', stripslashes($_POST["htmldocvalue"]));
-    ConvertApi::setApiSecret('GucM6XtfmfWuA3e2');
-    $result = ConvertApi::convert('docx', [
-            'File' => 'html.html',
-        ], 'html'
-    );
-    $result->saveFiles('output.docx');
+        // Render the HTML as PDF
+        $dompdf->render();
+        header("Content-Type: application/pdf");
+        header("Cache-Control: no-cache");
+        header("Accept-Ranges: none");
+        header("Content-Disposition: inline; filename=\"example.pdf\"");
+        // Output the generated PDF to Browser
+        $dompdf->stream("Recipe Card", array("Attachment" => 1));
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
+ 
+
+</head>
+
+<body>
+    <div class="header" style="margin: 0 0px">
+
+        <div style="overflow: hidden;display: flex; height: 100px;">
+            <div style="width: 20%;">
+                <img src="https://shopitmiseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
+            </div>
+            <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 100%;">
+                <span id="recipename" style="text-align: center;padding: 0;margin: 0;font-size: 41px;">
+                    sdd
+                </span>
+            </div>
+            <div id="downloadcontainer" style="vertical-align: middle;padding-top: 26px;text-align: center;width: 14%;">
+                <form action="" id="convertingframe" enctype='multipart/form-data' charset="utf-8" method="POST">
+                    <input hidden type="text" id="htmlvalue" name="html" /> 
+            
+                    <button onclick="pdfdownload()" class="pdfbtn" style="float: right;" onclick="">Download as PDF</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="border1"></div>
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <td id="source" style="color: blue" class="tdheader">Recipe Source: </td>
+                    <td id="serves" class="tdheader">Serves: </td>
+                    <td id="effort" class="tdheader">Effort:</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="border1"></div>
+
+
+    </div>
+
+    <div id="all">
+        <table style="border-spacing: 5px 0px;width:100%;margin-top: 5px;">
+            <tbody>
+                <tr>
+                    <th style="width: 20%;">
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Shopit.png" />
+                    </th>
+                    <th style="width: 30%;">
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Miseit.png" />
+
+                    </th>
+                    <th style="width: 50%;">
+                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Makeit.png" />
+
+
+                    </th>
+                </tr>
+                <tr>
+                    <!--    main td  Shop it-->
+                    <td class="Shopittable">
+                        <!--    inside shop it td -->
+                        <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
+                            <tbody class="shopitbody" style="width: 100%;">
+                                <tr tablefor="shopit">
+                                    <th class="hiddenrow"></th>
+                                    <th class="hiddenrow" style="width: 30px !important;"></th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                    <!--    main td  mise it-->
+                    <td class="miseittable">
+                        <!--    inside td Mise it-->
+                        <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
+                            <tbody class="miseitbody">
+                                <!--  hidden-->
+                                <tr tablefor="miseit">
+                                    <th colspan="0"></th>
+                                    <td style="text-align:center; width:35%;">
+                                        <div></div>
+                                    </td>
+                                    <td style="text-align:center; width:29px;">
+                                        <div></div>
+                                    </td>
+                                </tr>
+                                <!--  Visible-->
+
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <!--    main td  make it-->
+                    <td class="makeit">
+                        <!--    inside td Make it-->
+                        <table id="Item-table" class="makeittable">
+                            <tbody>
+                                <tr tablefor="makeit" id="startheader">
+                                    <td class="makeititemgroup do">DO</td>
+                                    <td class="makeititemgroup with">WITH</td>
+                                    <td class="makeititemgroup how">HOW</td>
+                                    <td class="makeititemgroup important">IMPORTANT</td>
+                                </tr>
+                                <tr tablefor="makeit" groupnamemakeit=""></tr>
+                            </tbody>
+                        </table>
+                        <div class="makeittools">TOOLS AND TECHNIQUES REQUIRED</div>
+                        <span id="toolstechniques"></span>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    </div>
+
+    <div id="footer" style="padding: 0 29px;position: absolute;height : 40px;">
+        <p>www.shopitmiseitmakeit.ca</p>
+
+    </div>
 
     <style type="text/css" media="all">
         /*********************** Above header **************************************/
@@ -451,133 +572,6 @@ if (isset($_POST["htmldocvalue"]) && isset($_POST["htmldocvalue"]) != "" ) {
     </style>
 
 
-</head>
-
-<body>
-    <div class="header" style="margin: 0 0px">
-
-        <div style="overflow: hidden;display: flex; height: 100px;">
-            <div style="width: 20%;">
-                <img src="https://shopitmiseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
-            </div>
-            <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 100%;">
-                <span id="recipename" style="text-align: center;padding: 0;margin: 0;font-size: 41px;">
-                    sdd
-                </span>
-            </div>
-            <div id="downloadcontainer" style="vertical-align: middle;padding-top: 26px;text-align: center;width: 14%;">
-                <form action="" id="convertingframe" enctype='multipart/form-data' charset="utf-8" method="POST">
-                    <input hidden type="text" id="htmlvalue" name="html" /> 
-                    <input hidden type="text" id="htmldocvalue" name="htmldocvalue" />
-                    <button onclick="docxdownload()" class="docxbtn" style="float: right;">Download as docx </button>
-
-                    <button onclick="pdfdownload()" class="pdfbtn" style="float: right;" onclick="">Download as PDF</button>
-                </form>
-            </div>
-
-        </div>
-        <div class="border1"></div>
-        <table style="width:100%">
-            <tbody>
-                <tr>
-                    <td id="source" style="color: blue" class="tdheader">Recipe Source: </td>
-                    <td id="serves" class="tdheader">Serves: </td>
-                    <td id="effort" class="tdheader">Effort:</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="border1"></div>
-
-
-    </div>
-
-    <div id="all">
-        <table style="border-spacing: 5px 0px;width:100%;margin-top: 5px;">
-            <tbody>
-                <tr>
-                    <th style="width: 20%;">
-                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Shopit.png" />
-                    </th>
-                    <th style="width: 30%;">
-                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Miseit.png" />
-
-                    </th>
-                    <th style="width: 50%;">
-                        <img style="height: 33px;width: auto;" src="https://shopitmiseitmakeit.ca/wp-content/plugins/recipeconverter/assets/Makeit.png" />
-
-
-                    </th>
-                </tr>
-                <tr>
-                    <!--    main td  Shop it-->
-                    <td class="Shopittable">
-                        <!--    inside shop it td -->
-                        <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
-                            <tbody class="shopitbody" style="width: 100%;">
-                                <tr tablefor="shopit">
-                                    <th class="hiddenrow"></th>
-                                    <th class="hiddenrow" style="width: 30px !important;"></th>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </td>
-                    <!--    main td  mise it-->
-                    <td class="miseittable">
-                        <!--    inside td Mise it-->
-                        <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
-                            <tbody class="miseitbody">
-                                <!--  hidden-->
-                                <tr tablefor="miseit">
-                                    <th colspan="0"></th>
-                                    <td style="text-align:center; width:35%;">
-                                        <div></div>
-                                    </td>
-                                    <td style="text-align:center; width:29px;">
-                                        <div></div>
-                                    </td>
-                                </tr>
-                                <!--  Visible-->
-
-                            </tbody>
-                        </table>
-
-                    </td>
-                    <!--    main td  make it-->
-                    <td class="makeit">
-                        <!--    inside td Make it-->
-                        <table id="Item-table" class="makeittable">
-                            <tbody>
-                                <tr tablefor="makeit" id="startheader">
-                                    <td class="makeititemgroup do">DO</td>
-                                    <td class="makeititemgroup with">WITH</td>
-                                    <td class="makeititemgroup how">HOW</td>
-                                    <td class="makeititemgroup important">IMPORTANT</td>
-                                </tr>
-                                <tr tablefor="makeit" groupnamemakeit=""></tr>
-                            </tbody>
-                        </table>
-                        <div class="makeittools">TOOLS AND TECHNIQUES REQUIRED</div>
-                        <span id="toolstechniques"></span>
-                    </td>
-
-                </tr>
-
-            </tbody>
-        </table>
-
-
-        </td>
-        </tr>
-        </tbody>
-        </table>
-
-    </div>
-
-    <div id="footer" style="padding: 0 29px;position: absolute;height : 40px;">
-        <p>www.shopitmiseitmakeit.ca</p>
-
-    </div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
@@ -685,14 +679,7 @@ if (isset($_POST["htmldocvalue"]) && isset($_POST["htmldocvalue"]) != "" ) {
         }
     };
 
-       function docxdownload() {
-        document.getElementById("downloadcontainer").style.display = "none";
-        $('[groupnamemakeit=""]')[0].remove();
-        document.getElementById("htmldocvalue").value = document.getElementsByTagName("html")[0].outerHTML;
-        document.getElementById("downloadcontainer").style.display = "";
 
-        document.getElementById("convertingframe").submit;
-    }
     function pdfdownload() {
         document.getElementById("downloadcontainer").style.display = "none";
         $('[groupnamemakeit=""]')[0].remove();
