@@ -33,15 +33,7 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
 
 ?>
 <!DOCTYPE html>
-<html>
-
-<head>
-
- 
-
-</head>
-
-<body>
+<html><body>
     <div class="header" style="margin: 0 0px">
 
         <div style="overflow: hidden;display: flex; height: 100px;">
