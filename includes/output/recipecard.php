@@ -675,6 +675,7 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
     function pdfdownload() {
         document.getElementById("downloadcontainer").style.display = "none";
         $('[groupnamemakeit=""]')[0].remove();
+        document.getElementsByTagName("head")[0].remove();
         document.getElementById("htmlvalue").value = document.getElementsByTagName("html")[0].outerHTML;
         document.getElementById("downloadcontainer").style.display = "";
 
