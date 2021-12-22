@@ -8,37 +8,41 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use \PhpOffice\PhpWord\PhpWord;
 
-if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
-        $options = new Options();
+if (isset($_POST["html"]) && isset($_POST["html"]) != "") {
+    $options = new Options();
 
-        $options->set('enable_remote', true);
-        // instantiate and use the dompdf class
-        $dompdf = new Dompdf($options);
+    $options->set('enable_remote', true);
+    // instantiate and use the dompdf class
+    $dompdf = new Dompdf($options);
 
-        $dompdf->loadHtml(stripslashes($_POST["html"]));
+    $dompdf->loadHtml(stripslashes($_POST["html"]));
 
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'landscape');
 
-        // Render the HTML as PDF
-        $dompdf->render();
-        header("Content-Type: application/pdf");
-        header("Cache-Control: no-cache");
-        header("Accept-Ranges: none");
-        header("Content-Disposition: inline; filename=\"example.pdf\"");
-        // Output the generated PDF to Browser
-        $dompdf->stream("Recipe Card", array("Attachment" => 1));
+    // Render the HTML as PDF
+    $dompdf->render();
+    header("Content-Type: application/pdf");
+    header("Cache-Control: no-cache");
+    header("Accept-Ranges: none");
+    header("Content-Disposition: inline; filename=\"example.pdf\"");
+    // Output the generated PDF to Browser
+    $dompdf->stream("Recipe Card", array("Attachment" => 1));
 }
 
 
 ?>
 <!DOCTYPE html>
-<html><body>
+<html>
+
+<body>
     <div class="header" style="margin: 0 0px">
 
         <div style="overflow: hidden;display: flex; height: 100px;">
             <div style="width: 20%;">
-                <img src="https://shopitmiseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
+                <a href="/">
+                    <img style="width: auto;height: 100%;" src="https://shopitmiseitmakeit.ca/wp-content/uploads/2021/11/cropped-Shop-It-Mise-It-Make-It-Extra-Large-scaled-1.jpg" style="width: 100%;">
+                </a>
             </div>
             <div style="vertical-align: middle;padding-top: 26px;text-align: center;width: 100%;">
                 <span id="recipename" style="text-align: center;padding: 0;margin: 0;font-size: 41px;">
@@ -47,8 +51,8 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
             </div>
             <div id="downloadcontainer" style="vertical-align: middle;padding-top: 26px;text-align: center;width: 14%;">
                 <form action="" id="convertingframe" enctype='multipart/form-data' charset="utf-8" method="POST">
-                    <input hidden type="text" id="htmlvalue" name="html" /> 
-            
+                    <input hidden type="text" id="htmlvalue" name="html" />
+
                     <button onclick="pdfdownload()" class="pdfbtn" style="float: right;" onclick="">Download as PDF</button>
                 </form>
             </div>
@@ -90,7 +94,7 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
                     <!--    main td  Shop it-->
                     <td class="Shopittable">
                         <!--    inside shop it td -->
-                        <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
+                        <table id="Item-table" class="shopittablebox" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
                             <tbody class="shopitbody" style="width: 100%;">
                                 <tr tablefor="shopit">
                                     <th class="hiddenrow"></th>
@@ -103,7 +107,7 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
                     <!--    main td  mise it-->
                     <td class="miseittable">
                         <!--    inside td Mise it-->
-                        <table id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
+                        <table class="miseittablebox" id="Item-table" style="width: 100%;border-collapse: collapse;font-family: Calibri !important;font-size: 13px;">
                             <tbody class="miseitbody">
                                 <!--  hidden-->
                                 <tr tablefor="miseit">
@@ -123,18 +127,21 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
                     </td>
                     <!--    main td  make it-->
                     <td class="makeit">
-                        <!--    inside td Make it-->
-                        <table id="Item-table" class="makeittable">
-                            <tbody>
-                                <tr tablefor="makeit" id="startheader">
-                                    <td class="makeititemgroup do">DO</td>
-                                    <td class="makeititemgroup with">WITH</td>
-                                    <td class="makeititemgroup how">HOW</td>
-                                    <td class="makeititemgroup important">IMPORTANT</td>
-                                </tr>
-                                <tr tablefor="makeit" groupnamemakeit=""></tr>
-                            </tbody>
-                        </table>
+                        <div class="makeittablebox">
+                            <!--    inside td Make it-->
+                            <table id="Item-table" class="makeittable">
+                                <tbody>
+                                    <tr tablefor="makeit" id="startheader">
+                                        <td class="makeititemgroup do">DO</td>
+                                        <td class="makeititemgroup with">WITH</td>
+                                        <td class="makeititemgroup how">HOW</td>
+                                        <td class="makeititemgroup important">IMPORTANT</td>
+                                    </tr>
+                                    <tr tablefor="makeit" groupnamemakeit=""></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="makeittools">TOOLS AND TECHNIQUES REQUIRED</div>
                         <span id="toolstechniques"></span>
                     </td>
@@ -232,6 +239,12 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
             vertical-align: top;
         }
 
+        .miseittablebox {
+            page-break-inside: auto;
+        }
+
+
+
         td.cell {
             width: 100%;
         }
@@ -291,6 +304,8 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "" ) {
             padding-top: 3px;
             vertical-align: top;
         }
+
+        .makeittablebox {}
 
         .makeittable {
             width: 100%;
