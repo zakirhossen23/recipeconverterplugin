@@ -75,10 +75,10 @@
             ' <iframe name = "addingredient" src = "add-ingredient" />'
 
     }
-var totalamount = document.getElementById("totalamount");
+    var totalamount = document.getElementById("totalamount");
 
     function onAdd() {
-        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
+        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
         console.log("clicked");
         var table = document.getElementById("Aisle-table");
         var row = table.insertRow(-1);
@@ -109,7 +109,17 @@ var totalamount = document.getElementById("totalamount");
         var table = $("#Aisle-table")[0];
 
         table.deleteRow(row[0].rowIndex);
-        document.getElementById("totalamount").innerHTML =   Number(totalamount.innerHTML) - Number(1);
+        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
+    }
+
+    onStart();
+
+    function onStart() {
+        Allitems = JSON.parse(localStorage.getItem("aisles"));
+        Allitems.forEach(v => {
+            document.getElementById("aislename").value = v;
+            onAdd();
+        });
     }
 </script>
 <style>
@@ -282,8 +292,20 @@ var totalamount = document.getElementById("totalamount");
 
     }
 
-    td{font-family: Calibri;}
-    h1{font-family: Calibri;}
-    p{font-family: Calibri;}
-    span{font-family: Calibri;}
+    td {
+        font-family: Calibri;
+    }
+
+    h1 {
+        font-family: Calibri;
+    }
+
+    p {
+        font-family: Calibri;
+    }
+
+    span {
+        font-family: Calibri;
+        padding: 0px 11px;
+    }
 </style>

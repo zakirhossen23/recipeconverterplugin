@@ -103,7 +103,7 @@
 
 
     function onAdd() {
-        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) + Number(1);
+        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
         var allserial = document.getElementsByClassName("numbers");
         var table = document.getElementById("Item-table");
         var row = table.insertRow(-1);
@@ -132,7 +132,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
     function onDelete(btn) {
-        document.getElementById("totalamount").innerHTML =  Number(totalamount.innerHTML) - Number(1);
+        document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) - Number(1);
         var row = $(btn).closest("TR");
         var name = $("TD", row).eq(0).html();
 
@@ -355,8 +355,20 @@
     }
 
 
-    td{font-family: Calibri;}
-    h1{font-family: Calibri;}
-    p{font-family: Calibri;}
-    span{font-family: Calibri;}
+    td {
+        font-family: Calibri;
+    }
+
+    h1 {
+        font-family: Calibri;
+    }
+
+    p {
+        font-family: Calibri;
+    }
+
+    span {
+        font-family: Calibri;
+        padding: 0px 11px;
+    }
 </style>

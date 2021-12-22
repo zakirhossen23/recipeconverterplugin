@@ -105,8 +105,20 @@
     }
 
 
-    td{font-family: Calibri;}
-    h1{font-family: Calibri;}
-    p{font-family: Calibri;}
-    span{font-family: Calibri;}
+    td {
+        font-family: Calibri;
+    }
+
+    h1 {
+        font-family: Calibri;
+    }
+
+    p {
+        font-family: Calibri;
+    }
+
+    span {
+        font-family: Calibri;
+        padding: 0px 11px;
+    }
 </style>
