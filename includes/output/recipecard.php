@@ -727,7 +727,7 @@ if (isset($_POST["html"]) && isset($_POST["html"]) != "") {
         html2pdf().set(opt);
         await html2pdf().set({
             pagebreak: {
-                mode: ['avoid-all', 'css', 'legacy']
+                mode: ['css', 'legacy']
             }
         }).set(opt).from(element).save();
 
