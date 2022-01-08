@@ -48,6 +48,10 @@ function recipe_converter_page_template($template)
 
         return plugin_dir_path(__FILE__) . "includes/output/recipecard.php";
     }
+    if (is_page('recipecard1')) {
+
+        return plugin_dir_path(__FILE__) . "includes/output/recipecard1.php";
+    }
 
     return $template;
 }

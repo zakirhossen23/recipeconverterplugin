@@ -1,0 +1,19 @@
+{
+  "name": "recipeconverter",
+  "version": "1.0.0",
+  "description": "=== upcomingCourses === Contributors: hlashbrooke Donate link: http://www.hughlashbrooke.com/donate Tags: wordpress, plugin, template Requires at least: 3.9 Tested up to: 4.0 Stable tag: 1.0 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakirhossen23/recipeconverterplugin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zakirhossen23/recipeconverterplugin/issues"
+  },
+  "homepage": "https://github.com/zakirhossen23/recipeconverterplugin#readme"
+}

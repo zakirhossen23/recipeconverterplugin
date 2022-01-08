@@ -138,7 +138,6 @@
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
-
         function onAdd() {
             document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
             var groupname = document.getElementById("aislename").value;
@@ -169,6 +168,25 @@
             row_id++;
             document.getElementById("overbuy").checked = false;
         }
+        onStart();
+
+        function onStart(){
+                   var all = JSON.parse(localStorage.getItem("shopit"));
+        for (let i = 0; i < all.length; i++) {
+            var ingredientname = JSON.parse(all[i]).ingredient;
+            var groupname = JSON.parse(all[i]).groupname;
+            var radiochecked = JSON.parse(all[i]).radiochecked;
+            var checkedstatus = "";
+            if (radiochecked == true) {
+                checkedstatus = "checked";
+            }
+            document.getElementById("ingredientname").value = ingredientname;
+            document.getElementById("overbuy").checked  = radiochecked;
+            document.getElementById("aislename").value = groupname;
+           
+        }
+        }
+
     </script>
 </body>
 
