@@ -48,7 +48,9 @@
                 </tr>
             </tbody>
         </table>
-
+        <button class="Ingredientsbtn" onclick="Back()">
+            Back
+        </button>
         <button class="Ingredientsbtn" onclick="addItmes()">
             Add Mise It! Ingredients
         </button>
@@ -101,6 +103,10 @@
 
     }
 
+    function Back() {
+        window.location = "/wordpress/add-ingredient/";
+
+    }
 
     function onAdd() {
         document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
@@ -127,6 +133,25 @@
         document.getElementById(
             "itemname").value = "";
         row_id++;
+    }
+
+    onStart();
+
+    function onStart() {
+        var all = JSON.parse(localStorage.getItem("shopit"));
+        for (let i = 0; i < all.length; i++) {
+            var ingredientname = JSON.parse(all[i]).ingredient;
+            var groupname = JSON.parse(all[i]).groupname;
+            var radiochecked = JSON.parse(all[i]).radiochecked;
+            var checkedstatus = "";
+            if (radiochecked == true) {
+                checkedstatus = "checked";
+            }
+            document.getElementById("ingredientname").value = ingredientname;
+            document.getElementById("overbuy").checked = radiochecked;
+            document.getElementById("aislename").value = groupname;
+
+        }
     }
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -190,7 +215,6 @@
     }
 
     .Ingredientsbtn {
-        float: right;
         width: 172px;
         height: 37px;
         margin: 10px 1px 12px 0px;
@@ -202,7 +226,7 @@
     }
 
     .Ingredientsbtn:active {
-        background-color: #fffdf6;
+        background-color: #96a9d8;
         font-family: Calibri !important;
         font-size: 15px;
     }

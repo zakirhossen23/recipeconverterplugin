@@ -31,7 +31,9 @@
             </table>
 
         </div>
-
+        <button class="miseitbtn" onclick="Back()">
+            Back
+        </button>
         <button class="miseitbtn" onclick="Miseit()">
             Let's Mise It!
         </button>
@@ -52,6 +54,23 @@
         var aisle_id = 0;
         makegroup();
 
+        $(function() {
+            $('input[type="radio"]').click(function() {
+                var $radio = $(this);
+
+                // if this was previously checked
+                if ($radio.data('waschecked') == true) {
+                    $radio.prop('checked', false);
+                    $radio.data('waschecked', false);
+                } else
+                    $radio.data('waschecked', true);
+
+                // remove was checked from other radios
+                $radio.siblings('input[type="radio"]').data('waschecked', false);
+            });
+        });
+
+
         function Miseit() {
             var allaisle = document.getElementsByClassName("ingredient");
             var alloverbuy = document.getElementsByClassName("overbuybtn");
@@ -67,7 +86,7 @@
 
             }
             localStorage.setItem("shopit", JSON.stringify(savingshopit));
-            document.getElementById("all").innerHTML =
+            window.top.document.getElementById("all").innerHTML =
                 ' <iframe name = "miseit" id="miseit"  src = "miseit" />'
         }
 
@@ -168,25 +187,29 @@
             row_id++;
             document.getElementById("overbuy").checked = false;
         }
+
+        function Back() {
+            window.location = "/wordpress/shopit";
+
+        }
         onStart();
 
-        function onStart(){
-                   var all = JSON.parse(localStorage.getItem("shopit"));
-        for (let i = 0; i < all.length; i++) {
-            var ingredientname = JSON.parse(all[i]).ingredient;
-            var groupname = JSON.parse(all[i]).groupname;
-            var radiochecked = JSON.parse(all[i]).radiochecked;
-            var checkedstatus = "";
-            if (radiochecked == true) {
-                checkedstatus = "checked";
+        function onStart() {
+            var all = JSON.parse(localStorage.getItem("shopit"));
+            for (let i = 0; i < all.length; i++) {
+                var ingredientname = JSON.parse(all[i]).ingredient;
+                var groupname = JSON.parse(all[i]).groupname;
+                var radiochecked = JSON.parse(all[i]).radiochecked;
+                var checkedstatus = "";
+                if (radiochecked == true) {
+                    checkedstatus = "checked";
+                }
+                document.getElementById("ingredientname").value = ingredientname;
+                document.getElementById("overbuy").checked = radiochecked;
+                document.getElementById("aislename").value = groupname;
+                onAdd();
             }
-            document.getElementById("ingredientname").value = ingredientname;
-            document.getElementById("overbuy").checked  = radiochecked;
-            document.getElementById("aislename").value = groupname;
-           
         }
-        }
-
     </script>
 </body>
 
@@ -342,12 +365,17 @@
 
     .miseitbtn {
         width: 146px;
-
         padding: 8px;
-        float: right;
+        cursor: pointer;
         margin: 13px 0px 2px 3px;
         background-color: #debf54;
         font-family: Calibri !important;
+        font-size: 15px;
+    }
+
+    .miseitbtn:active {
+        font-family: Calibri !important;
+        background-color: #fffdf6;
         font-size: 15px;
     }
 

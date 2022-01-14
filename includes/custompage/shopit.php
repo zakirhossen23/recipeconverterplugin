@@ -23,6 +23,9 @@
             </tbody>
         </table>
 
+        <button class="Ingredientsbtn" onclick="Back()">
+            Back
+        </button>
         <button class="Ingredientsbtn" onclick="Ingredients()">
             Add Shop It! List
         </button>
@@ -32,6 +35,17 @@
 </div>
 <script>
     var row_id = 1;
+
+    function setJson(jsonObject, key, checkvalue, setvalue) {
+        var allnew = [];
+        for (let i = 0; i < jsonObject.length; i++) {
+            var groupname = JSON.parse(jsonObject[i]).groupname;
+            if (btn.parentElement.parentElement.firstChild.firstElementChild.getAttribute("value") == groupname) {
+                JSON.parse(jsonObject[i]).groupname = btn.parentElement.parentElement.firstChild.firstElementChild.textContent;
+                btn.parentElement.parentElement.firstChild.firstElementChild.setAttribute("value", btn.parentElement.parentElement.firstChild.firstElementChild.textContent)
+            }
+        }
+    }
 
     function onEdit(btn) {
         var id = btn.id;
@@ -59,7 +73,23 @@
             document.getElementById('aisle' + id).style.pointerEvents = "none";
             document.getElementById('aisle' + id).setAttribute("contenteditable", false);
             btn.style.background = "";
+            var all = JSON.parse(localStorage.getItem("shopit"));
+            var allnew = [];
+            for (let i = 0; i < all.length; i++) {
+                var groupname = JSON.parse(all[i]).groupname;
+                var oneline = JSON.parse(all[i]);
 
+                if (btn.parentElement.parentElement.firstChild.firstElementChild.getAttribute("value") == groupname) {
+                    oneline["groupname"] = btn.parentElement.parentElement.firstChild.firstElementChild.textContent;
+                    btn.parentElement.parentElement.firstChild.firstElementChild.setAttribute("value", btn.parentElement.parentElement.firstChild.firstElementChild.textContent)
+                    allnew.push(JSON.stringify(oneline));
+                } else {
+                    allnew.push(JSON.stringify(oneline));
+                }
+            }
+            localStorage.setItem("shopit", JSON.stringify(allnew));
+
+            console.log(allnew);
             return false;
         }
 
@@ -71,8 +101,13 @@
         var savingaisle = [];
         allaisle.forEach(v => savingaisle.push(v.innerText));
         localStorage.setItem("aisles", JSON.stringify(savingaisle));
-        document.getElementById("all").innerHTML =
+        window.top.document.getElementById("all").innerHTML =
             ' <iframe name = "addingredient" src = "add-ingredient" />'
+
+    }
+
+    function Back() {
+        window.top.location = "/recipe-converter";
 
     }
     var totalamount = document.getElementById("totalamount");
@@ -85,7 +120,9 @@
         var cell1 = row.insertCell(-1);
         var cell2 = row.insertCell(-1);
         var cell3 = row.insertCell(-1);
-        cell1.innerHTML = '<span readonly="readonly" id="aisle' + row_id + '" name="aisle" >' + document
+        cell1.innerHTML = '<span readonly="readonly" id="aisle' + row_id + '" value="' + document
+            .getElementById(
+                "aislename").value + '" name="aisle" >' + document
             .getElementById(
                 "aislename").value + '</span>'
         cell1.style = "width:100%; padding-left: 7px;";
@@ -142,7 +179,7 @@
 
     .Ingredientsbtn {
         font-family: Calibri !important;
-        float: right;
+
         width: 125px;
         height: 37px;
         margin: 10px 1px 12px 0px;
