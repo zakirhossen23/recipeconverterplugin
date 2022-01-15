@@ -102,7 +102,7 @@
         var savingaisle = [];
         allaisle.forEach(v => savingaisle.push(v.innerText));
         localStorage.setItem("aisles", JSON.stringify(savingaisle));
-        window.top.location = "/recipe-converter";
+        window.location = "/recipe-converter";
 
     }
     var totalamount = document.getElementById("totalamount");

@@ -213,7 +213,7 @@
             }
             localStorage.setItem("miseit", JSON.stringify(savingmiseit));
 
-            window.location = "/wordpress/miseit/";
+            window.location = "/miseit/";
 
         }
 

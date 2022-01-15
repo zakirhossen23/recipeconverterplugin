@@ -5,10 +5,15 @@
         <div class="top-margin">
             <div style="display: flex;"> </div>
             <div style="display: flex;">
-                <textarea id="itemname" placeholder="Tools or Cooking Techniques" name="tools" type="textarea" style="margin: 0px;width: 318px;height: 98px;padding: 11px;"></textarea>
+                <textarea id="itemname" placeholder="Tools or Cooking Techniques" name="tools" type="textarea" style="margin: 0px;width: 348px;height: 98px;padding: 11px;"></textarea>
 
             </div>
-        </div><button class="Ingredientsbtn" onclick="addItmes()">Add Make It! Steps</button>
+        </div>
+        <button class="Ingredientsbtn" onclick="Back()">
+            Back
+        </button>
+        <button class="Ingredientsbtn" onclick="addItmes()">Add Make It! Steps</button>
+
     </div>
 </div>
 <script>
@@ -22,6 +27,22 @@
         document.getElementById("all").innerHTML =
             ' <iframe name = "makeit-steps" src = "makeit-steps" />'
 
+    }
+
+    function Back() {
+        var allitem = document.getElementById("itemname").value;
+
+        localStorage.setItem("tools", allitem);
+        window.location = "/miseit-add-ingredient";
+
+    }
+
+
+    onStart();
+
+    function onStart() {
+        var all = localStorage.getItem("tools");
+        document.getElementById("itemname").value = all;
     }
 </script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

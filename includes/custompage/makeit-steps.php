@@ -24,7 +24,7 @@
             <div class="container" style="display: flex;">
                 <!--  DO -->
                 <div class="row">
-                    <select class="js-select2" multiple="multiple">
+                    <select class="js-select2" id="doselect" multiple="multiple">
                         <option value="O1" data-badge="01">Mix</option>
                         <option value="O2" data-badge="02">Season</option>
                         <option value="O3" data-badge="">Form</option>
@@ -69,13 +69,21 @@
         <div>
 
             <table id="Item-table">
-                <tr>
-
+                <tr id="startheader">
+                    <td colspan="0" class="itemgroup do">DO</td>
+                    <td colspan="1" class="itemgroup with">WITH</td>
+                    <td colspan="2" class="itemgroup how">HOW</td>
+                    <td colspan="3" class="itemgroup important">IMPORTANT</td>
+                    <td colspan="4" class="edit">Edit</td>
+                    <td colspan="5" class="delete">Delete</td>
                 </tr>
+                <tr tablefor="makeit" groupnamemakeit=""></tr>
             </table>
 
         </div>
-
+        <button class="makeitbtn" onclick="Back()">
+            Back
+        </button>
         <button class="makeitbtn" onclick="recipecard()">
             Create Recipe Card
         </button>
@@ -100,18 +108,7 @@
         header_id = 0;
 
         function makegroup() {
-            var table = document.getElementById("Item-table");
-            var row = table.insertRow(-1);
-            row.innerHTML = '<tr id="startheader"><td colspan="0" class="itemgroup do">DO</td>' +
-                '<td colspan="1" class="itemgroup with">WITH</td>' +
-                '<td colspan="2" class="itemgroup how">HOW</td>' +
-                '<td colspan="3" class="itemgroup important">IMPORTANT</td>' +
-                '<td colspan="4" class="edit">Edit</td>' +
-                '<td colspan="5" class="delete">Delete</td>' +
-                ' </tr>';
-            row.id = "startheader";
             item_id++;
-
         }
         row_id = 1;
 
@@ -122,8 +119,11 @@
             $("#groupname").val('').change();
 
         }
+        var allitemssetsp = [];
+
 
         function onAdd() {
+
             document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
             setstatus = 0; // 0 = normal at last
             var table = document.getElementById("Item-table");
@@ -161,33 +161,31 @@
                 }
 
             }
-
             var row = table.insertRow(-1);
             var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[0]
             var choosen = element.getElementsByClassName("select2-selection__choice")
-
             var dobox = [];
             for (let i = 0; i < choosen.length; i++) {
 
                 dobox.push(choosen[i].innerText.replace("×", ""));
             }
-
             var element = document.getElementsByClassName("select2-selection select2-selection--multiple")[1]
             var choosen = element.getElementsByClassName("select2-selection__choice")
             var withbox = [];
+            var withvalue = [];
 
             for (let i = 0; i < choosen.length; i++) {
                 if (isNaN(choosen[i].innerText.replace("×", "")) == false) {
+                    withvalue.push(choosen[i].innerText.replace("×", ""))
                     withbox.push('<span name="withvalue' + row_id + '" class="numbers" >' + choosen[i].innerText
                         .replace(
                             "×", "") + '</span>');
                 } else {
+                    withvalue.push(choosen[i].innerText.replace("×", ""))
                     withbox.push('<span name="withvalue' + row_id + '">' + choosen[i].innerText.replace("×", "") +
                         '</span>')
                 }
-
             }
-
 
             var dohtml =
                 '<td class="maindocell" colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
@@ -213,12 +211,26 @@
                 '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>' + //Save Button
                 '</tr>';
             row.setAttribute("groupname", selectedvalue);
+            var Obj = {
+                "do": JSON.stringify(dobox),
+                "with": JSON.stringify(withvalue),
+                "how": howbox,
+                "important": importantbox,
+                "groupname": selectedvalue
+            }
+
+
+            allitemssetsp.push([row_id, JSON.stringify(Obj)])
             if (setstatus != 0) {
                 insertAfter(placingheader, row)
             }
             clear();
-
+            console.log("Adding => ", allitemssetsp)
             row_id++;
+        }
+
+        function savemakeit() {
+
         }
 
         function recipecard() {
@@ -404,6 +416,7 @@
 
                 var table = $("#Item-table")[0];
 
+                allitemssetsp.splice([btn.getAttribute("id") - 1]);
                 table.deleteRow(row[0].rowIndex);
             }
 
@@ -411,8 +424,124 @@
 
         }
 
+        function Back() {
+            var alldo = document.getElementsByClassName("docell")
+            var allwith = document.getElementsByClassName("withcell");
+            var allhow = document.getElementsByClassName("howcell");
+            var allimportant = document.getElementsByClassName("importantcell");
+
+            var savingmakeit = [];
+            for (let i = 0; i < alldo.length; i++) {
+                let obj = {
+                    groupname: alldo[i].parentElement.parentElement.getAttribute("groupname"),
+                    do: alldo[i].innerText,
+                    with: allwith[i].innerHTML,
+                    how: allhow[i].innerText,
+                    important: allimportant[i].innerText
+                };
+
+                savingmakeit.push(JSON.stringify(obj))
+            }
+            localStorage.setItem("makeit", JSON.stringify(savingmakeit));
+            var allgroup = [];
+            var allgroupelement = $('[class="headergroup"]');
+
+            for (let i = 0; i < allgroupelement.length; i++) {
+
+                allgroup.push(JSON.stringify(allgroupelement[i].innerText))
+            }
+
+            localStorage.setItem("makeitgroup", JSON.stringify(allgroup));
+            window.location = "/makeit/";
+
+        }
+
         function insertAfter(referenceNode, newNode) {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        onStart();
+
+        function onStart() {
+
+            //***************************** Make It! Steps  ******************************
+            var all = JSON.parse(localStorage.getItem("makeit"));
+
+            for (let i = 0; i < all.length; i++) {
+                var groupname = JSON.parse(all[i]).groupname;
+                var dotext = JSON.parse(all[i]).do;
+                var withtext = JSON.parse(all[i]).with;
+                var howtext = JSON.parse(all[i]).how;
+                var importanttext = JSON.parse(all[i]).important;
+
+                document.getElementById("totalamount").innerHTML = Number(totalamount.innerHTML) + Number(1);
+                setstatus = 0; // 0 = normal at last
+                var table = document.getElementById("Item-table");
+                var selectedvalue = groupname;
+                var placingheader = null;
+                if ($('[header="' + groupname + '"]').length == 0 && selectedvalue != "") {
+                    var headerrow = table.insertRow(-1);
+                    headerrow.innerHTML = '<td colspan="5" header="' + groupname +
+                        '" headerid="' + header_id +
+                        '" class="headergroup">' + groupname +
+                        '</td>' + '<td colspan=6><input id="' + header_id + //Edit Button
+                        '" value="Edit" name="header" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' +
+                        //Edit Button
+                        '<td colspan=7><input id="' + header_id + //Save Button
+                        '" value="Delete" name="header" onclick="return onDelete(this);" class="deletebtn" type="button" /></td>';
+                    var optionelement = document.createElement("option");
+                    optionelement.value = groupname;
+                    headerrow.setAttribute("groupname", selectedvalue);
+                    optionelement.setAttribute("nameid", header_id);
+                    document.getElementById("grouplist").appendChild(optionelement);
+                    header_id++;
+                    placingheader = headerrow;
+                } else if (selectedvalue != "") {
+                    placingheader = $('[groupname="' + selectedvalue + '"]')[$('[groupname="' + selectedvalue + '"]').length -
+                        1]
+                    setstatus = 1;
+                } else if (selectedvalue == "") {
+                    setstatus = 1;
+                    var allinsertedinempty = $('[groupname=""]');
+                    if (allinsertedinempty.length != 0) {
+                        placingheader = allinsertedinempty[allinsertedinempty.length - 1];
+                    } else {
+                        var headerelement = document.getElementById("startheader");
+                        placingheader = headerelement;
+                    }
+
+                }
+
+                var row = table.insertRow(-1);
+                var dohtml =
+                    '<td class="maindocell" colspan=0><span readonly="readonly" class="docell" id="do' + row_id +
+                    '"style="pointer-events:none;" type="text" name="do">' + dotext +
+                    '</span></td>';
+
+                var withthml = '<td class="withcell" colspan=1>' + withtext + '</td>';
+
+                var howhtml = '<td colspan=2 class="howmaincell"><span readonly="readonly" class="howcell" id="how' + row_id +
+                    '" name="how" style="pointer-events:none;" type="text">' + howtext + '</span></td>';
+
+                var importhtml =
+                    '<td colspan=3 class="importantmaincell"><span readonly="readonly" class="importantcell" id="important' +
+                    row_id +
+                    '" name="important" style="pointer-events:none;" type="text">' + importanttext + '</span></td>';
+
+                row.innerHTML = '<tr>' + dohtml + withthml + howhtml + importhtml +
+                    '<td colspan=4><input id="' + row_id + //Edit Button
+                    '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" /></td>' + //Edit Button
+                    '<td colspan=5><input id="' + row_id + //Save Button
+                    '" value="Delete" onclick="return onDelete(this)" ; class="deletebtn" type="button" /></td>' + //Save Button
+                    '</tr>';
+                row.setAttribute("groupname", selectedvalue);
+
+                if (setstatus != 0) {
+                    insertAfter(placingheader, row)
+                }
+                clear();
+                row_id++;
+            }
         }
     </script>
     <script>
@@ -481,7 +610,6 @@
 
     .makeitbtn {
         font-family: Calibri !important;
-        float: right;
         width: 172px;
         height: 37px;
         margin: 10px 1px 12px 0px;

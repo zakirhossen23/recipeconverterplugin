@@ -125,7 +125,7 @@
         var savingitem = [];
         allitem.forEach(v => savingitem.push(v.innerHTML.trim()));
         localStorage.setItem("items", JSON.stringify(savingitem));
-        window.location = "/wordpress/add-ingredient/";
+        window.location = "/add-ingredient/";
 
     }
 

@@ -214,7 +214,7 @@
 
             }
             localStorage.setItem("shopit", JSON.stringify(savingshopit));
-            window.location = "/wordpress/shopit";
+            window.location = "/shopit";
 
         }
         onStart();
