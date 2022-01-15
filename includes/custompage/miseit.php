@@ -104,6 +104,10 @@
     }
 
     function Back() {
+        var allitem = document.getElementsByName("item");
+        var savingitem = [];
+        allitem.forEach(v => savingitem.push(v.innerHTML));
+        localStorage.setItem("items", JSON.stringify(savingitem));
         window.location = "/wordpress/add-ingredient/";
 
     }
@@ -138,19 +142,10 @@
     onStart();
 
     function onStart() {
-        var all = JSON.parse(localStorage.getItem("shopit"));
+        var all = JSON.parse(localStorage.getItem("items"));
         for (let i = 0; i < all.length; i++) {
-            var ingredientname = JSON.parse(all[i]).ingredient;
-            var groupname = JSON.parse(all[i]).groupname;
-            var radiochecked = JSON.parse(all[i]).radiochecked;
-            var checkedstatus = "";
-            if (radiochecked == true) {
-                checkedstatus = "checked";
-            }
-            document.getElementById("ingredientname").value = ingredientname;
-            document.getElementById("overbuy").checked = radiochecked;
-            document.getElementById("aislename").value = groupname;
-
+            document.getElementById("itemname").value = all[i];
+            onAdd();
         }
     }
 </script>

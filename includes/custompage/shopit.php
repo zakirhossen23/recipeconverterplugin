@@ -36,16 +36,6 @@
 <script>
     var row_id = 1;
 
-    function setJson(jsonObject, key, checkvalue, setvalue) {
-        var allnew = [];
-        for (let i = 0; i < jsonObject.length; i++) {
-            var groupname = JSON.parse(jsonObject[i]).groupname;
-            if (btn.parentElement.parentElement.firstChild.firstElementChild.getAttribute("value") == groupname) {
-                JSON.parse(jsonObject[i]).groupname = btn.parentElement.parentElement.firstChild.firstElementChild.textContent;
-                btn.parentElement.parentElement.firstChild.firstElementChild.setAttribute("value", btn.parentElement.parentElement.firstChild.firstElementChild.textContent)
-            }
-        }
-    }
 
     function onEdit(btn) {
         var id = btn.id;
@@ -107,6 +97,10 @@
     }
 
     function Back() {
+        var allaisle = document.getElementsByName("aisle");
+        var savingaisle = [];
+        allaisle.forEach(v => savingaisle.push(v.innerText));
+        localStorage.setItem("aisles", JSON.stringify(savingaisle));
         window.top.location = "/recipe-converter";
 
     }

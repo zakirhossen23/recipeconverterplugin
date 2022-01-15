@@ -42,6 +42,17 @@
     <script>
         var row_id = 1;
 
+        function groupcheck(groupname) {
+            var status = false;
+            var groups = document.querySelectorAll('[class="aislegroup"]');
+            groups.forEach((groupelement) => {
+                if (groupelement.innerText == groupname) {
+                    status = true;
+                }
+            })
+            return status;
+        }
+
         var aislefield = document.getElementById("aislename");
         var allaislecode = [];
         var codeaisle = [];
@@ -189,6 +200,20 @@
         }
 
         function Back() {
+            var allaisle = document.getElementsByClassName("ingredient");
+            var alloverbuy = document.getElementsByClassName("overbuybtn");
+            var savingshopit = [];
+            for (let i = 0; i < alloverbuy.length; i++) {
+                let obj = {
+                    groupname: allaisle[i].getAttribute("groupname"),
+                    ingredient: allaisle[i].innerHTML,
+                    radiochecked: alloverbuy[i].checked
+                };
+                var text = "shopit:" + allaisle[i].getAttribute("groupname") + ":" + allaisle[i].value + ":" + alloverbuy[i].checked;
+                savingshopit.push(JSON.stringify(obj))
+
+            }
+            localStorage.setItem("shopit", JSON.stringify(savingshopit));
             window.location = "/wordpress/shopit";
 
         }
@@ -207,7 +232,8 @@
                 document.getElementById("ingredientname").value = ingredientname;
                 document.getElementById("overbuy").checked = radiochecked;
                 document.getElementById("aislename").value = groupname;
-                onAdd();
+                if (groupcheck(groupname) == true)
+                    onAdd();
             }
         }
     </script>
