@@ -87,6 +87,23 @@
             document.getElementById('item' + id).setAttribute("contenteditable", false);
             btn.style.background = "";
 
+            var all = JSON.parse(localStorage.getItem("miseit"));
+            var allnew = [];
+            for (let i = 0; i < all.length; i++) {
+                var groupname = JSON.parse(all[i]).groupname;
+                var oneline = JSON.parse(all[i]);
+
+                if (document.getElementById("item" + btn.getAttribute("id")).getAttribute("valuegroup").trim() == groupname.trim()) {
+                    oneline["groupname"] = btn.getAttribute("id") + " - " + document.getElementById("item" + btn.getAttribute("id")).textContent.trim();
+                    allnew.push(JSON.stringify(oneline));
+                } else {
+                    allnew.push(JSON.stringify(oneline));
+                }
+            }
+            document.getElementById("item" + btn.getAttribute("id")).setAttribute("valuegroup", btn.getAttribute("id") + " - " + document.getElementById("item" + btn.getAttribute("id")).textContent.trim())
+
+            localStorage.setItem("miseit", JSON.stringify(allnew));
+
             return false;
         }
 
@@ -98,7 +115,7 @@
         var savingitem = [];
         allitem.forEach(v => savingitem.push(v.innerHTML));
         localStorage.setItem("items", JSON.stringify(savingitem));
-        document.getElementById("all").innerHTML =
+        window.top.document.getElementById("all").innerHTML =
             ' <iframe name = "miseit-addingredient" src = "miseit-add-ingredient" />'
 
     }
@@ -106,7 +123,7 @@
     function Back() {
         var allitem = document.getElementsByName("item");
         var savingitem = [];
-        allitem.forEach(v => savingitem.push(v.innerHTML));
+        allitem.forEach(v => savingitem.push(v.innerHTML.trim()));
         localStorage.setItem("items", JSON.stringify(savingitem));
         window.location = "/wordpress/add-ingredient/";
 
@@ -123,10 +140,9 @@
         var cell3 = row.insertCell(-1);
         var serial = Number(allserial.length) + Number(1)
         cell0.innerHTML = '<div class="numbers">' + serial + '</div>';
-
-        cell1.innerHTML = '<span readonly="readonly" id="item' + row_id + '" name="item"style="pointer-events:none;" >' + document
-            .getElementById(
-                "itemname").value + ' </span>'
+        var grouptext = document.getElementById("itemname").value;
+        cell1.innerHTML = '<span readonly="readonly" id="item' + row_id + '" valuegroup= "' +
+            serial + " - " + grouptext + '" name="item"style="pointer-events:none;" >' + grouptext + ' </span>'
         cell1.style = "width:100%; padding-left: 7px;";
         cell2.innerHTML = '<input id="' + row_id +
             '" value="Edit" class="editbtn" onclick="return onEdit(this)" ; type="button" />';

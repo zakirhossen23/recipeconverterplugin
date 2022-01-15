@@ -34,6 +34,9 @@
 
         </div>
 
+        <button class="makeitbtn" onclick="Back()">
+            Back
+        </button>
         <button class="makeitbtn" onclick="Makeit()">
             Let's Make It!
         </button>
@@ -143,14 +146,16 @@
 
         function makegroup() {
             var table = document.getElementById("Item-table");
+            var count = 1;
             allitemcode.forEach(element => {
                 var row = table.insertRow(-1);
-                row.innerHTML = '<tr><td colspan="4" class="itemgroup">' + element +
+                row.innerHTML = '<tr><td colspan="4" value="' + count + " - " + element + '" class="itemgroup">' + element +
                     '</td>' + '<td colspan="4" style="text-align:center;">' + '<div class="numbers">' + item_id +
                     '</div>' +
                     '</td>' + ' </tr>';
                 row.id = item_id - 1;
                 item_id++;
+                count++;
             })
             var row = table.insertRow(-1);
             row.id = allitemcode.length;
@@ -191,6 +196,55 @@
             row_id++;
 
         }
+
+
+        function Back() {
+            var allitem = document.getElementsByClassName("ingredient")
+            var allperep = document.getElementsByClassName("perep");
+            var savingmiseit = [];
+            for (let i = 0; i < allperep.length; i++) {
+                let obj = {
+                    id: (Number(allitem[i].getAttribute("name"))),
+                    groupname: allitem[i].getAttribute("groupname"),
+                    ingredient: allitem[i].innerText,
+                    prep: allperep[i].innerText
+                };
+                savingmiseit.push(JSON.stringify(obj))
+            }
+            localStorage.setItem("miseit", JSON.stringify(savingmiseit));
+
+            window.location = "/wordpress/miseit/";
+
+        }
+
+        function groupcheck(groupname) {
+            var status = false;
+            var groups = document.querySelectorAll('[class="itemgroup"]')
+            groups.forEach((groupelement) => {
+                if (groupelement.getAttribute("value").trim() == (groupname.trim())) {
+                    status = true;
+                }
+            })
+            return status;
+        }
+
+        onStart();
+
+        function onStart() {
+            var all = JSON.parse(localStorage.getItem("miseit"));
+            for (let i = 0; i < all.length; i++) {
+                var ingredientname = JSON.parse(all[i]).ingredient;
+                var groupname = JSON.parse(all[i]).groupname;
+                var prep = JSON.parse(all[i]).prep;
+
+                console.log(groupname);
+                document.getElementById("ingredientname").value = ingredientname;
+                document.getElementById("itemname").value = groupname;
+                document.getElementById("Preparation").value = prep;
+                if (groupcheck(groupname) == true)
+                    onAdd();
+            }
+        }
     </script>
 </body>
 
@@ -223,7 +277,6 @@
     }
 
     .makeitbtn {
-        float: right;
         width: 172px;
         height: 37px;
         margin: 10px 1px 12px 0px;
@@ -392,7 +445,6 @@
     .miseitbtn {
         width: 146px;
         padding: 8px;
-        float: right;
         margin: 13px 0px 2px 3px;
         background-color: #debf54;
         font-family: Calibri !important;

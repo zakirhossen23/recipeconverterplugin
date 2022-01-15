@@ -71,12 +71,13 @@
 
                 if (btn.parentElement.parentElement.firstChild.firstElementChild.getAttribute("value") == groupname) {
                     oneline["groupname"] = btn.parentElement.parentElement.firstChild.firstElementChild.textContent;
-                    btn.parentElement.parentElement.firstChild.firstElementChild.setAttribute("value", btn.parentElement.parentElement.firstChild.firstElementChild.textContent)
                     allnew.push(JSON.stringify(oneline));
                 } else {
                     allnew.push(JSON.stringify(oneline));
                 }
             }
+            btn.parentElement.parentElement.firstChild.firstElementChild.setAttribute("value", btn.parentElement.parentElement.firstChild.firstElementChild.textContent)
+
             localStorage.setItem("shopit", JSON.stringify(allnew));
 
             console.log(allnew);
